@@ -1,0 +1,47 @@
+# Insight 9 topic expectations for capture and validation.
+# PROVISIONAL: topic names/types/QoS are NOT yet verified against hardware.
+# Capture side confirms on real device (read-only) and proposes changes to main.
+# Contract: docs/DATA_CONTRACT.md. Do not edit from feature branches.
+version: 1
+verified: false
+ros_distro: humble
+rmw_implementation: rmw_fastrtps_cpp
+storage:
+  preferred: mcap
+  fallback: sqlite3
+timestamps:
+  preserve_original: true
+topics:
+  - name: /insight/left/image_raw        # TBD
+    role: image
+    msg_type: sensor_msgs/msg/Image
+    required: true
+  - name: /insight/right/image_raw       # TBD
+    role: image
+    msg_type: sensor_msgs/msg/Image
+    required: true
+  - name: /insight/left/camera_info      # TBD
+    role: camera_info
+    msg_type: sensor_msgs/msg/CameraInfo
+    required: true
+  - name: /insight/right/camera_info     # TBD
+    role: camera_info
+    msg_type: sensor_msgs/msg/CameraInfo
+    required: true
+  - name: /insight/imu                   # TBD
+    role: imu
+    msg_type: sensor_msgs/msg/Imu
+    required: true
+  - name: /insight/vio/odometry          # TBD
+    role: vio
+    msg_type: nav_msgs/msg/Odometry
+    required: true
+  - name: /tf
+    role: tf
+    msg_type: tf2_msgs/msg/TFMessage
+    required: true
+  - name: /tf_static
+    role: tf_static
+    msg_type: tf2_msgs/msg/TFMessage
+    required: true
+    qos: {durability: transient_local}

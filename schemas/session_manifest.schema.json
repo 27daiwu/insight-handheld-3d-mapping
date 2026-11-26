@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/27daiwu/insight-handheld-3d-mapping/schemas/session_manifest.schema.json",
+  "title": "Insight Handheld Mapping Session Manifest",
+  "description": "Contract version 1.0.0-draft. Maintained on main only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "session_id", "recording", "environment", "streams", "storage", "integrity", "calibration"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+(-[A-Za-z0-9.]+)?$"},
+    "session_id": {"type": "string", "pattern": "^session_[A-Za-z0-9_\\-]+$"},
+    "label": {"type": "string"},
+    "recording": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "start_time_utc"],
+      "properties": {
+        "state": {"enum": ["recording", "finalized"]},
+        "start_time_utc": {"type": "string", "format": "date-time"},
+        "end_time_utc": {"type": "string", "format": "date-time"},
+        "duration_s": {"type": "number", "minimum": 0},
+        "ros_start_stamp_ns": {"type": "integer"},
+        "ros_end_stamp_ns": {"type": "integer"},
+        "clock_sync_note": {"type": "string"}
+      },
+      "if": {"properties": {"state": {"const": "finalized"}}},
+      "then": {"required": ["end_time_utc", "duration_s", "ros_start_stamp_ns", "ros_end_stamp_ns"]}
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["camera", "ros", "dds", "host"],
+      "properties": {
+        "camera": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["model", "firmware_version", "config"],
+          "properties": {
+            "model": {"const": "Insight 9"},
+            "serial": {"type": "string"},
+            "firmware_version": {"type": "string"},
+            "config": {"type": "object", "description": "Effective camera configuration snapshot (read-only capture)."}
+          }
+        },
+        "ros": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["distro", "rmw_implementation"],
+          "properties": {
+            "distro": {"type": "string"},
+            "rmw_implementation": {"type": "string"}
+          }
+        },
+        "dds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["vendor"],
+          "properties": {
+            "vendor": {"type": "string"},
+            "version": {"type": "string"},
+            "qos_profile": {"type": "string"}
+          }
+        },
+        "host": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hostname", "os", "recorder_version"],
+          "properties": {
+            "hostname": {"type": "string"},
+            "os": {"type": "string"},
+            "cpu": {"type": "string"},
+            "recorder_version": {"type": "string"}
+          }
+        }
+      }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "bag_path"],
+      "properties": {
+        "format": {"enum": ["mcap", "sqlite3"]},
+        "bag_path": {"type": "string", "default": "bag"},
+        "compression": {"type": "string"},
+        "fallback_reason": {"type": "string", "description": "Required when format is sqlite3."}
+      },
+      "if": {"properties": {"format": {"const": "sqlite3"}}},
+      "then": {"required": ["fallback_reason"]}
+    },
+    "streams": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["topic", "role", "msg_type", "message_count", "measured_rate_hz"],
+        "properties": {
+          "topic": {"type": "string"},
+          "role": {"enum": ["image", "depth", "camera_info", "imu", "vio", "tf", "tf_static", "other"]},
+          "msg_type": {"type": "string"},
+          "frame_id": {"type": "string"},
+          "message_count": {"type": "integer", "minimum": 0},
+          "measured_rate_hz": {"type": "number", "minimum": 0},
+          "nominal_rate_hz": {"type": "number", "minimum": 0},
+          "width": {"type": "integer", "minimum": 1},
+          "height": {"type": "integer", "minimum": 1},
+          "encoding": {"type": "string"},
+          "first_stamp_ns": {"type": "integer"},
+          "last_stamp_ns": {"type": "integer"},
+          "dropped_messages": {"type": "integer", "minimum": 0},
+          "drop_estimation_method": {"type": "string"}
+        },
+        "if": {"properties": {"role": {"enum": ["image", "depth"]}}},
+        "then": {"required": ["width", "height", "encoding"]}
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["files"],
+      "properties": {
+        "files": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "total_messages", "dropped_messages"],
+      "properties": {
+        "status": {"enum": ["complete", "incomplete", "corrupt"]},
+        "total_messages": {"type": "integer", "minimum": 0},
+        "expected_messages": {"type": "integer", "minimum": 0},
+        "dropped_messages": {"type": "integer", "minimum": 0},
+        "missing_required_streams": {"type": "array", "items": {"type": "string"}},
+        "file_checksums": {
+          "type": "object",
+          "description": "Relative path -> sha256 hex.",
+          "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "extensions": {"type": "object", "description": "Only place for non-contract fields."}
+  }
+}

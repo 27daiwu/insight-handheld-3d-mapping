@@ -1,0 +1,12 @@
+# Datasets are large; only the placeholder and docs are tracked
+datasets/*
+!datasets/.gitkeep
+!datasets/README.md
+*.db3
+*.mcap
+__pycache__/
+*.pyc
+build/
+install/
+log/
+.venv/
