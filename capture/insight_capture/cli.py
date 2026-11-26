@@ -26,6 +26,8 @@ def build_parser() -> argparse.ArgumentParser:
     s = sub.add_parser("preflight", help="pre-capture checks (read-only)")
     common(s)
     s.add_argument("--probe-seconds", type=float, default=5.0, help="passive measurement window")
+    s.add_argument("--clock-seconds", type=float, default=35.0,
+                   help="host wall-clock step check window (>= 33 s catches a 32 s timesyncd cycle; 0 = skip)")
     s.add_argument("--json", action="store_true")
 
     s = sub.add_parser("record", help="start a new recording session")
@@ -48,6 +50,8 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--json", action="store_true")
     s.add_argument("--repair", action="store_true", help="reindex bag metadata and finalize manifest after a crash")
     s.add_argument("--no-tf", action="store_true")
+    s.add_argument("--no-diagnose", action="store_true", help="skip continuity/sync diagnostics")
+    s.add_argument("--diagnose-out", help="write diagnostics JSON here (default: <session>/diagnostics.json)")
 
     s = sub.add_parser("replay", help="replay a session with ros2 bag play")
     s.add_argument("session", nargs="?")
@@ -70,7 +74,8 @@ def main(argv=None) -> int:
     if args.cmd == "preflight":
         from .preflight import run_preflight, parse_expect
         rep, disc, ctx = run_preflight(args.profile, args.prefix, args.probe_seconds, args.firmware, args.root,
-                                       args.min_free_gb, parse_expect(args.expect), image_mode=args.image_mode)
+                                       args.min_free_gb, parse_expect(args.expect), image_mode=args.image_mode,
+                                       clock_s=args.clock_seconds)
         print(json.dumps(rep.to_dict(), indent=2, default=str) if args.json else rep.render())
         return rep.exit_code
     if args.cmd == "record":

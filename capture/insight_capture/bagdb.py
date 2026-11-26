@@ -93,3 +93,24 @@ def tf_frames(bag: Path, topic_names=("/tf", "/tf_static")) -> set[tuple[str, st
         except sqlite3.DatabaseError:
             continue
     return edges
+
+
+def read_series(bag: Path) -> dict[str, dict]:
+    """name -> {'stamps': [...], 'recv': [...], 'type': str} in storage order (header stamps via first 12 bytes)."""
+    from .stats import parse_header_stamp
+    tinfo = topics(bag)
+    out = {n: {"stamps": [], "recv": [], "type": t["type"]} for n, t in tinfo.items()}
+    for f in db_files(bag):
+        try:
+            con = _connect(f)
+            names = {r[0]: r[1] for r in con.execute("SELECT id, name FROM topics")}
+            for tid, ts, head in con.execute("SELECT topic_id, timestamp, substr(data,1,12) FROM messages ORDER BY id"):
+                n = names.get(tid)
+                if n is None:
+                    continue
+                out[n]["recv"].append(ts)
+                out[n]["stamps"].append(None if out[n]["type"] == "tf2_msgs/msg/TFMessage" else parse_header_stamp(head))
+            con.close()
+        except sqlite3.DatabaseError:
+            continue
+    return out

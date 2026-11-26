@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import bagdb, sysinfo
+from . import bagdb, diagnostics, sysinfo
 from .config import data_root, load_profile
 from .preflight import Report, _connected
 from .session import (BAG, LOG, MANIFEST, PLAN, STATE, bag_size, pid_alive, read_json, resolve_session,
@@ -157,6 +157,28 @@ def inspect(args) -> int:
         dur = (max(lasts.values()) - min(firsts.values())) / NS
         rep.data["duration_s"] = round(dur, 3)
         rep.add("INFO", "duration", f"Recorded span {dur:.1f}s, {bag_size(bag) / 1e6:.1f} MB on disk")
+
+    # continuity / systemic-hole / sync diagnostics (receive-time and header-stamp based)
+    if not getattr(args, "no_diagnose", False):
+        ser = bagdb.read_series(bag)
+        for n in list(ser):
+            if ser[n]["type"] == "tf2_msgs/msg/TFMessage" and n == "/tf_static":
+                ser.pop(n)
+        roles = {t["role"]: t["name"] for t in m.get("topics", [])} if m else {}
+        pairs = [(roles[a], roles[b]) for a, b in (("stereo_left", "stereo_right"), ("rgb", "stereo_left"))
+                 if a in roles and b in roles]
+        nom = {n: t["reference_hz"] for n, t in planned.items() if t.get("reference_hz")
+               and t.get("role") not in ("tf",)}
+        drep = diagnostics.diagnose(ser, nom, pairs, th["gap_factor"])
+        rep.data["diagnostics"] = drep
+        for lvl, msg in diagnostics.verdicts(drep, th):
+            rep.add(lvl, "diag", "diagnostic: " + msg)
+        if not any(c["id"] == "diag" for c in rep.checks):
+            rep.add("PASS", "diag", "diagnostics: no loss above tolerance, no multi-topic holes, pairs in sync")
+        if getattr(args, "diagnose_out", None):
+            write_json(Path(args.diagnose_out), drep)
+        elif not sdir_is_bag:
+            write_json(sdir / "diagnostics.json", drep)
 
     # depth consistency
     if m:

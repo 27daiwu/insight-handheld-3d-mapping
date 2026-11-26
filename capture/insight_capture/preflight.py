@@ -68,7 +68,8 @@ def parse_expect(items: list[str] | None) -> dict[str, float]:
 
 def run_preflight(profile_path=None, prefix=None, probe_s: float = 5.0, firmware: str | None = None,
                   data_root=None, min_free_gb: float | None = None, expect: dict | None = None,
-                  settle_s: float = 2.0, image_mode: str = "raw", quiet_system: bool = False
+                  settle_s: float = 2.0, image_mode: str = "raw", quiet_system: bool = False,
+                  clock_s: float = 0.0
                   ) -> tuple[Report, Discovery | None, dict]:
     prof = load_profile(profile_path)
     th = prof["thresholds"]
@@ -151,10 +152,10 @@ def run_preflight(profile_path=None, prefix=None, probe_s: float = 5.0, firmware
         infos = g.snapshot(settle_s)
         ctx["topic_infos"] = infos
         disc = discover(infos, prof, prefix)
-        for _ in range(2):   # DDS discovery can lag on first start: re-poll before declaring absence
+        for _ in range(4):   # DDS discovery can lag on first start (seen on WSL2 right after the daemon starts): re-poll before declaring absence
             if disc.found:
                 break
-            infos = g.snapshot(2.0)
+            infos = g.snapshot(3.0)
             disc = discover(infos, prof, prefix)
         ctx["topic_infos"] = infos
         rep.data["discovery"] = disc.to_dict()
@@ -185,6 +186,13 @@ def run_preflight(profile_path=None, prefix=None, probe_s: float = 5.0, firmware
                         f"{role}: {m.topic} [{m.type}] pubs={m.pub_count}")
         _depth_check(rep, disc, sel)
 
+        # 6a. host wall clock (runs concurrently with the probe) -----------
+        import threading
+        clk: dict = {}
+        cth = None
+        if clock_s > 0:
+            cth = threading.Thread(target=lambda: clk.update(sysinfo.clock_steps(clock_s)), daemon=True)
+            cth.start()
         # 6. probe -------------------------------------------------------
         targets = {m.topic: m.type for ms in sel.values() for m in ms if m.pub_count or m.role == "tf_static"}
         if disc.found and probe_s > 0 and targets:
@@ -194,6 +202,19 @@ def run_preflight(profile_path=None, prefix=None, probe_s: float = 5.0, firmware
             _judge_probe(rep, sel, probe, th, expect)
             _info_tf_checks(rep, sel, probe)
             _disk_estimate(rep, probe, disk, min_free)
+        if cth is not None:
+            cth.join(clock_s + 5)
+            ts = sysinfo.timesync_info()
+            rep.data["host_clock"] = {**clk, **ts}
+            if clk.get("n_steps"):
+                rep.add("WARN", "host_clock",
+                        f"Host wall clock STEPPED {clk['n_steps']}x in {clock_s:.0f}s: {clk['steps'][:6]} (t_s, ms)",
+                        "rosbag2 stamps with the wall clock -> fake multi-topic holes/bursts in receive time. "
+                        "Header stamps are unaffected. timesyncd active: %s. Known on this WSL2 host: timesyncd "
+                        "32 s polls step the clock ~+2.4 s (see reports/2_wsl2_packet_loss_rca.md). No change made." %
+                        ts.get("timesyncd_active"))
+            else:
+                rep.add("PASS", "host_clock", f"Host wall clock steady (no step > 50 ms in {clock_s:.0f}s)")
         nodes_note = ", ".join(nodes[:10])
         rep.add("INFO", "nodes", f"{len(nodes)} ROS nodes visible", nodes_note)
     finally:

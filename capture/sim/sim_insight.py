@@ -53,6 +53,10 @@ class Sim(Node):
             ([self._tf("camera_link", "depth_optical")] if a.depth else [])))
 
     def _stamp(self):
+        if self.a.stamp_clock == "monotonic":      # like the real camera: boot-relative clock, immune to host clock steps
+            from builtin_interfaces.msg import Time
+            ns = time.monotonic_ns()
+            return Time(sec=ns // 10**9, nanosec=ns % 10**9)
         return self.get_clock().now().to_msg()
 
     def _tf(self, parent, child):
@@ -126,6 +130,8 @@ def main():
     ap.add_argument("--vio-hz", type=float, default=30)
     ap.add_argument("--width", type=int, default=160)
     ap.add_argument("--height", type=int, default=120)
+    ap.add_argument("--stamp-clock", choices=["ros", "monotonic"], default="ros",
+                    help="header stamp source; monotonic avoids artefacts from host wall-clock steps")
     ap.add_argument("--drop-every", type=int, default=0, help="skip every Nth rgb frame (fault injection)")
     ap.add_argument("--stall-after", type=float, help="stop publishing rgb after S seconds (fault injection)")
     ap.add_argument("--stall-for", type=float, default=0)
@@ -137,7 +143,7 @@ def main():
     except (KeyboardInterrupt, Exception):
         pass
     finally:
-        print(f'SIM published imu={getattr(n, "imu_pub_count", 0)}', flush=True)
+        print(f'SIM published imu={getattr(n, "imu_pub_count", 0)} rgb_dropped_by_fault_injection={n.dropped}', flush=True)
         try:
             n.destroy_node()
         except Exception:

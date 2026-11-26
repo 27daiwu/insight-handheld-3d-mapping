@@ -18,3 +18,10 @@ Exit codes (preflight/inspect): 0 ok, 1 warnings, 2 failures.
 * Tests: `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest capture/tests` (integration tests use a random
   isolated ROS domain).
 * WSL2 note: standalone processes did not discover each other without the `ros2 daemon`; preflight starts it.
+
+## Diagnostics & host clock (2026-11-26)
+* `inspect` also writes `<session>/diagnostics.json`: loss vs reference rate, interval percentiles, **multi-topic hole detection**; a hole whose
+  header stamps are contiguous is reported as "receive time jumped, data NOT lost" (WSL2 timesyncd clock steps), otherwise FAIL.
+* `preflight` samples the host wall clock for `--clock-seconds` (default 35). On WSL2 bag *receive* time is unreliable (±2.5 s sawtooth): use header stamps.
+* Real camera (fw 2.1.5): ROS domain **9**, prefix `/camera/camera`; run `ROS_DOMAIN_ID=9 ./insight-capture preflight --firmware 2.1.5`.
+* Reports: `reports/` (1 camera, 2 WSL2 RCA, 3 tests, 4 topic changelog, 5 GO/NO-GO).

@@ -1,0 +1,26 @@
+# 4. Topic config change log — `config/topics_v2.1.4.yaml` (2026-11-26)
+
+**`verified` remains `false`.** Evidence is one real device (fw **2.1.5**, not 2.1.4), a few minutes of passive measurement over
+WSL2 (mirrored networking). v2.1.4 was never observed, so the profile name/baseline cannot be called verified.
+
+| # | Change | Reason / evidence | Status |
+|---|---|---|---|
+| 1 | stereo aliases `infra1`/`infra2` (images + camera_info) | real topics `/camera/camera/infra{1,2}/image_rect_raw`, `.../camera_info` (reports/camera_data/topics_domain9.txt) | **observed on device** |
+| 2 | VIO suffix list += `vio_100hz`, `vio_pose`; `any_prefix: true` for vio | real VIO = `/camera/camera/vio_100hz` (PoseStamped, 100 Hz, frame `world`). Vendor guide's `/insight/vio_pose` NOT present on fw 2.1.5 | vio_100hz observed; `vio_pose`/any_prefix from docs only |
+| 3 | topic ranking: raw before compressed, **`*rect*` before `*_raw`** | `infra1/image_raw`, `infra2/image_raw`, `color/image_raw/compressed` have a publisher but delivered **0 messages in 60 s**; only the `*_rect_raw` variants carry data | observed (60 s, 1 run) |
+| 4 | `/tf` → `required: false`, `/tf_static` → `required: true` | device publishes only `/tf_static` (5 edges); no dynamic `/tf` | observed |
+| 5 | `extra_types` += PoseWithCovarianceStamped, std_msgs/String | `vio_image_cov`, `vio_status` (1 Hz string) recorded with `--include-extra` | observed |
+| 6 | `thresholds.max_loss_ratio: 0.001` | new diagnostics tolerance | design choice |
+| 7 | tests: `test_real_fw215_*` uses the measured topic list; vendor-doc layout test kept (docs ≠ device) | | |
+
+## Real device facts that do NOT fit the baseline/docs (record, don't hide)
+* Firmware 2.1.5; ROS domain **9** (not 0); camera DDS configured **cyclonedds**, yet Fast DDS (Humble default) discovered it fine.
+* **Depth is enabled** on this unit (`/api/deep-flow enabled=true`; `/camera/camera/depth/image_rect_raw` 15 Hz) — contradicts "default off". Not changed.
+* RGB is **only JPEG `CompressedImage`** (no raw colour image). rgb stream 1088x1920 (portrait), stereo mono8 544x640, depth mono16 544x640.
+* Rates vs vendor table: IMU 400 Hz ✔, stereo 30 Hz ✔, colour 30 Hz ✔, depth 15 Hz (header) ✔, **VIO 100 Hz (doc: 15 Hz)**, `vio_image` 30 Hz.
+* Header stamps are **seconds since camera boot** (~1339 s at probe), not wall clock; camera wall clock is ~457 days behind host and time-sync is disabled. Receive−stamp offset is therefore meaningless until time sync is configured (needs your approval).
+* QoS of publishers: IMU BEST_EFFORT; images/depth/vio RELIABLE; tf_static RELIABLE+TRANSIENT_LOCAL. rosbag2 recorder adapts (subscribes with matching QoS).
+* `/tf_static` frames: camera_camera_{imu,left,right,rgb,depth,imu_optical}; VIO frame `world` is **not connected** to that tree (no dynamic TF to it).
+
+## Still to verify before `verified: true`
+Run on firmware 2.1.4 (or accept 2.1.5 as new baseline, your call); confirm after a camera reboot; decide on `image_raw` topics (empty — only after subscriber?); native-Ubuntu repeat; real 5-min recording without systemic holes (see report 2 and 3).

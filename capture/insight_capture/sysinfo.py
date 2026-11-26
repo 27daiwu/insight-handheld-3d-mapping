@@ -95,3 +95,31 @@ def ensure_ros2_daemon() -> tuple[bool, str]:
     does not touch system network/driver/camera settings."""
     rc, out = run(["ros2", "daemon", "start"], 20)
     return rc == 0, out.splitlines()[-1] if out else ""
+
+
+def clock_steps(seconds: float, step_ms: float = 50.0) -> dict:
+    """Passive: sample CLOCK_REALTIME - CLOCK_MONOTONIC every 10 ms and report steps (host wall-clock jumps).
+
+    rosbag2 stamps messages with the wall clock, so wall-clock steps appear as fake holes/bursts in receive time.
+    Never sets the clock."""
+    import time
+    pm, pr = time.monotonic_ns(), time.time_ns()
+    t0 = pm
+    steps = []
+    end = t0 + int(seconds * 1e9)
+    while pm < end:
+        time.sleep(0.01)
+        m, r = time.monotonic_ns(), time.time_ns()
+        d = (r - pr) - (m - pm)
+        if abs(d) > step_ms * 1e6:
+            steps.append((round((m - t0) / 1e9, 2), round(d / 1e6)))
+        pm, pr = m, r
+    return {"seconds": seconds, "steps": steps, "n_steps": len(steps)}
+
+
+def timesync_info() -> dict:
+    rc, out = run(["timedatectl", "timesync-status"], 5)
+    d = {"timesyncd_status": out.splitlines()[:14] if rc == 0 else None, "error": None if rc == 0 else out}
+    rc2, act = run(["systemctl", "is-active", "systemd-timesyncd"], 3)
+    d["timesyncd_active"] = act.strip() == "active"
+    return d

@@ -1,6 +1,9 @@
 # Topic profile for Insight 9 firmware/driver baseline v2.1.4.
 #
 # !!! verified: false !!!
+# 2026-11-26: aliases infra1/infra2/vio_pose/vio_100hz + any_prefix(vio) were ADDED FROM VENDOR DOCS
+# (Looper guide v1.2.1, psrobotics/insight9 BRINGUP.md for fw 2.1.2). They are NOT confirmed on the device
+# (fw 2.1.5 reachable over HTTP but no DDS topics visible yet). See reports/topic_config_changelog.md.
 # The official v2.1.4 topic list was NOT available offline when this was written
 # (no camera attached, no vendor doc in the repo, web search unavailable).
 # The regexes below are a *prefix-agnostic* guess based on common ROS 2 camera
@@ -12,6 +15,7 @@
 # Everything before the match is the "camera prefix" (e.g. /insight9).
 # The prefix with the best coverage of core roles is chosen automatically;
 # override with `--prefix`.
+# 2026-11-26 real fw2.1.5 measurement: see reports/topic_config_changelog.md
 profile: insight9-v2.1.4
 verified: false
 firmware_baseline: "2.1.4"
@@ -30,12 +34,12 @@ roles:
     kind: image
     required: true
     types: *image_types
-    suffix: '/(stereo/)?(left|stereo_left)(_camera)?/image[^/]*(/compressed)?'
+    suffix: '/(stereo/)?(left|stereo_left|infra1)(_camera)?/image[^/]*(/compressed)?'
   stereo_right:
     kind: image
     required: true
     types: *image_types
-    suffix: '/(stereo/)?(right|stereo_right)(_camera)?/image[^/]*(/compressed)?'
+    suffix: '/(stereo/)?(right|stereo_right|infra2)(_camera)?/image[^/]*(/compressed)?'
   depth:
     kind: image
     required: false          # Depth is OFF by default on the camera
@@ -54,7 +58,8 @@ roles:
       - nav_msgs/msg/Odometry
       - geometry_msgs/msg/PoseStamped
       - geometry_msgs/msg/PoseWithCovarianceStamped
-    suffix: '/(vio|odom|odometry|pose)(/[^/]+)?'
+    any_prefix: true         # vendor doc puts VIO under /insight/*, camera under /camera/*
+    suffix: '/(vio|vio_pose|vio_100hz|odom|odometry|pose)(/[^/]+)?'
   rgb_info:
     kind: camera_info
     required: true
@@ -65,13 +70,13 @@ roles:
     kind: camera_info
     required: true
     types: [sensor_msgs/msg/CameraInfo]
-    suffix: '/(stereo/)?(left|stereo_left)(_camera)?/camera_info'
+    suffix: '/(stereo/)?(left|stereo_left|infra1)(_camera)?/camera_info'
     for: stereo_left
   stereo_right_info:
     kind: camera_info
     required: true
     types: [sensor_msgs/msg/CameraInfo]
-    suffix: '/(stereo/)?(right|stereo_right)(_camera)?/camera_info'
+    suffix: '/(stereo/)?(right|stereo_right|infra2)(_camera)?/camera_info'
     for: stereo_right
   depth_info:
     kind: camera_info
@@ -82,8 +87,8 @@ roles:
 
 # Global (un-prefixed) topics.
 global_topics:
-  tf:        {name: /tf,        type: tf2_msgs/msg/TFMessage, required: true}
-  tf_static: {name: /tf_static, type: tf2_msgs/msg/TFMessage, required: false}
+  tf:        {name: /tf,        type: tf2_msgs/msg/TFMessage, required: false}   # real fw2.1.5 publishes only /tf_static
+  tf_static: {name: /tf_static, type: tf2_msgs/msg/TFMessage, required: true}
 
 # Optional topics under the camera prefix recorded with --include-extra.
 extra_types:
@@ -93,6 +98,8 @@ extra_types:
   - sensor_msgs/msg/Imu
   - nav_msgs/msg/Odometry
   - geometry_msgs/msg/PoseStamped
+  - geometry_msgs/msg/PoseWithCovarianceStamped
+  - std_msgs/msg/String
   - diagnostic_msgs/msg/DiagnosticArray
   - tf2_msgs/msg/TFMessage
 
@@ -102,3 +109,4 @@ thresholds:
   min_rate_ratio: 0.9      # measured / nominal rate below this => WARN
   max_clock_offset_s: 1.0  # |receive time - header stamp| above this => WARN
   min_free_gb: 5.0         # refuse/stop recording below this free space
+  max_loss_ratio: 0.001    # diagnostics: tolerated loss vs reference rate (0.1 %)

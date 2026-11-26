@@ -1,0 +1,5 @@
+<CycloneDDS><Domain id="9">
+  <General><Interfaces><NetworkInterface address="169.254.10.2" multicast="false"/></Interfaces><AllowMulticast>false</AllowMulticast></General>
+  <Discovery><Peers><Peer address="169.254.10.1"/></Peers><ParticipantIndex>auto</ParticipantIndex></Discovery>
+  <Tracing><Category>discovery</Category><OutputFile>/tmp/cam/cyc_peer.log</OutputFile></Tracing>
+</Domain></CycloneDDS>

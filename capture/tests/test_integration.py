@@ -33,6 +33,7 @@ def env(tmp_path_factory):
 
 
 def start_sim(env, *extra):
+    subprocess.run(["ros2", "daemon", "start"], env=env, capture_output=True, timeout=30)   # discovery on this host needs the per-domain daemon
     p = subprocess.Popen([sys.executable, "sim/sim_insight.py", "--imu-hz", "100", *extra], cwd=CAP, env=env,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     time.sleep(2.5)

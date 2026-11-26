@@ -1,0 +1,1234 @@
+{
+  "topics": {
+    "/tf": {
+      "basis": "recv_time",
+      "count": 15481,
+      "span_s": 327.144,
+      "median_period_ms": 19.9907,
+      "gap_events": 16,
+      "est_missing": 891,
+      "loss_vs_median": 0.05442,
+      "expected_count": 16366,
+      "loss_vs_reference": 0.05408,
+      "interval_ms": {
+        "min": 3.858,
+        "p50": 19.991,
+        "p99": 24.721,
+        "max": 2948.839
+      },
+      "jitter_ms": 51.0823,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_only_gap_events": 0,
+      "recv_gap_events": 16,
+      "gaps_head": [
+        {
+          "start_ns": 1795681010289824682,
+          "end_ns": 1795681010321272052,
+          "dur_ms": 31.447,
+          "missing": 1,
+          "idx": 162
+        },
+        {
+          "start_ns": 1795681010329966763,
+          "end_ns": 1795681010362621517,
+          "dur_ms": 32.655,
+          "missing": 1,
+          "idx": 164
+        },
+        {
+          "start_ns": 1795681010389815195,
+          "end_ns": 1795681010420100978,
+          "dur_ms": 30.286,
+          "missing": 1,
+          "idx": 167
+        },
+        {
+          "start_ns": 1795681036649655580,
+          "end_ns": 1795681038152127735,
+          "dur_ms": 1502.472,
+          "missing": 74,
+          "idx": 1480
+        },
+        {
+          "start_ns": 1795681070613037480,
+          "end_ns": 1795681073312574054,
+          "dur_ms": 2699.537,
+          "missing": 134,
+          "idx": 3104
+        },
+        {
+          "start_ns": 1795681073389553150,
+          "end_ns": 1795681073425887924,
+          "dur_ms": 36.335,
+          "missing": 1,
+          "idx": 3109
+        },
+        {
+          "start_ns": 1795681121069635678,
+          "end_ns": 1795681124018475114,
+          "dur_ms": 2948.839,
+          "missing": 147,
+          "idx": 5493
+        },
+        {
+          "start_ns": 1795681171711728801,
+          "end_ns": 1795681173782029218,
+          "dur_ms": 2070.3,
+          "missing": 103,
+          "idx": 7879
+        },
+        {
+          "start_ns": 1795681202789785688,
+          "end_ns": 1795681202820250660,
+          "dur_ms": 30.465,
+          "missing": 1,
+          "idx": 9331
+        },
+        {
+          "start_ns": 1795681221329912804,
+          "end_ns": 1795681223582565220,
+          "dur_ms": 2252.652,
+          "missing": 112,
+          "idx": 10258
+        }
+      ],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681010289824682,
+          "end_ns": 1795681010321272052,
+          "dur_ms": 31.447,
+          "missing": 1,
+          "idx": 162
+        },
+        {
+          "start_ns": 1795681010329966763,
+          "end_ns": 1795681010362621517,
+          "dur_ms": 32.655,
+          "missing": 1,
+          "idx": 164
+        },
+        {
+          "start_ns": 1795681010389815195,
+          "end_ns": 1795681010420100978,
+          "dur_ms": 30.286,
+          "missing": 1,
+          "idx": 167
+        },
+        {
+          "start_ns": 1795681036649655580,
+          "end_ns": 1795681038152127735,
+          "dur_ms": 1502.472,
+          "missing": 74,
+          "idx": 1480
+        },
+        {
+          "start_ns": 1795681070613037480,
+          "end_ns": 1795681073312574054,
+          "dur_ms": 2699.537,
+          "missing": 134,
+          "idx": 3104
+        },
+        {
+          "start_ns": 1795681073389553150,
+          "end_ns": 1795681073425887924,
+          "dur_ms": 36.335,
+          "missing": 1,
+          "idx": 3109
+        },
+        {
+          "start_ns": 1795681121069635678,
+          "end_ns": 1795681124018475114,
+          "dur_ms": 2948.839,
+          "missing": 147,
+          "idx": 5493
+        },
+        {
+          "start_ns": 1795681171711728801,
+          "end_ns": 1795681173782029218,
+          "dur_ms": 2070.3,
+          "missing": 103,
+          "idx": 7879
+        },
+        {
+          "start_ns": 1795681202789785688,
+          "end_ns": 1795681202820250660,
+          "dur_ms": 30.465,
+          "missing": 1,
+          "idx": 9331
+        },
+        {
+          "start_ns": 1795681221329912804,
+          "end_ns": 1795681223582565220,
+          "dur_ms": 2252.652,
+          "missing": 112,
+          "idx": 10258
+        }
+      ]
+    },
+    "/insight9/right/image_raw": {
+      "basis": "header_stamp",
+      "count": 9290,
+      "span_s": 309.497,
+      "median_period_ms": 33.3262,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 7.173,
+        "p50": 33.326,
+        "p99": 35.247,
+        "max": 46.831
+      },
+      "jitter_ms": 0.8907,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8782,
+        "spread_ms": 17637.95
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036645514234,
+          "end_ns": 1795681038151718082,
+          "dur_ms": 1506.204,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 27.895,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070612659320,
+          "end_ns": 1795681073312198508,
+          "dur_ms": 2699.539,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 21.944,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121045166421,
+          "end_ns": 1795681124018090844,
+          "dur_ms": 2972.924,
+          "missing": 88,
+          "idx": 3296,
+          "stamp_dt_ms": 33.356,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171711517149,
+          "end_ns": 1795681173781608809,
+          "dur_ms": 2070.092,
+          "missing": 61,
+          "idx": 4728,
+          "stamp_dt_ms": 9.167,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221314990915,
+          "end_ns": 1795681223581958038,
+          "dur_ms": 2266.967,
+          "missing": 67,
+          "idx": 6155,
+          "stamp_dt_ms": 30.681,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256012527771,
+          "end_ns": 1795681258339044495,
+          "dur_ms": 2326.517,
+          "missing": 69,
+          "idx": 7129,
+          "stamp_dt_ms": 37.176,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290780438433,
+          "end_ns": 1795681292507325611,
+          "dur_ms": 1726.887,
+          "missing": 51,
+          "idx": 8104,
+          "stamp_dt_ms": 32.16,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324745765914,
+          "end_ns": 1795681327022241868,
+          "dur_ms": 2276.476,
+          "missing": 67,
+          "idx": 9073,
+          "stamp_dt_ms": 18.311,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/right/camera_info": {
+      "basis": "header_stamp",
+      "count": 9290,
+      "span_s": 309.497,
+      "median_period_ms": 33.3262,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 7.173,
+        "p50": 33.326,
+        "p99": 35.247,
+        "max": 46.831
+      },
+      "jitter_ms": 0.8907,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8783,
+        "spread_ms": 17638.074
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036645696258,
+          "end_ns": 1795681038151753484,
+          "dur_ms": 1506.057,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 27.895,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070612701385,
+          "end_ns": 1795681073312230098,
+          "dur_ms": 2699.529,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 21.944,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121045190006,
+          "end_ns": 1795681124018114271,
+          "dur_ms": 2972.924,
+          "missing": 88,
+          "idx": 3296,
+          "stamp_dt_ms": 33.356,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171711537700,
+          "end_ns": 1795681173781650231,
+          "dur_ms": 2070.113,
+          "missing": 61,
+          "idx": 4728,
+          "stamp_dt_ms": 9.167,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221315057085,
+          "end_ns": 1795681223582008191,
+          "dur_ms": 2266.951,
+          "missing": 67,
+          "idx": 6155,
+          "stamp_dt_ms": 30.681,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256012575281,
+          "end_ns": 1795681258339091712,
+          "dur_ms": 2326.516,
+          "missing": 69,
+          "idx": 7129,
+          "stamp_dt_ms": 37.176,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290780520652,
+          "end_ns": 1795681292507368900,
+          "dur_ms": 1726.848,
+          "missing": 51,
+          "idx": 8104,
+          "stamp_dt_ms": 32.16,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324745879461,
+          "end_ns": 1795681327022286218,
+          "dur_ms": 2276.407,
+          "missing": 67,
+          "idx": 9073,
+          "stamp_dt_ms": 18.311,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/rgb/image_raw": {
+      "basis": "header_stamp",
+      "count": 9291,
+      "span_s": 309.497,
+      "median_period_ms": 33.3341,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 3.604,
+        "p50": 33.334,
+        "p99": 33.707,
+        "max": 34.661
+      },
+      "jitter_ms": 0.6233,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8804,
+        "spread_ms": 17640.454
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036643205374,
+          "end_ns": 1795681038149324383,
+          "dur_ms": 1506.119,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 28.094,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070609523691,
+          "end_ns": 1795681073309945401,
+          "dur_ms": 2700.422,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 21.419,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121042777313,
+          "end_ns": 1795681124015835183,
+          "dur_ms": 2973.058,
+          "missing": 88,
+          "idx": 3296,
+          "stamp_dt_ms": 33.383,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171709381683,
+          "end_ns": 1795681173779533845,
+          "dur_ms": 2070.152,
+          "missing": 61,
+          "idx": 4728,
+          "stamp_dt_ms": 9.237,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221311094472,
+          "end_ns": 1795681223579265042,
+          "dur_ms": 2268.171,
+          "missing": 67,
+          "idx": 6155,
+          "stamp_dt_ms": 31.345,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256009837050,
+          "end_ns": 1795681258332329172,
+          "dur_ms": 2322.492,
+          "missing": 69,
+          "idx": 7129,
+          "stamp_dt_ms": 33.21,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290776953031,
+          "end_ns": 1795681292504811296,
+          "dur_ms": 1727.858,
+          "missing": 51,
+          "idx": 8105,
+          "stamp_dt_ms": 33.38,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324743063613,
+          "end_ns": 1795681327019371110,
+          "dur_ms": 2276.307,
+          "missing": 67,
+          "idx": 9074,
+          "stamp_dt_ms": 18.066,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/rgb/camera_info": {
+      "basis": "header_stamp",
+      "count": 9291,
+      "span_s": 309.497,
+      "median_period_ms": 33.3341,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 3.604,
+        "p50": 33.334,
+        "p99": 33.707,
+        "max": 34.661
+      },
+      "jitter_ms": 0.6233,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8804,
+        "spread_ms": 17640.541
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036643245204,
+          "end_ns": 1795681038149391505,
+          "dur_ms": 1506.146,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 28.094,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070609580613,
+          "end_ns": 1795681073310077064,
+          "dur_ms": 2700.496,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 21.419,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121042903880,
+          "end_ns": 1795681124015962918,
+          "dur_ms": 2973.059,
+          "missing": 88,
+          "idx": 3296,
+          "stamp_dt_ms": 33.383,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171709449770,
+          "end_ns": 1795681173779584750,
+          "dur_ms": 2070.135,
+          "missing": 61,
+          "idx": 4728,
+          "stamp_dt_ms": 9.237,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221311201126,
+          "end_ns": 1795681223579331871,
+          "dur_ms": 2268.131,
+          "missing": 67,
+          "idx": 6155,
+          "stamp_dt_ms": 31.345,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256009925383,
+          "end_ns": 1795681258332394503,
+          "dur_ms": 2322.469,
+          "missing": 69,
+          "idx": 7129,
+          "stamp_dt_ms": 33.21,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290776998598,
+          "end_ns": 1795681292504873526,
+          "dur_ms": 1727.875,
+          "missing": 51,
+          "idx": 8105,
+          "stamp_dt_ms": 33.38,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324743097738,
+          "end_ns": 1795681327019429782,
+          "dur_ms": 2276.332,
+          "missing": 67,
+          "idx": 9074,
+          "stamp_dt_ms": 18.066,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/left/image_raw": {
+      "basis": "header_stamp",
+      "count": 9290,
+      "span_s": 309.497,
+      "median_period_ms": 33.3292,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 6.707,
+        "p50": 33.329,
+        "p99": 34.865,
+        "max": 42.517
+      },
+      "jitter_ms": 0.7419,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8782,
+        "spread_ms": 17646.915
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036644348489,
+          "end_ns": 1795681038150570624,
+          "dur_ms": 1506.222,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 27.735,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070610708568,
+          "end_ns": 1795681073311124484,
+          "dur_ms": 2700.416,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 21.95,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121044042069,
+          "end_ns": 1795681124016994945,
+          "dur_ms": 2972.953,
+          "missing": 88,
+          "idx": 3296,
+          "stamp_dt_ms": 33.325,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171710501796,
+          "end_ns": 1795681173780592344,
+          "dur_ms": 2070.091,
+          "missing": 61,
+          "idx": 4728,
+          "stamp_dt_ms": 9.084,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221312996966,
+          "end_ns": 1795681223580546686,
+          "dur_ms": 2267.55,
+          "missing": 67,
+          "idx": 6155,
+          "stamp_dt_ms": 30.824,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256011264937,
+          "end_ns": 1795681258337669401,
+          "dur_ms": 2326.404,
+          "missing": 69,
+          "idx": 7129,
+          "stamp_dt_ms": 37.07,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290778767904,
+          "end_ns": 1795681292506092878,
+          "dur_ms": 1727.325,
+          "missing": 51,
+          "idx": 8104,
+          "stamp_dt_ms": 32.566,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324744453204,
+          "end_ns": 1795681327020817079,
+          "dur_ms": 2276.364,
+          "missing": 67,
+          "idx": 9073,
+          "stamp_dt_ms": 18.235,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/left/camera_info": {
+      "basis": "header_stamp",
+      "count": 9290,
+      "span_s": 309.497,
+      "median_period_ms": 33.3292,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 6.707,
+        "p50": 33.329,
+        "p99": 34.865,
+        "max": 42.517
+      },
+      "jitter_ms": 0.7419,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8783,
+        "spread_ms": 17646.997
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036644458248,
+          "end_ns": 1795681038150629883,
+          "dur_ms": 1506.172,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 27.735,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070610746700,
+          "end_ns": 1795681073311155404,
+          "dur_ms": 2700.409,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 21.95,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121044095356,
+          "end_ns": 1795681124017031462,
+          "dur_ms": 2972.936,
+          "missing": 88,
+          "idx": 3296,
+          "stamp_dt_ms": 33.325,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171710525389,
+          "end_ns": 1795681173780627002,
+          "dur_ms": 2070.102,
+          "missing": 61,
+          "idx": 4728,
+          "stamp_dt_ms": 9.084,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221313063635,
+          "end_ns": 1795681223580584885,
+          "dur_ms": 2267.521,
+          "missing": 67,
+          "idx": 6155,
+          "stamp_dt_ms": 30.824,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256011311312,
+          "end_ns": 1795681258337713681,
+          "dur_ms": 2326.402,
+          "missing": 69,
+          "idx": 7129,
+          "stamp_dt_ms": 37.07,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290778799909,
+          "end_ns": 1795681292506133066,
+          "dur_ms": 1727.333,
+          "missing": 51,
+          "idx": 8104,
+          "stamp_dt_ms": 32.566,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324744566130,
+          "end_ns": 1795681327020852465,
+          "dur_ms": 2276.286,
+          "missing": 67,
+          "idx": 9073,
+          "stamp_dt_ms": 18.235,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/vio": {
+      "basis": "header_stamp",
+      "count": 9292,
+      "span_s": 309.497,
+      "median_period_ms": 33.3324,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9286,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 0.581,
+        "p50": 33.332,
+        "p99": 33.619,
+        "max": 45.57
+      },
+      "jitter_ms": 0.8532,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8771,
+        "spread_ms": 17636.871
+      },
+      "recv_only_gap_events": 8,
+      "recv_gap_events": 8,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681036649330580,
+          "end_ns": 1795681038151998089,
+          "dur_ms": 1502.668,
+          "missing": 44,
+          "idx": 888,
+          "stamp_dt_ms": 24.409,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681070615900189,
+          "end_ns": 1795681073312442109,
+          "dur_ms": 2696.542,
+          "missing": 80,
+          "idx": 1863,
+          "stamp_dt_ms": 18.151,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681121049226917,
+          "end_ns": 1795681124018338169,
+          "dur_ms": 2969.111,
+          "missing": 88,
+          "idx": 3297,
+          "stamp_dt_ms": 29.604,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681171682517321,
+          "end_ns": 1795681173781985291,
+          "dur_ms": 2099.468,
+          "missing": 62,
+          "idx": 4728,
+          "stamp_dt_ms": 38.438,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681221315958752,
+          "end_ns": 1795681223582275564,
+          "dur_ms": 2266.317,
+          "missing": 67,
+          "idx": 6156,
+          "stamp_dt_ms": 29.3,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681256015986164,
+          "end_ns": 1795681258339381125,
+          "dur_ms": 2323.395,
+          "missing": 69,
+          "idx": 7131,
+          "stamp_dt_ms": 34.221,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681290782564632,
+          "end_ns": 1795681292507690732,
+          "dur_ms": 1725.126,
+          "missing": 51,
+          "idx": 8106,
+          "stamp_dt_ms": 30.014,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681324749269691,
+          "end_ns": 1795681327022603938,
+          "dur_ms": 2273.334,
+          "missing": 67,
+          "idx": 9075,
+          "stamp_dt_ms": 15.42,
+          "recv_only": true
+        }
+      ]
+    },
+    "/insight9/imu": {
+      "basis": "header_stamp",
+      "count": 30936,
+      "span_s": 309.513,
+      "median_period_ms": 10.0105,
+      "gap_events": 764,
+      "est_missing": 764,
+      "loss_vs_median": 0.0241,
+      "expected_count": 30952,
+      "loss_vs_reference": 0.00052,
+      "interval_ms": {
+        "min": 0.397,
+        "p50": 10.011,
+        "p99": 15.642,
+        "max": 23.517
+      },
+      "jitter_ms": 2.177,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795679603.8772,
+        "spread_ms": 17637.044
+      },
+      "recv_only_gap_events": 656,
+      "recv_gap_events": 666,
+      "gaps_head": [
+        {
+          "start_ns": 1410517517145,
+          "end_ns": 1410533915292,
+          "dur_ms": 16.398,
+          "missing": 1,
+          "idx": 24
+        },
+        {
+          "start_ns": 1410617601140,
+          "end_ns": 1410632895758,
+          "dur_ms": 15.295,
+          "missing": 1,
+          "idx": 34
+        },
+        {
+          "start_ns": 1410817430325,
+          "end_ns": 1410832958783,
+          "dur_ms": 15.528,
+          "missing": 1,
+          "idx": 54
+        },
+        {
+          "start_ns": 1410917540651,
+          "end_ns": 1410932835733,
+          "dur_ms": 15.295,
+          "missing": 1,
+          "idx": 64
+        },
+        {
+          "start_ns": 1411717448073,
+          "end_ns": 1411732941329,
+          "dur_ms": 15.493,
+          "missing": 1,
+          "idx": 144
+        },
+        {
+          "start_ns": 1413217382371,
+          "end_ns": 1413232613109,
+          "dur_ms": 15.231,
+          "missing": 1,
+          "idx": 294
+        },
+        {
+          "start_ns": 1413317294848,
+          "end_ns": 1413332494409,
+          "dur_ms": 15.2,
+          "missing": 1,
+          "idx": 304
+        },
+        {
+          "start_ns": 1413387554300,
+          "end_ns": 1413404162296,
+          "dur_ms": 16.608,
+          "missing": 1,
+          "idx": 311
+        },
+        {
+          "start_ns": 1413417454365,
+          "end_ns": 1413436186411,
+          "dur_ms": 18.732,
+          "missing": 1,
+          "idx": 314
+        },
+        {
+          "start_ns": 1413517741670,
+          "end_ns": 1413540139928,
+          "dur_ms": 22.398,
+          "missing": 1,
+          "idx": 324
+        }
+      ],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795681007298365779,
+          "end_ns": 1795681007314603877,
+          "dur_ms": 16.238,
+          "missing": 1,
+          "idx": 24,
+          "stamp_dt_ms": 16.398,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681007398438042,
+          "end_ns": 1795681007413561544,
+          "dur_ms": 15.124,
+          "missing": 1,
+          "idx": 34,
+          "stamp_dt_ms": 15.295,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681007598258741,
+          "end_ns": 1795681007613619439,
+          "dur_ms": 15.361,
+          "missing": 1,
+          "idx": 54,
+          "stamp_dt_ms": 15.528,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681007698450159,
+          "end_ns": 1795681007713493597,
+          "dur_ms": 15.043,
+          "missing": 1,
+          "idx": 64,
+          "stamp_dt_ms": 15.295,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681008498127395,
+          "end_ns": 1795681008513555099,
+          "dur_ms": 15.428,
+          "missing": 1,
+          "idx": 144,
+          "stamp_dt_ms": 15.493,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681009998089159,
+          "end_ns": 1795681010013240116,
+          "dur_ms": 15.151,
+          "missing": 1,
+          "idx": 294,
+          "stamp_dt_ms": 15.231,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681010098011239,
+          "end_ns": 1795681010113127230,
+          "dur_ms": 15.116,
+          "missing": 1,
+          "idx": 304,
+          "stamp_dt_ms": 15.2,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681010168376239,
+          "end_ns": 1795681010184807146,
+          "dur_ms": 16.431,
+          "missing": 1,
+          "idx": 311,
+          "stamp_dt_ms": 16.608,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681010198315256,
+          "end_ns": 1795681010216888681,
+          "dur_ms": 18.573,
+          "missing": 1,
+          "idx": 314,
+          "stamp_dt_ms": 18.732,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795681010298724955,
+          "end_ns": 1795681010320929204,
+          "dur_ms": 22.204,
+          "missing": 1,
+          "idx": 324,
+          "stamp_dt_ms": 22.398,
+          "recv_only": false
+        }
+      ]
+    }
+  },
+  "systemic": {
+    "clusters_total": 8,
+    "systemic_events": 8,
+    "min_topics": 3,
+    "events": [
+      {
+        "start_ns": 1795681036643205374,
+        "dur_s": 1.509,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681070609523691,
+        "dur_s": 2.703,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681121042777313,
+        "dur_s": 2.976,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681171682517321,
+        "dur_s": 2.1,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681221311094472,
+        "dur_s": 2.271,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681256009837050,
+        "dur_s": 2.33,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681290776953031,
+        "dur_s": 1.731,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      },
+      {
+        "start_ns": 1795681324743063613,
+        "dur_s": 2.28,
+        "n_topics": 9,
+        "topics": [
+          "/insight9/imu",
+          "/insight9/left/camera_info",
+          "/insight9/left/image_raw",
+          "/insight9/rgb/camera_info",
+          "/insight9/rgb/image_raw",
+          "/insight9/right/camera_info",
+          "/insight9/right/image_raw",
+          "/insight9/vio",
+          "/tf"
+        ],
+        "recv_only": true
+      }
+    ],
+    "recv_only_events": 8,
+    "data_loss_events": 0,
+    "period_s": {
+      "median": 34.77,
+      "min": 33.97,
+      "max": 50.64
+    },
+    "periodic": false
+  },
+  "pair_skew": {
+    "/insight9/left/image_raw ~ /insight9/right/image_raw": {
+      "matched": 9290,
+      "unmatched": 0,
+      "match_ratio": 1.0,
+      "mean_ms": 1.2236,
+      "max_abs_ms": 12.4839
+    },
+    "/insight9/rgb/image_raw ~ /insight9/left/image_raw": {
+      "matched": 9291,
+      "unmatched": 0,
+      "match_ratio": 1.0,
+      "mean_ms": 3.3317,
+      "max_abs_ms": 12.2467
+    }
+  }
+}

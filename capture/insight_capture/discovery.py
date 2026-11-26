@@ -60,6 +60,11 @@ def _is_compressed(name: str) -> bool:
     return name.endswith("/compressed") or name.endswith("/compressedDepth")
 
 
+def _rank(m) -> tuple:
+    """raw before compressed; *_rect_raw before *_raw (on fw 2.1.5 only the rectified topics carry data)."""
+    return (m.compressed, 0 if "rect" in m.topic else 1, m.topic)
+
+
 def _norm(name: str) -> str:
     return "/" + name.strip("/")
 
@@ -110,9 +115,26 @@ def discover(topics: list[TopicInfo], profile: dict, prefix: str | None = None) 
                                f"(override with --prefix)")
         rm = per_prefix.get(d.prefix, {}) if d.found else {}
 
+    # Vendor docs mix /camera/camera/* and /camera/* (and VIO under /insight/*): fill roles still empty
+    # from sibling prefixes (same first path segment) or from anywhere when the role has any_prefix: true.
+    def seg(p):
+        return p.strip("/").split("/")[0] if p else ""
+    sibling_fill: dict[str, list[Match]] = {}
+    if d.found:
+        for other, orm in per_prefix.items():
+            if other == d.prefix:
+                continue
+            for role, ms in orm.items():
+                if rm.get(role):
+                    continue
+                if roles[role].get("any_prefix") or (seg(other) == seg(d.prefix or "") and seg(other)):
+                    sibling_fill.setdefault(role, []).extend(ms)
     for role in roles:
-        ms = sorted(rm.get(role, []), key=lambda m: (m.compressed, m.topic))
-        d.matches[role] = ms
+        ms = list(rm.get(role, []))
+        if not ms and role in sibling_fill:
+            ms = sibling_fill[role]
+            d.notes.append(f"role '{role}' taken from different prefix: {sorted({m.topic for m in ms})[:2]}")
+        d.matches[role] = sorted(ms, key=_rank)
     for role, spec in roles.items():
         if d.matches[role]:
             continue

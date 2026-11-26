@@ -1,0 +1,711 @@
+{
+  "exit_code": 2,
+  "checks": [
+    {
+      "level": "PASS",
+      "id": "os",
+      "title": "OS: Ubuntu 22.04.5 LTS / kernel 6.6.87.2-microsoft-standard-WSL2",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "ros_distro",
+      "title": "ROS_DISTRO=humble",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "rmw",
+      "title": "RMW: rmw_fastrtps_cpp (Humble default)",
+      "detail": ""
+    },
+    {
+      "level": "INFO",
+      "id": "ros_net",
+      "title": "ROS_DOMAIN_ID=9 ROS_LOCALHOST_ONLY=0",
+      "detail": "Fast DDS profile: none"
+    },
+    {
+      "level": "PASS",
+      "id": "rosbag2",
+      "title": "rosbag2 with sqlite3 storage plugin",
+      "detail": ""
+    },
+    {
+      "level": "WARN",
+      "id": "firmware",
+      "title": "Firmware 2.1.5 differs from baseline 2.1.4",
+      "detail": "topic profile may not match"
+    },
+    {
+      "level": "WARN",
+      "id": "usb",
+      "title": "USB: no /dev/bus/usb (WSL2 without USB passthrough)",
+      "detail": "A USB-attached camera is invisible here. Attach via usbipd-win (needs your OK; not done automatically) or run capture on native Ubuntu.\n0 USB devices; video nodes: none"
+    },
+    {
+      "level": "INFO",
+      "id": "network",
+      "title": "Network interfaces",
+      "detail": "lo UNKNOWN 127.0.0.1/8 10.255.255.254/32\nloopback0 UP \neth0 UP 10.20.0.154/22\neth1 UP 169.254.10.2/24\nlink-local (169.254/16) on: eth1 - possible direct-attached device; unverified"
+    },
+    {
+      "level": "PASS",
+      "id": "disk",
+      "title": "Disk free 995.25 GB at /home/hebe/insight_data/sessions",
+      "detail": "minimum required 5.0 GB"
+    },
+    {
+      "level": "PASS",
+      "id": "ros2_daemon",
+      "title": "ros2 daemon running",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "camera_found",
+      "title": "Camera prefix: '/camera/camera'",
+      "detail": "profile insight9-v2.1.4 (verified=False)"
+    },
+    {
+      "level": "WARN",
+      "id": "profile_unverified",
+      "title": "Topic profile is not verified against v2.1.4",
+      "detail": "edit config/topics_v2.1.4.yaml once the real topic list is known"
+    },
+    {
+      "level": "FAIL",
+      "id": "missing_tf",
+      "title": "Required role 'tf' not found",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_rgb",
+      "title": "rgb: /camera/camera/color/image_raw/compressed [sensor_msgs/msg/CompressedImage] pubs=1",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_stereo_left",
+      "title": "stereo_left: /camera/camera/infra1/image_raw [sensor_msgs/msg/Image] pubs=1",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_stereo_right",
+      "title": "stereo_right: /camera/camera/infra2/image_raw [sensor_msgs/msg/Image] pubs=1",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_imu",
+      "title": "imu: /camera/camera/imu [sensor_msgs/msg/Imu] pubs=1",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_vio",
+      "title": "vio: /camera/camera/vio_100hz [geometry_msgs/msg/PoseStamped] pubs=1",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_rgb_info",
+      "title": "rgb_info: /camera/camera/color/camera_info [sensor_msgs/msg/CameraInfo] pubs=2",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_stereo_left_info",
+      "title": "stereo_left_info: /camera/camera/infra1/camera_info [sensor_msgs/msg/CameraInfo] pubs=2",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_stereo_right_info",
+      "title": "stereo_right_info: /camera/camera/infra2/camera_info [sensor_msgs/msg/CameraInfo] pubs=2",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "topic_tf_static",
+      "title": "tf_static: /tf_static [tf2_msgs/msg/TFMessage] pubs=1",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "depth",
+      "title": "Depth enabled: /camera/camera/depth/image_rect_raw",
+      "detail": ""
+    },
+    {
+      "level": "FAIL",
+      "id": "rate_rgb",
+      "title": "rgb: no messages in probe window",
+      "detail": "/camera/camera/color/image_raw/compressed"
+    },
+    {
+      "level": "FAIL",
+      "id": "rate_stereo_left",
+      "title": "stereo_left: no messages in probe window",
+      "detail": "/camera/camera/infra1/image_raw"
+    },
+    {
+      "level": "FAIL",
+      "id": "rate_stereo_right",
+      "title": "stereo_right: no messages in probe window",
+      "detail": "/camera/camera/infra2/image_raw"
+    },
+    {
+      "level": "WARN",
+      "id": "rate_depth",
+      "title": "depth: 420 msgs, 14.999 Hz (recv 13.046), drops~50, 9.11 MB/s",
+      "detail": "50 stamp gaps (~50 msgs missing, max gap 166.672 ms)\nreceive time - header stamp = 1795673486.95s (camera/host clocks not aligned)"
+    },
+    {
+      "level": "WARN",
+      "id": "rate_imu",
+      "title": "imu: 12610 msgs, 400.0 Hz (recv 391.873), drops~7, 0.13 MB/s",
+      "detail": "2 stamp gaps (~7 msgs missing, max gap 12.5 ms)\nreceive time - header stamp = 1795673486.80s (camera/host clocks not aligned)"
+    },
+    {
+      "level": "WARN",
+      "id": "rate_vio",
+      "title": "vio: 3150 msgs, 100.0 Hz (recv 97.892), drops~16, 0.01 MB/s",
+      "detail": "16 stamp gaps (~16 msgs missing, max gap 22.5 ms)\nreceive time - header stamp = 1795673486.80s (camera/host clocks not aligned)"
+    },
+    {
+      "level": "WARN",
+      "id": "rate_rgb_info",
+      "title": "rgb_info: 946 msgs, 30.019 Hz (recv 29.38), drops~1, 0.01 MB/s",
+      "detail": "1 stamp gaps (~1 msgs missing, max gap 66.628 ms)\nreceive time - header stamp = 1795673486.84s (camera/host clocks not aligned)"
+    },
+    {
+      "level": "WARN",
+      "id": "rate_stereo_left_info",
+      "title": "stereo_left_info: 946 msgs, 30.0 Hz (recv 29.373), drops~1, 0.01 MB/s",
+      "detail": "1 stamp gaps (~1 msgs missing, max gap 66.668 ms)\nreceive time - header stamp = 1795673486.82s (camera/host clocks not aligned)"
+    },
+    {
+      "level": "WARN",
+      "id": "rate_stereo_right_info",
+      "title": "stereo_right_info: 946 msgs, 30.0 Hz (recv 29.373), drops~1, 0.01 MB/s",
+      "detail": "1 stamp gaps (~1 msgs missing, max gap 66.668 ms)\nreceive time - header stamp = 1795673486.82s (camera/host clocks not aligned)"
+    },
+    {
+      "level": "PASS",
+      "id": "rate_tf_static",
+      "title": "tf_static: 1 msgs, n/a Hz (recv None), drops~0, 0.00 MB/s",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "caminfo_rgb_info",
+      "title": "CameraInfo rgb_info: 1088x1920 frame=camera_camera_rgb",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "caminfo_stereo_left_info",
+      "title": "CameraInfo stereo_left_info: 544x640 frame=camera_camera_left",
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "caminfo_stereo_right_info",
+      "title": "CameraInfo stereo_right_info: 544x640 frame=camera_camera_right",
+      "detail": ""
+    },
+    {
+      "level": "WARN",
+      "id": "tf",
+      "title": "TF: 5 edges, data frames ['camera_camera_depth', 'camera_camera_imu_optical', 'world']",
+      "detail": "frames not connected to the rest of the tree: ['world']"
+    },
+    {
+      "level": "PASS",
+      "id": "disk_budget",
+      "title": "Data rate 9.3 MB/s: 5 min = 2.8 GB, 1 h = 33 GB",
+      "detail": "usable free space (above 5.0 GB reserve): 990 GB"
+    },
+    {
+      "level": "INFO",
+      "id": "nodes",
+      "title": "2 ROS nodes visible",
+      "detail": "/insight_capture_probe, /insight_full"
+    }
+  ],
+  "system": {
+    "os": {
+      "hostname": "unitree",
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "python": "3.10.12",
+      "os": "Ubuntu 22.04.5 LTS",
+      "wsl": true
+    },
+    "ros": {
+      "distro": "humble",
+      "domain_id": "9",
+      "localhost_only": "0",
+      "rmw_env": null,
+      "rmw_effective": "rmw_fastrtps_cpp (Humble default)",
+      "fastdds_profile": null,
+      "ros2_cli": "/opt/ros/humble/bin/ros2",
+      "ament_prefix": "/opt/ros/humble"
+    },
+    "usb": {
+      "lsusb": "",
+      "devices": [],
+      "video_nodes": [],
+      "usb_bus_present": false
+    },
+    "net": {
+      "interfaces": [
+        {
+          "name": "lo",
+          "state": "UNKNOWN",
+          "addrs": [
+            "127.0.0.1/8",
+            "10.255.255.254/32",
+            "::1/128"
+          ]
+        },
+        {
+          "name": "loopback0",
+          "state": "UP",
+          "addrs": []
+        },
+        {
+          "name": "eth0",
+          "state": "UP",
+          "addrs": [
+            "10.20.0.154/22",
+            "fe80::2347:79b:b8c3:504f/64"
+          ]
+        },
+        {
+          "name": "eth1",
+          "state": "UP",
+          "addrs": [
+            "169.254.10.2/24",
+            "fe80::7ad:b802:9f65:c781/64"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "discovery": {
+    "prefix": "/camera/camera",
+    "found": true,
+    "candidates": {
+      "/camera/camera": 8
+    },
+    "matches": {
+      "rgb": [
+        {
+          "role": "rgb",
+          "topic": "/camera/camera/color/image_raw/compressed",
+          "type": "sensor_msgs/msg/CompressedImage",
+          "pub_count": 1,
+          "compressed": true
+        },
+        {
+          "role": "rgb",
+          "topic": "/camera/camera/color/image_rect_raw/compressed",
+          "type": "sensor_msgs/msg/CompressedImage",
+          "pub_count": 1,
+          "compressed": true
+        }
+      ],
+      "stereo_left": [
+        {
+          "role": "stereo_left",
+          "topic": "/camera/camera/infra1/image_raw",
+          "type": "sensor_msgs/msg/Image",
+          "pub_count": 1,
+          "compressed": false
+        },
+        {
+          "role": "stereo_left",
+          "topic": "/camera/camera/infra1/image_rect_raw",
+          "type": "sensor_msgs/msg/Image",
+          "pub_count": 1,
+          "compressed": false
+        }
+      ],
+      "stereo_right": [
+        {
+          "role": "stereo_right",
+          "topic": "/camera/camera/infra2/image_raw",
+          "type": "sensor_msgs/msg/Image",
+          "pub_count": 1,
+          "compressed": false
+        },
+        {
+          "role": "stereo_right",
+          "topic": "/camera/camera/infra2/image_rect_raw",
+          "type": "sensor_msgs/msg/Image",
+          "pub_count": 1,
+          "compressed": false
+        }
+      ],
+      "depth": [
+        {
+          "role": "depth",
+          "topic": "/camera/camera/depth/image_rect_raw",
+          "type": "sensor_msgs/msg/Image",
+          "pub_count": 1,
+          "compressed": false
+        }
+      ],
+      "imu": [
+        {
+          "role": "imu",
+          "topic": "/camera/camera/imu",
+          "type": "sensor_msgs/msg/Imu",
+          "pub_count": 1,
+          "compressed": false
+        }
+      ],
+      "vio": [
+        {
+          "role": "vio",
+          "topic": "/camera/camera/vio_100hz",
+          "type": "geometry_msgs/msg/PoseStamped",
+          "pub_count": 1,
+          "compressed": false
+        }
+      ],
+      "rgb_info": [
+        {
+          "role": "rgb_info",
+          "topic": "/camera/camera/color/camera_info",
+          "type": "sensor_msgs/msg/CameraInfo",
+          "pub_count": 2,
+          "compressed": false
+        }
+      ],
+      "stereo_left_info": [
+        {
+          "role": "stereo_left_info",
+          "topic": "/camera/camera/infra1/camera_info",
+          "type": "sensor_msgs/msg/CameraInfo",
+          "pub_count": 2,
+          "compressed": false
+        }
+      ],
+      "stereo_right_info": [
+        {
+          "role": "stereo_right_info",
+          "topic": "/camera/camera/infra2/camera_info",
+          "type": "sensor_msgs/msg/CameraInfo",
+          "pub_count": 2,
+          "compressed": false
+        }
+      ],
+      "depth_info": [],
+      "tf": [],
+      "tf_static": [
+        {
+          "role": "tf_static",
+          "topic": "/tf_static",
+          "type": "tf2_msgs/msg/TFMessage",
+          "pub_count": 1,
+          "compressed": false
+        }
+      ]
+    },
+    "missing_required": [
+      "tf"
+    ],
+    "missing_optional": [
+      "depth_info"
+    ],
+    "extras": [
+      {
+        "role": "extra",
+        "topic": "/camera/camera/vio_image",
+        "type": "geometry_msgs/msg/PoseStamped",
+        "pub_count": 1,
+        "compressed": false
+      }
+    ],
+    "depth_topic_present": true,
+    "depth_publishing": true,
+    "notes": []
+  },
+  "probe": {
+    "/camera/camera/color/image_raw/compressed": {
+      "count": 0,
+      "stamped": 0,
+      "bytes": 0,
+      "bytes_per_s": 0,
+      "type": "sensor_msgs/msg/CompressedImage",
+      "first": null
+    },
+    "/camera/camera/infra1/image_raw": {
+      "count": 0,
+      "stamped": 0,
+      "bytes": 0,
+      "bytes_per_s": 0,
+      "type": "sensor_msgs/msg/Image",
+      "first": null
+    },
+    "/camera/camera/infra2/image_raw": {
+      "count": 0,
+      "stamped": 0,
+      "bytes": 0,
+      "bytes_per_s": 0,
+      "type": "sensor_msgs/msg/Image",
+      "first": null
+    },
+    "/camera/camera/depth/image_rect_raw": {
+      "count": 420,
+      "recv_first_ns": 1795674772204880221,
+      "recv_last_ns": 1795674804322713250,
+      "recv_span_s": 32.118,
+      "recv_rate_hz": 13.046,
+      "stamped": 420,
+      "stamp_first_ns": 1284842067737,
+      "stamp_last_ns": 1316308747085,
+      "zero_stamps": 0,
+      "non_monotonic": 0,
+      "duplicate_stamps": 0,
+      "median_period_ms": 66.6704,
+      "stamp_rate_hz": 14.999,
+      "stamp_span_s": 31.467,
+      "stamp_mean_rate_hz": 13.316,
+      "gap_events": 50,
+      "est_missing_msgs": 50,
+      "max_gap_ms": 166.672,
+      "est_drop_ratio": 0.10638,
+      "period_jitter_ms": 16.2194,
+      "recv_minus_stamp_median_s": 1795673486.9506,
+      "recv_minus_stamp_spread_ms": 2211.011,
+      "recv_non_monotonic": 0,
+      "bytes": 292481280,
+      "bytes_per_s": 9106459,
+      "type": "sensor_msgs/msg/Image",
+      "first": {
+        "frame_id": "camera_camera_depth",
+        "width": 544,
+        "height": 640,
+        "encoding": "mono16"
+      }
+    },
+    "/camera/camera/imu": {
+      "count": 12610,
+      "recv_first_ns": 1795674772205757447,
+      "recv_last_ns": 1795674804381976137,
+      "recv_span_s": 32.176,
+      "recv_rate_hz": 391.873,
+      "stamped": 12610,
+      "stamp_first_ns": 1284997600344,
+      "stamp_last_ns": 1316537600344,
+      "zero_stamps": 0,
+      "non_monotonic": 0,
+      "duplicate_stamps": 0,
+      "median_period_ms": 2.5,
+      "stamp_rate_hz": 400.0,
+      "stamp_span_s": 31.54,
+      "stamp_mean_rate_hz": 399.778,
+      "gap_events": 2,
+      "est_missing_msgs": 7,
+      "max_gap_ms": 12.5,
+      "est_drop_ratio": 0.00055,
+      "period_jitter_ms": 0.1113,
+      "recv_minus_stamp_median_s": 1795673486.7959,
+      "recv_minus_stamp_spread_ms": 2180.423,
+      "recv_non_monotonic": 0,
+      "bytes": 4287400,
+      "bytes_per_s": 133248,
+      "type": "sensor_msgs/msg/Imu",
+      "first": {
+        "frame_id": "camera_camera_imu_optical"
+      }
+    },
+    "/camera/camera/vio_100hz": {
+      "count": 3150,
+      "recv_first_ns": 1795674772205823876,
+      "recv_last_ns": 1795674804374089469,
+      "recv_span_s": 32.168,
+      "recv_rate_hz": 97.892,
+      "stamped": 3150,
+      "stamp_first_ns": 1284995100344,
+      "stamp_last_ns": 1316525100344,
+      "zero_stamps": 0,
+      "non_monotonic": 0,
+      "duplicate_stamps": 0,
+      "median_period_ms": 10.0,
+      "stamp_rate_hz": 100.0,
+      "stamp_span_s": 31.53,
+      "stamp_mean_rate_hz": 99.873,
+      "gap_events": 16,
+      "est_missing_msgs": 16,
+      "max_gap_ms": 22.5,
+      "est_drop_ratio": 0.00505,
+      "period_jitter_ms": 1.1235,
+      "recv_minus_stamp_median_s": 1795673486.802,
+      "recv_minus_stamp_spread_ms": 2177.538,
+      "recv_non_monotonic": 0,
+      "bytes": 264600,
+      "bytes_per_s": 8225,
+      "type": "geometry_msgs/msg/PoseStamped",
+      "first": {
+        "frame_id": "world"
+      }
+    },
+    "/camera/camera/color/camera_info": {
+      "count": 946,
+      "recv_first_ns": 1795674772215302116,
+      "recv_last_ns": 1795674804380045024,
+      "recv_span_s": 32.165,
+      "recv_rate_hz": 29.38,
+      "stamped": 946,
+      "stamp_first_ns": 1284974595404,
+      "stamp_last_ns": 1316488212169,
+      "zero_stamps": 0,
+      "non_monotonic": 0,
+      "duplicate_stamps": 0,
+      "median_period_ms": 33.3125,
+      "stamp_rate_hz": 30.019,
+      "stamp_span_s": 31.514,
+      "stamp_mean_rate_hz": 29.987,
+      "gap_events": 1,
+      "est_missing_msgs": 1,
+      "max_gap_ms": 66.628,
+      "est_drop_ratio": 0.00106,
+      "period_jitter_ms": 1.0832,
+      "recv_minus_stamp_median_s": 1795673486.8413,
+      "recv_minus_stamp_spread_ms": 2178.256,
+      "recv_non_monotonic": 0,
+      "bytes": 355696,
+      "bytes_per_s": 11058,
+      "type": "sensor_msgs/msg/CameraInfo",
+      "first": {
+        "frame_id": "camera_camera_rgb",
+        "width": 1088,
+        "height": 1920,
+        "k": [
+          768.8629421485941,
+          0.0,
+          539.4670730493206,
+          0.0,
+          768.8908552601296,
+          959.4940415311726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distortion_model": "plumb_bob",
+        "calibrated": true
+      }
+    },
+    "/camera/camera/infra1/camera_info": {
+      "count": 946,
+      "recv_first_ns": 1795674772205848742,
+      "recv_last_ns": 1795674804378795652,
+      "recv_span_s": 32.173,
+      "recv_rate_hz": 29.373,
+      "stamped": 946,
+      "stamp_first_ns": 1284975400237,
+      "stamp_last_ns": 1316508722169,
+      "zero_stamps": 0,
+      "non_monotonic": 0,
+      "duplicate_stamps": 0,
+      "median_period_ms": 33.3335,
+      "stamp_rate_hz": 30.0,
+      "stamp_span_s": 31.533,
+      "stamp_mean_rate_hz": 29.968,
+      "gap_events": 1,
+      "est_missing_msgs": 1,
+      "max_gap_ms": 66.668,
+      "est_drop_ratio": 0.00106,
+      "period_jitter_ms": 1.0839,
+      "recv_minus_stamp_median_s": 1795673486.8205,
+      "recv_minus_stamp_spread_ms": 2177.383,
+      "recv_non_monotonic": 0,
+      "bytes": 348128,
+      "bytes_per_s": 10820,
+      "type": "sensor_msgs/msg/CameraInfo",
+      "first": {
+        "frame_id": "camera_camera_left",
+        "width": 544,
+        "height": 640,
+        "k": [
+          307.3848876953125,
+          0.0,
+          269.4244384765625,
+          0.0,
+          307.3848876953125,
+          323.47637939453125,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distortion_model": "plumb_bob",
+        "calibrated": true
+      }
+    },
+    "/camera/camera/infra2/camera_info": {
+      "count": 946,
+      "recv_first_ns": 1795674772206032937,
+      "recv_last_ns": 1795674804378825834,
+      "recv_span_s": 32.173,
+      "recv_rate_hz": 29.373,
+      "stamped": 946,
+      "stamp_first_ns": 1284975400237,
+      "stamp_last_ns": 1316508722169,
+      "zero_stamps": 0,
+      "non_monotonic": 0,
+      "duplicate_stamps": 0,
+      "median_period_ms": 33.3335,
+      "stamp_rate_hz": 30.0,
+      "stamp_span_s": 31.533,
+      "stamp_mean_rate_hz": 29.968,
+      "gap_events": 1,
+      "est_missing_msgs": 1,
+      "max_gap_ms": 66.668,
+      "est_drop_ratio": 0.00106,
+      "period_jitter_ms": 1.0839,
+      "recv_minus_stamp_median_s": 1795673486.8206,
+      "recv_minus_stamp_spread_ms": 2177.386,
+      "recv_non_monotonic": 0,
+      "bytes": 348128,
+      "bytes_per_s": 10820,
+      "type": "sensor_msgs/msg/CameraInfo",
+      "first": {
+        "frame_id": "camera_camera_right",
+        "width": 544,
+        "height": 640,
+        "k": [
+          307.3848876953125,
+          0.0,
+          269.4244384765625,
+          0.0,
+          307.3848876953125,
+          323.47637939453125,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distortion_model": "plumb_bob",
+        "calibrated": true
+      }
+    },
+    "/tf_static": {
+      "count": 1,
+      "recv_first_ns": 1795674772212150599,
+      "recv_last_ns": 1795674772212150599,
+      "recv_span_s": 0.0,
+      "recv_rate_hz": null,
+      "stamped": 0,
+      "bytes": 580,
+      "bytes_per_s": 19,
+      "type": "tf2_msgs/msg/TFMessage",
+      "first": null
+    }
+  }
+}
