@@ -5,7 +5,7 @@ Structure, data contract, schema, topic config, docs. No code, no dependencies, 
 
 ## Phase 1 — Parallel development
 
-### Track A: `feat/capture-ultra7` (only `capture/`)
+### Track A: `feat/capture` (only `capture/`)
 1. ROS 2 Humble + Fast DDS environment bring-up notes (in `capture/`, not system install scripts run by us).
 2. Discover and confirm Insight 9 topics/QoS read-only; report differences to main.
 3. rosbag2 recorder wrapper: MCAP preferred, SQLite3 fallback with reason.
@@ -13,7 +13,7 @@ Structure, data contract, schema, topic config, docs. No code, no dependencies, 
 5. Capture UX for handheld use (start/stop, health indicators).
 6. Produce sample Sessions into `datasets/` for the mapping team.
 
-### Track B: `feat/mapping-rtx4090` (only `mapping/`)
+### Track B: `feat/mapping` (only `mapping/`)
 1. Session loader + manifest validation (uses `schemas/`).
 2. Bag replay → RTAB-Map integration (offline).
 3. Open3D reconstruction/export (PLY/mesh).

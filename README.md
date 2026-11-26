@@ -23,8 +23,8 @@ Both sides communicate **only** through the Session data contract.
 docs/       ARCHITECTURE.md, DATA_CONTRACT.md, DEVELOPMENT_PLAN.md
 schemas/    session_manifest.schema.json   (the contract, machine-readable)
 config/     insight9_topics.yaml           (topic / QoS expectations)
-capture/    capture-side code     (branch feat/capture-ultra7)
-mapping/    compute-side code     (branch feat/mapping-rtx4090)
+capture/    capture-side code     (branch feat/capture)
+mapping/    compute-side code     (branch feat/mapping)
 tests/      contract tests (protocol-level, owned by main)
 datasets/   local Sessions (git-ignored)
 tools/      protocol tooling: manifest validation, boundary check
@@ -34,8 +34,8 @@ tools/      protocol tooling: manifest validation, boundary check
 
 | Branch | May modify |
 |---|---|
-| `feat/capture-ultra7` | `capture/` only |
-| `feat/mapping-rtx4090` | `mapping/` only |
+| `feat/capture` | `capture/` only |
+| `feat/mapping` | `mapping/` only |
 | `main` | everything else: `docs/`, `schemas/`, `config/`, `tests/`, `tools/`, `README.md` |
 
 The data protocol (`docs/DATA_CONTRACT.md`, `schemas/`, `config/`) is maintained on `main`.
