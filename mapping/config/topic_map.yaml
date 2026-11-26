@@ -1,0 +1,13 @@
+# Mapping-side topic resolution.  config/insight9_topics.yaml (owned by main) is still PROVISIONAL
+# (verified:false), so the mapping node resolves logical streams from the Session manifest
+# `streams[]` (role + topic name) with these patterns.  Override per run with --topic-map.
+# Explicit `overrides` win over patterns.  Once main verifies real topic names, trim this file.
+overrides: {}          # e.g. {rgb: /insight/rgb/image_raw, vio_100hz: /insight/vio_100hz}
+patterns:
+  rgb:        {role: image,  regex: "rgb|color"}
+  depth:      {role: depth,  regex: "depth"}
+  left:       {role: image,  regex: "left"}
+  right:      {role: image,  regex: "right"}
+  vio_100hz:  {role: vio,    regex: "100\\s*hz|high_?rate|fast"}
+  vio_image:  {role: vio,    regex: "vio_image|image|odom"}
+  imu:        {role: imu,    regex: ".*"}
