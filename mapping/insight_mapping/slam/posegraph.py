@@ -1,7 +1,7 @@
 """SE(3) pose-graph optimisation (scipy, sparse LM-style TRF, robust loss on loop edges).
 
 Edge convention: measurement Z_ij ≈ inv(T_w_i) @ T_w_j  (pose of j expressed in i). Residual = log(inv(Z) inv(Ti) Tj).
-Used as the in-repo back-end (RTAB-Map's graph optimiser — g2o/GTSAM — is the production target, see rtabmap_bridge).
+Used as the in-repo back-end (RTAB-Map's graph optimiser — g2o/GTSAM — is the production target, see rtabmap/backend.py).
 """
 from __future__ import annotations
 

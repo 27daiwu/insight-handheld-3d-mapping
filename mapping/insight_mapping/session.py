@@ -38,6 +38,7 @@ class Session:
     problems: list = field(default_factory=list)   # (severity, msg)
     streams: dict = field(default_factory=dict)    # logical -> topic
     stream_notes: list = field(default_factory=list)
+    config: dict = field(default_factory=dict)      # parsed topic_map.yaml (overrides, frames, extrinsics, depth)
 
     @property
     def bag_dir(self) -> Path:
@@ -76,7 +77,8 @@ class Session:
         return s
 
     def resolve_streams(self, topic_map: Optional[Path] = None):
-        cfg = yaml.safe_load(Path(topic_map or DEFAULT_TOPIC_MAP).read_text())
+        cfg = yaml.safe_load(Path(topic_map or DEFAULT_TOPIC_MAP).read_text()) or {}
+        self.config = cfg
         pats = cfg.get("patterns", {})
         streams = self.manifest.get("streams", [])
         by_topic = {s["topic"]: s for s in streams}

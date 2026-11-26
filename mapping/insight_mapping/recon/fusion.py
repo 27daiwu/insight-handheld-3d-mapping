@@ -19,7 +19,7 @@ import numpy as np
 import open3d as o3d
 
 from .. import se3
-from ..calib import CameraModel, rgbd_alignment
+from ..calib import CameraModel, rectified_model, rectify, rgbd_alignment
 from ..extract import Extracted
 from ..session import Session
 from ..slam import pipeline as slam_pipeline
@@ -57,14 +57,6 @@ def rss_mib():
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0
 
 
-def undistort_pair(img, cam: CameraModel, interp):
-    if not cam.has_distortion or cam.distortion_model not in ("plumb_bob", "rational_polynomial"):
-        return img
-    return cv2.undistort(img, cam.K_mat, np.asarray(cam.D, dtype=np.float64), None, cam.K_mat) if interp == cv2.INTER_LINEAR \
-        else cv2.remap(img, *cv2.initUndistortRectifyMap(cam.K_mat, np.asarray(cam.D, dtype=np.float64), None, cam.K_mat,
-                                                          (cam.width, cam.height), cv2.CV_16SC2), interp)
-
-
 class FrameSet:
     """Paired RGB/Depth frames with poses. Handles aligned and unaligned data uniformly."""
 
@@ -79,7 +71,8 @@ class FrameSet:
             self.ri = ex.index("right")
             self.di, self.cam_d, self.T_c_d = None, self.cam_c, np.eye(4)
             from ..calib import stereo_baseline
-            self.B = stereo_baseline(self.cam_c, ex.cams["right_info"])
+            self.raw_cam_r = ex.cams["right_info"]
+            self.B = stereo_baseline(self.cam_c, self.raw_cam_r)
             self.aligned = True
             self.anomalies.append("no depth stream: using SGBM stereo depth (lower quality)")
         else:
@@ -94,6 +87,10 @@ class FrameSet:
                     raise RuntimeError("RGB and Depth cannot be proven aligned and there is no TF between them: refusing to fuse")
                 T = np.eye(4)
             self.T_c_d = T
+        self.raw_cam_c, self.raw_cam_d = self.cam_c, self.cam_d
+        self.cam_c, self.cam_d = rectified_model(self.cam_c), rectified_model(self.cam_d)
+        if not self.use_stereo:
+            self.aligned = self.aligned and np.allclose(self.cam_c.K, self.cam_d.K, atol=1.0)
         self.traj_stamps, self.traj_T = traj_stamps, traj_T
         base = self.ci["stamp_ns"]
         lo, hi = traj_stamps[0], traj_stamps[-1]
@@ -130,14 +127,15 @@ class FrameSet:
         ex = self.ex
         color = ex.read(self.ci["file"][k])
         if self.use_stereo:
+            color = rectify(color, self.raw_cam_c, cv2.INTER_LINEAR)
             left = color if color.ndim == 2 else cv2.cvtColor(color, cv2.COLOR_BGR2GRAY)
-            right = ex.read(self.ri["file"][j], 0)
+            right = rectify(ex.read(self.ri["file"][j], 0), self.raw_cam_r, cv2.INTER_LINEAR)
             depth = vo.depth_from_stereo(left, right, self.cam_c.fx, self.B, self.cfg.depth_max)
             color = cv2.cvtColor(left, cv2.COLOR_GRAY2BGR) if color.ndim == 2 else color
         else:
+            color = rectify(color, self.raw_cam_c, cv2.INTER_LINEAR)
             depth = ex.read(self.di["file"][j]).astype(np.float32) / 1000.0
-            depth = undistort_pair(depth, self.cam_d, cv2.INTER_NEAREST)
-        color = undistort_pair(color, self.cam_c, cv2.INTER_LINEAR)
+            depth = rectify(depth, self.raw_cam_d, cv2.INTER_NEAREST)
         depth[(depth < self.cfg.depth_min) | (depth > self.cfg.depth_max)] = 0
         T_w_c = self.pose_c(ts)
         T_w_d = self.pose_c(tsd) @ self.T_c_d

@@ -71,6 +71,10 @@ def extract(session: Session, out_dir, max_frames: int | None = None, every: int
                     arr = arr.astype(np.uint16) if arr.dtype != np.uint16 else arr
                 else:
                     arr = bagio.depth_to_mm_u16(arr, msg.encoding)
+                    sc = float((session.config.get("depth") or {}).get("scale_to_mm", 1.0))
+                    if sc != 1.0:
+                        arr = np.clip(np.round(arr.astype(np.float64) * sc), 0, 65535).astype(np.uint16)
+                        notes.append(f"depth scaled by {sc} (topic_map.yaml depth.scale_to_mm)")
                     if msg.encoding == "32FC1":
                         notes.append("depth 32FC1 metres converted to uint16 mm")
             elif k in ("left", "right"):
@@ -93,6 +97,16 @@ def extract(session: Session, out_dir, max_frames: int | None = None, every: int
         elif k == "tf_static":
             _tf_msgs(msg, tree, True)
     tree.finalize()
+    overrides_applied = []
+    for e in (session.config.get("extrinsics") or []):          # explicit user override wins over the bag
+        T = se3.make_T(e["translation"], np.asarray(e["quaternion"], float) / np.linalg.norm(e["quaternion"])) \
+            if "translation" in e else np.asarray(e["T"], float).reshape(4, 4)
+        tree.static[(str(e["parent"]).lstrip("/"), str(e["child"]).lstrip("/"))] = T
+        overrides_applied.append(f"extrinsic {e['parent']}->{e['child']} (topic_map.yaml)")
+    tree.finalize()
+    from . import calibfiles
+    cal_rep = calibfiles.apply_fallback(session.path, session.manifest.get("calibration", {}).get("files") or None,
+                                        cams, tree, img_meta)
 
     for k, rows in idx.items():
         with open(out / f"{k}_index.csv", "w", newline="") as f:
@@ -112,7 +126,8 @@ def extract(session: Session, out_dir, max_frames: int | None = None, every: int
     (out / "camera_info.json").write_text(json.dumps({k: v.to_dict() for k, v in cams.items()}, indent=1))
     (out / "tf.json").write_text(json.dumps(tree.to_dict()))
     summary = {"messages_read": dict(counters), "images_extracted": {k: len(v) for k, v in idx.items()},
-               "image_meta": img_meta, "streams": topic_of, "notes": sorted(set(notes))}
+               "image_meta": img_meta, "streams": topic_of, "notes": sorted(set(notes)),
+               "calibration_folder": cal_rep, "overrides_applied": overrides_applied}
     (out / "extract_summary.json").write_text(json.dumps(summary, indent=1))
     log(f"extracted -> {out}  {summary['images_extracted']}")
     return summary

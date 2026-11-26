@@ -39,6 +39,10 @@ class CameraModel:
     def cy(self): return self.K[5]
 
     @property
+    def R_mat(self) -> np.ndarray:
+        return np.asarray(self.R, dtype=np.float64).reshape(3, 3)
+
+    @property
     def has_distortion(self) -> bool:
         return bool(len(self.D) and np.any(np.abs(np.asarray(self.D, dtype=float)) > 1e-9))
 
@@ -205,3 +209,49 @@ def rgbd_alignment(rgb: CameraModel, depth: CameraModel, T_rgb_depth: Optional[n
     if d.max() > tol_px:
         reasons.append("intrinsics differ (fx/fy/cx/cy)")
     return {"aligned": not reasons, "reasons": reasons}
+
+
+# ------------------------------------------------------------------ rectification (ROS image_proc semantics)
+FISHEYE_MODELS = ("equidistant", "fisheye", "kannala_brandt")
+SUPPORTED_MODELS = ("plumb_bob", "rational_polynomial") + FISHEYE_MODELS
+
+
+def _p_valid(cam: CameraModel) -> bool:
+    P = cam.P_mat
+    return P[0, 0] > 0 and P[1, 1] > 0
+
+
+def rectified_model(cam: CameraModel) -> CameraModel:
+    """Pinhole model of the image *after* `rectify()`: intrinsics = P[:3,:3] when valid, else K; D = 0."""
+    if cam.distortion_model not in SUPPORTED_MODELS and cam.has_distortion:
+        raise ValueError(f"unsupported distortion model '{cam.distortion_model}'")
+    if _p_valid(cam):
+        P = cam.P_mat
+        K = [P[0, 0], P[0, 1], P[0, 2], 0.0, P[1, 1], P[1, 2], 0.0, 0.0, 1.0]
+    else:
+        K = list(cam.K)
+    return CameraModel(cam.frame_id, cam.width, cam.height, K, [0.0] * 5, "plumb_bob",
+                       [K[0], 0, K[2], cam.P[3] if _p_valid(cam) else 0.0, 0, K[4], K[5], 0, 0, 0, 1, 0], list(np.eye(3).ravel()))
+
+
+_MAPS: dict = {}
+
+
+def rectify(img: np.ndarray, cam: CameraModel, interp: int = 1) -> np.ndarray:
+    """Undistort (+ rectify with CameraInfo.R/P if present). No-op when the camera is already ideal pinhole.
+    interp: cv2.INTER_NEAREST (use for depth!) or cv2.INTER_LINEAR."""
+    import cv2
+    new = rectified_model(cam)
+    R = cam.R_mat if hasattr(cam, "R_mat") else np.asarray(cam.R, dtype=np.float64).reshape(3, 3)
+    trivial = (not cam.has_distortion) and np.allclose(R, np.eye(3)) and np.allclose(new.K, cam.K)
+    if trivial:
+        return img
+    key = (tuple(cam.K), tuple(cam.D), tuple(cam.R), cam.distortion_model, cam.width, cam.height, tuple(new.K))
+    if key not in _MAPS:
+        D = np.asarray(cam.D, dtype=np.float64)
+        if cam.distortion_model in FISHEYE_MODELS:
+            m = cv2.fisheye.initUndistortRectifyMap(cam.K_mat, D[:4], R, new.K_mat, (cam.width, cam.height), cv2.CV_16SC2)
+        else:
+            m = cv2.initUndistortRectifyMap(cam.K_mat, D if len(D) else None, R, new.K_mat, (cam.width, cam.height), cv2.CV_16SC2)
+        _MAPS[key] = m
+    return cv2.remap(img, *_MAPS[key], interp, borderMode=cv2.BORDER_CONSTANT, borderValue=0)

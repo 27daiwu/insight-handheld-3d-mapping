@@ -11,3 +11,9 @@ patterns:
   vio_100hz:  {role: vio,    regex: "100\\s*hz|high_?rate|fast"}
   vio_image:  {role: vio,    regex: "vio_image|image|odom"}
   imu:        {role: imu,    regex: ".*"}
+
+# ---- optional explicit overrides (all absent by default) --------------------------------------------------------
+# depth: {scale_to_mm: 1.0}          # 16UC1 values are assumed millimetres (REP-118); set e.g. 0.2 for 0.2 mm units
+# extrinsics:                        # wins over TF in the bag AND over calibration/; reported in extract_summary.json
+#   - {parent: insight_body, child: depth_optical, translation: [0.06, -0.025, 0.03], quaternion: [0, 0, 0, 1]}
+# Frame ids are read from Image/CameraInfo/Odometry headers; the VIO base frame is Odometry.child_frame_id.

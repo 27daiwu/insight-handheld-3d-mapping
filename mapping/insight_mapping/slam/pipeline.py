@@ -2,8 +2,7 @@
 
 Odometry source: Insight VIO (vio_image paired to image stamps, vio_100hz interpolation).
 Loop closure: ORB + depth-PnP geometric verification. Optimiser: se3 pose graph (posegraph.py).
-This is the in-repo back-end that runs everywhere; RTAB-Map (rtabmap_bridge.py) is the production path once
-installed, and its output can replace `trajectory_opt` (same CSV contract).
+This is the in-repo back-end that runs everywhere; RTAB-Map (rtabmap/backend.py) is the second back-end; both write `trajectory_opt.csv` (same CSV contract) for the same fusion stage.
 """
 from __future__ import annotations
 

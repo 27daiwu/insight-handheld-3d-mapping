@@ -14,10 +14,23 @@ except ImportError:
     HAVE_ROS = False
 
 
+def _rtabmap_ok():
+    try:
+        from insight_mapping.rtabmap import backend
+        return backend.availability()["available"]
+    except Exception:
+        return False
+
+
+HAVE_RTABMAP = HAVE_ROS and _rtabmap_ok()
+
+
 def pytest_collection_modifyitems(config, items):
     for it in items:
         if "ros" in it.keywords and not HAVE_ROS:
             it.add_marker(pytest.skip("needs `source /opt/ros/humble/setup.bash`"))
+        if "rtabmap" in it.keywords and not HAVE_RTABMAP:
+            it.add_marker(pytest.skip("RTAB-Map not available (source mapping/scripts/env.sh)"))
         if "tum" in it.keywords and not TUM_DIR.exists():
             it.add_marker(pytest.skip("TUM fr1/desk not downloaded (mapping/.cache/public)"))
 

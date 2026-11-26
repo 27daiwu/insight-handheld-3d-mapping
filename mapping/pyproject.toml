@@ -13,7 +13,7 @@ insight-mapping = "insight_mapping.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["slow: long runtime", "ros: needs ROS 2 Humble python env sourced", "tum: needs the TUM fr1/desk public dataset"]
+markers = ["slow: long runtime", "ros: needs ROS 2 Humble python env sourced", "tum: needs the TUM fr1/desk public dataset", "rtabmap: needs RTAB-Map ROS packages"]
 
 [tool.setuptools.packages.find]
 include = ["insight_mapping*"]

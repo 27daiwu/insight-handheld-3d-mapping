@@ -5,7 +5,8 @@ No camera connection, no capture-side code. Only `mapping/` is modified on this 
 
 ## Environment (no system packages were installed)
 ```
-source /opt/ros/humble/setup.bash              # rosbag2_py / rclpy for bag reading
+source mapping/scripts/env.sh                 # ROS 2 Humble + user-space RTAB-Map/MCAP overlay (if installed)
+mapping/scripts/install_rtabmap_userspace.sh  # one-off, no root: apt-get download + dpkg-deb -x into ~/.local/opt/ros-extra
 cd mapping && virtualenv --system-site-packages -p /usr/bin/python3 .venv   # python3-venv is not installed
 .venv/bin/pip install open3d jsonschema pytest "numpy<2"
 ```
@@ -14,7 +15,11 @@ Tested: Ubuntu 22.04, Python 3.10, ROS 2 Humble, Open3D 0.20.0 (pip, CUDA build)
 ## Usage
 ```
 .venv/bin/python -m insight_mapping.cli validate  <session_dir>
-.venv/bin/python -m insight_mapping.cli run       <session_dir> --out <out_dir> [--backend tensor-cuda] [--voxel 0.02]
+.venv/bin/python -m insight_mapping.cli run       <session_dir> --out <out_dir> [--backend custom|rtabmap_vio|rtabmap_odom] [--sensor rgbd|stereo] [--tsdf-backend tensor-cuda] [--no-texture]
+.venv/bin/python -m insight_mapping.cli make-fixture synthetic|tum --root <dir> --id <name> [--tum-dir ...]   # test Session + <id>_gt.npz
+.venv/bin/python -m insight_mapping.cli extract   <session_dir> --out <out_dir>      # needed once before backend/compare
+.venv/bin/python -m insight_mapping.cli compare   <session_dir> --work <out_dir> --out <cmp_dir> --gt <id>_gt.npz [--sensor stereo] [--analytic]
+mapping/scripts/sweep_rtabmap.sh ...                                                   # parallel RTAB-Map parameter sweeps
 .venv/bin/python -m insight_mapping.cli bench-gpu <session_dir> --out <out_dir> --trajectory <out_dir>/trajectory.csv
 .venv/bin/python -m insight_mapping.cli verify    <out_dir>
 .venv/bin/python -m pytest -q                    # all tests (~2.5 min, uses synthetic + TUM fr1/desk if present)
@@ -30,7 +35,10 @@ Tested: Ubuntu 22.04, Python 3.10, ROS 2 Humble, Open3D 0.20.0 (pip, CUDA build)
 | Frame validation | `slam/frames.py` | tests 4 hypotheses of VIO pose / extrinsic direction against vision (PnP); a mismatch aborts the run |
 | VIO → camera trajectory | `slam/vio.py` | `T_odom_cam = T_odom_body @ T_body_cam`; `vio_image` paired within 5 ms, else `vio_100hz` interpolation, never extrapolated |
 | Loop closure + pose graph | `slam/pipeline.py`, `slam/vo.py`, `slam/posegraph.py` | VIO-seeded keyframe graph, ORB + depth-PnP verified loops, robust SE(3) graph optimisation (in-repo back-end) |
-| RTAB-Map | `rtabmap_bridge.py` | **not installed / not run** — availability check + reviewable launch command only |
+| RTAB-Map back-end | `rtabmap/backend.py`, `backends.py` | real `rtabmap_slam`/`rtabmap_odom` nodes, lock-step replay; `rtabmap_vio` (external VIO odometry) and `rtabmap_odom` (own rgbd/stereo odometry) |
+| Comparison | `compare.py` | 3-way back-end evaluation: ATE/RPE, map accuracy/completeness vs GT-pose map, wall time, RSS |
+| Calibration/config | `calib.py`, `calibfiles.py`, `config/topic_map.yaml` | fisheye/plumb_bob rectification, `calibration/` folder fallback, per-run topic/extrinsic/depth-scale overrides |
+| Texture / GLB | `recon/texture.py` | view atlas, `mesh_textured.obj` (+mtl/png), `mesh.glb` (z-up → y-up) |
 | Reconstruction | `recon/fusion.py` | Open3D `VoxelBlockGrid` TSDF (CPU or CUDA), mesh, view-weighted vertex colours, coloured point cloud |
 | GPU evaluation | `recon/bench.py` | measured CPU vs CUDA, GPU memory, equivalence of meshes |
 
@@ -44,4 +52,5 @@ If alignment cannot be proven *and* there is no TF between the frames, the run r
 `trajectory.csv` (`stamp_ns,tx,ty,tz,qx,qy,qz,qw`, `T_odom_rgbcam`, optical frame), `map.ply`, `map.pcd`, `mesh.ply`, `mesh.obj`,
 `reconstruction_report.json` (time, points, faces, RSS, GPU memory, drift/ATE/RPE if ground truth, loop closures, anomalies,
 data-quality summary, output verification). GLB later. Intermediate: `extracted/`, `slam/`, `quality_report.json`.
-Mesh colours are per-vertex (no texture atlas yet).
+`mesh.ply/obj` carry per-vertex colours; `mesh_textured.obj` / `mesh.glb` use a view atlas (≤24 RGB views as atlas tiles; triangles seen by no view get a neutral tile).
+Proposed protocol additions for `main`: `docs/PROTOCOL_PROPOSAL.md`. Measured back-end comparison: `docs/COMPARISON.md`.

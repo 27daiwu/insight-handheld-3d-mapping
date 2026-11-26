@@ -138,7 +138,11 @@ def check_session(session: Session, work_dir, log=print, allow_missing=()) -> di
                                   "(different frames/origins, or latency)"))
 
     # --- frames / TF / calibration
-    cal: dict = {"cameras": {}}
+    cal: dict = {"cameras": {}, "folder": ex.summary.get("calibration_folder", {})}
+    for m in cal["folder"].get("mismatch", []):
+        F.append(("warn", m))
+    for m in cal["folder"].get("used", []):
+        F.append(("warn", "calibration fallback: " + m))
     for k, cam in ex.cams.items():
         base_k = k[:-5]
         wh = (ex.summary["image_meta"][base_k]["width"], ex.summary["image_meta"][base_k]["height"]) \
