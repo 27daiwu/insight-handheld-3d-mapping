@@ -21,6 +21,7 @@ def build_parser() -> argparse.ArgumentParser:
         sp.add_argument("--expect", action="append", metavar="ROLE=HZ",
                         help="configured rate to compare against, e.g. imu=200 (repeatable)")
         sp.add_argument("--min-free-gb", type=float)
+        sp.add_argument("--camera-api", help="camera web API base (read-only GETs), default http://169.254.10.1; 'off' disables")
         sp.add_argument("--image-mode", choices=["raw", "compressed", "both"], default="raw")
 
     s = sub.add_parser("preflight", help="pre-capture checks (read-only)")
@@ -75,7 +76,7 @@ def main(argv=None) -> int:
         from .preflight import run_preflight, parse_expect
         rep, disc, ctx = run_preflight(args.profile, args.prefix, args.probe_seconds, args.firmware, args.root,
                                        args.min_free_gb, parse_expect(args.expect), image_mode=args.image_mode,
-                                       clock_s=args.clock_seconds)
+                                       clock_s=args.clock_seconds, camera_api=args.camera_api)
         print(json.dumps(rep.to_dict(), indent=2, default=str) if args.json else rep.render())
         return rep.exit_code
     if args.cmd == "record":

@@ -1,0 +1,21 @@
+S0 baseline
+S1 depth off
+APPLY -> {'success': True, 'message': 'Deep Flow config updated successfully', 'data': 'none'}
+config readback deep-flow=False (wanted False)
+S1 restore depth on
+APPLY -> {'success': True, 'message': 'Deep Flow config updated successfully', 'data': 'depth'}
+config readback deep-flow=True (wanted True)
+S2 stereo 20fps hdr=false
+APPLY -> {'success': True, 'message': 'Stereo settings saved. Software will restart...', 'data': {'format': 'mono8 544x640 20fps', 'hdr': False}}
+config readback stereo-format=mono8 544x640 20fps (wanted mono8 544x640 20fps)
+S2 restore
+APPLY -> {'success': True, 'message': 'Stereo settings saved. Software will restart...', 'data': {'format': 'mono8 544x640 30fps', 'hdr': True}}
+config readback stereo-format=mono8 544x640 30fps (wanted mono8 544x640 30fps)
+S3 time-sync on
+APPLY -> {'data': {'synced': False, 'enabled': True}, 'message': 'Time sync enable setting saved', 'success': True}
+config readback time-sync=True (wanted True)
+RESTORE all from backup
+restore call -> {'data': {'synced': False, 'enabled': False}, 'message': 'Time sync enable setting saved', 'success': True}
+restore call -> {'success': True, 'message': 'Deep Flow config updated successfully', 'data': 'depth'}
+restore call -> {'success': True, 'message': 'Stereo settings saved. Software will restart...', 'data': {'format': 'mono8 544x640 30fps', 'hdr': True}}
+final {'camera-format': 'mjpg 1088x1920 30fps', 'stereo-format': 'mono8 544x640 30fps', 'stereo-hdr': True, 'deep-flow': True, 'time-sync': False, 'pose-cov': True, 'ros-domain': '9', 'dds': 'cyclonedds'} restored_ok=True

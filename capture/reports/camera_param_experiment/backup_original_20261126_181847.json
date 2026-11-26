@@ -1,0 +1,170 @@
+{
+ "taken_epoch": 1795688327.5911076,
+ "/api/camera-format": {
+  "success": true,
+  "data": {
+   "format": "mjpg 1088x1920 30fps"
+  }
+ },
+ "/api/camera-format-options": {
+  "success": true,
+  "data": {
+   "options": [
+    "mjpg 1088x1920 30fps",
+    "mjpg 1920x1080 30fps",
+    "mjpg 1280x720 30fps",
+    "mjpg 640x480 30fps",
+    "nv12 720x1200 20fps",
+    "nv12 544x960 20fps",
+    "nv12 544x960 30fps"
+   ]
+  }
+ },
+ "/api/stereo-format": {
+  "success": true,
+  "data": {
+   "format": "mono8 544x640 30fps",
+   "hdr": true
+  }
+ },
+ "/api/stereo-config": {
+  "success": true,
+  "data": {
+   "sensor_name": "sc132gs",
+   "default_configuration": "sc132gs-1088x1280-20fps-2lane",
+   "input_sources": [
+    {
+     "source_resolution": "1088x1280",
+     "support_formats": [
+      {
+       "format": "MONO8",
+       "configurations": [
+        {
+         "output_resolution": "544x640",
+         "fps": 20,
+         "lane": 2
+        },
+        {
+         "output_resolution": "544x640",
+         "fps": 30,
+         "lane": 2
+        },
+        {
+         "output_resolution": "544x640",
+         "fps": 40,
+         "lane": 1
+        },
+        {
+         "output_resolution": "544x640",
+         "fps": 50,
+         "lane": 1
+        },
+        {
+         "output_resolution": "640x480",
+         "fps": 20,
+         "lane": 2
+        },
+        {
+         "output_resolution": "640x480",
+         "fps": 30,
+         "lane": 2
+        },
+        {
+         "output_resolution": "640x480",
+         "fps": 40,
+         "lane": 1
+        },
+        {
+         "output_resolution": "640x480",
+         "fps": 50,
+         "lane": 1
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "/api/deep-flow": {
+  "success": true,
+  "message": "",
+  "data": {
+   "enabled": true,
+   "perception_engine": "depth"
+  }
+ },
+ "/api/time-sync-setting": {
+  "data": {
+   "synced": false,
+   "enabled": false
+  },
+  "success": true
+ },
+ "/api/sensor-pose-cov": {
+  "success": true,
+  "message": "",
+  "data": {
+   "publish_pose_cov": true
+  }
+ },
+ "/api/dds-type": {
+  "data": {
+   "ddsType": "cyclonedds"
+  },
+  "success": true
+ },
+ "/api/ros-domain-id": {
+  "data": {
+   "rosDomainId": "9"
+  },
+  "success": true
+ },
+ "/api/ip-config": {
+  "data": {
+   "masterIp": "169.254.10.1",
+   "slaveIp": "169.254.10.2"
+  },
+  "success": true
+ },
+ "/api/mode": {
+  "data": {
+   "calibrationMode": false
+  },
+  "success": true
+ },
+ "/api/compatibility-mode": {
+  "data": {
+   "compatibilityMode": false
+  },
+  "success": true
+ },
+ "/api/camera-config": {
+  "data": {
+   "nodeName": "insight_full",
+   "cameraNamespace": "camera",
+   "cameraName": "camera"
+  },
+  "success": true
+ },
+ "/api/insight-status": {
+  "success": true,
+  "data": {
+   "enabled": true
+  }
+ },
+ "/api/ota/device-versions": {
+  "firewareVersion": "2.1.5",
+  "softwareVersion": "2.1.5"
+ },
+ "/api/system-time": {
+  "timestamp": 1756222462,
+  "timestampNanos": 1756222462006297280,
+  "formatted": "2025-08-26 23:34:22"
+ },
+ "/api/system-info": {
+  "temperature": 50.9,
+  "uptimeHours": 0.19,
+  "uptimeStr": "11Min"
+ }
+}

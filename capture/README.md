@@ -25,3 +25,9 @@ Exit codes (preflight/inspect): 0 ok, 1 warnings, 2 failures.
 * `preflight` samples the host wall clock for `--clock-seconds` (default 35). On WSL2 bag *receive* time is unreliable (±2.5 s sawtooth): use header stamps.
 * Real camera (fw 2.1.5): ROS domain **9**, prefix `/camera/camera`; run `ROS_DOMAIN_ID=9 ./insight-capture preflight --firmware 2.1.5`.
 * Reports: `reports/` (1 camera, 2 WSL2 RCA, 3 tests, 4 topic changelog, 5 GO/NO-GO).
+
+## Update 2026-11-26 evening
+* Default profile is now `config/topics_v2.1.5.yaml` (baseline fw 2.1.5; 2.1.4 kept as history; per-role verification, file-level `verified: false`).
+* `preflight`/`record` read firmware, depth, stereo format and time-sync state from the camera web API with **GET only** (whitelist, never POST). Disable with `--camera-api off` or `INSIGHT_CAMERA_API=off` (the simulator tests do).
+* Camera settings experiments (POST) are NOT part of the tool; they live in `reports/camera_param_experiment/` and need explicit authorisation.
+* Contract draft: `DATA_CONTRACT.md` (v0.2). Reports: `reports/` (1 timesyncd, 2 camera params, 3 depth root cause, 4 topic changelog, 5 GO/NO-GO, P1_acceptance_report, 2_wsl2_packet_loss_rca, 1_camera_access_report, 3_capture_tool_test_report).

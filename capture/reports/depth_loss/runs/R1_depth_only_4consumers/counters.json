@@ -1,0 +1,280 @@
+{
+ "label": "R1_depth_only_4consumers",
+ "secs": 120.0,
+ "load": false,
+ "iface": "eth0",
+ "before": {
+  "t": 1795688972.6368392,
+  "udp": {
+   "InDatagrams": 768724,
+   "NoPorts": 871,
+   "InErrors": 7,
+   "OutDatagrams": 275400,
+   "RcvbufErrors": 7,
+   "SndbufErrors": 0,
+   "InCsumErrors": 0,
+   "IgnoredMulti": 19,
+   "MemErrors": 0
+  },
+  "if": {
+   "rx_packets": 690,
+   "rx_bytes": 241230,
+   "rx_dropped": 0,
+   "rx_errors": 0,
+   "rx_fifo_errors": 0,
+   "rx_over_errors": 0
+  },
+  "win": [
+   "\u4ee5\u592a\u7f51 6|326549|0|0|767",
+   "WLAN|1417111205|0|0|637944",
+   "vEthernet (FSE HostVnic)|841295067|0|0|1648057"
+  ],
+  "cam": {
+   "cpu-monitor": {
+    "average": 40.3,
+    "cores": {
+     "cpu4": 51.02,
+     "cpu0": 32.65,
+     "cpu1": 13.64,
+     "cpu2": 49.06,
+     "cpu3": 62.26,
+     "cpu5": 35.71,
+     "cpu6": 46.15,
+     "cpu7": 31.91,
+     "cpu": 41.19
+    }
+   },
+   "system-info": {
+    "temperature": 56.8,
+    "uptimeHours": 0.37,
+    "uptimeStr": "22Min"
+   }
+  }
+ },
+ "after": {
+  "t": 1795689098.2924874,
+  "udp": {
+   "InDatagrams": 1203519,
+   "NoPorts": 904,
+   "InErrors": 34,
+   "OutDatagrams": 283032,
+   "RcvbufErrors": 34,
+   "SndbufErrors": 0,
+   "InCsumErrors": 0,
+   "IgnoredMulti": 19,
+   "MemErrors": 0
+  },
+  "if": {
+   "rx_packets": 4135432,
+   "rx_bytes": 5737099953,
+   "rx_dropped": 0,
+   "rx_errors": 0,
+   "rx_fifo_errors": 0,
+   "rx_over_errors": 0
+  },
+  "win": [
+   "\u4ee5\u592a\u7f51 6|5737189428|0|0|4135503",
+   "WLAN|1420436046|0|0|638922",
+   "vEthernet (FSE HostVnic)|844459831|0|0|1659316"
+  ],
+  "cam": {
+   "cpu-monitor": {
+    "average": 38.23,
+    "cores": {
+     "cpu2": 58.33,
+     "cpu5": 39.62,
+     "cpu": 38.5,
+     "cpu1": 9.52,
+     "cpu4": 60.78,
+     "cpu3": 38.0,
+     "cpu6": 38.46,
+     "cpu7": 26.53,
+     "cpu0": 34.55
+    }
+   },
+   "system-info": {
+    "temperature": 57.5,
+    "uptimeHours": 0.4,
+    "uptimeStr": "24Min"
+   }
+  }
+ },
+ "cam_samples": [
+  {
+   "t": 1795688988.9626532,
+   "cpu-monitor": {
+    "average": 42.17,
+    "cores": {
+     "cpu3": 55.1,
+     "cpu1": 11.9,
+     "cpu2": 38.78,
+     "cpu4": 60.0,
+     "cpu5": 32.73,
+     "cpu7": 59.62,
+     "cpu6": 40.74,
+     "cpu": 43.07,
+     "cpu0": 38.46
+    }
+   },
+   "system-info": {
+    "temperature": 57.0,
+    "uptimeHours": 0.37,
+    "uptimeStr": "22Min"
+   }
+  },
+  {
+   "t": 1795689004.4810672,
+   "cpu-monitor": {
+    "average": 43.43,
+    "cores": {
+     "cpu0": 39.22,
+     "cpu4": 37.5,
+     "cpu7": 60.42,
+     "cpu": 43.86,
+     "cpu1": 11.9,
+     "cpu2": 63.27,
+     "cpu5": 33.93,
+     "cpu3": 62.0,
+     "cpu6": 39.22
+    }
+   },
+   "system-info": {
+    "temperature": 57.0,
+    "uptimeHours": 0.38,
+    "uptimeStr": "22Min"
+   }
+  },
+  {
+   "t": 1795689020.011121,
+   "cpu-monitor": {
+    "average": 39.19,
+    "cores": {
+     "cpu3": 47.92,
+     "cpu4": 44.0,
+     "cpu0": 31.91,
+     "cpu2": 60.78,
+     "cpu1": 7.5,
+     "cpu7": 58.82,
+     "cpu": 39.79,
+     "cpu5": 28.57,
+     "cpu6": 34.04
+    }
+   },
+   "system-info": {
+    "temperature": 57.0,
+    "uptimeHours": 0.38,
+    "uptimeStr": "22Min"
+   }
+  },
+  {
+   "t": 1795689035.531346,
+   "cpu-monitor": {
+    "average": 43.39,
+    "cores": {
+     "cpu1": 15.91,
+     "cpu2": 61.54,
+     "cpu3": 59.62,
+     "cpu4": 33.33,
+     "cpu0": 42.86,
+     "cpu6": 52.94,
+     "cpu": 44.47,
+     "cpu5": 35.09,
+     "cpu7": 45.83
+    }
+   },
+   "system-info": {
+    "temperature": 57.2,
+    "uptimeHours": 0.38,
+    "uptimeStr": "23Min"
+   }
+  },
+  {
+   "t": 1795689051.0461142,
+   "cpu-monitor": {
+    "average": 44.42,
+    "cores": {
+     "cpu4": 67.27,
+     "cpu": 45.54,
+     "cpu1": 2.56,
+     "cpu3": 40.38,
+     "cpu7": 47.06,
+     "cpu6": 43.75,
+     "cpu5": 44.07,
+     "cpu0": 44.23,
+     "cpu2": 66.0
+    }
+   },
+   "system-info": {
+    "temperature": 57.3,
+    "uptimeHours": 0.39,
+    "uptimeStr": "23Min"
+   }
+  },
+  {
+   "t": 1795689066.57143,
+   "cpu-monitor": {
+    "average": 42.93,
+    "cores": {
+     "cpu2": 57.45,
+     "cpu3": 65.31,
+     "cpu": 43.41,
+     "cpu4": 44.23,
+     "cpu5": 44.23,
+     "cpu0": 34.69,
+     "cpu6": 44.9,
+     "cpu7": 43.14,
+     "cpu1": 9.52
+    }
+   },
+   "system-info": {
+    "temperature": 57.4,
+    "uptimeHours": 0.39,
+    "uptimeStr": "23Min"
+   }
+  },
+  {
+   "t": 1795689082.0982666,
+   "cpu-monitor": {
+    "average": 44.93,
+    "cores": {
+     "cpu2": 67.31,
+     "cpu1": 11.9,
+     "cpu7": 46.15,
+     "cpu": 45.89,
+     "cpu0": 49.06,
+     "cpu5": 31.25,
+     "cpu3": 52.83,
+     "cpu4": 50.0,
+     "cpu6": 50.91
+    }
+   },
+   "system-info": {
+    "temperature": 57.6,
+    "uptimeHours": 0.4,
+    "uptimeStr": "23Min"
+   }
+  },
+  {
+   "t": 1795689097.6179717,
+   "cpu-monitor": {
+    "average": 39.98,
+    "cores": {
+     "cpu5": 26.0,
+     "cpu": 40.66,
+     "cpu2": 57.14,
+     "cpu6": 35.29,
+     "cpu7": 30.19,
+     "cpu0": 52.94,
+     "cpu1": 12.2,
+     "cpu3": 45.28,
+     "cpu4": 60.78
+    }
+   },
+   "system-info": {
+    "temperature": 57.4,
+    "uptimeHours": 0.4,
+    "uptimeStr": "24Min"
+   }
+  }
+ ]
+}

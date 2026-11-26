@@ -69,7 +69,7 @@ def parse_expect(items: list[str] | None) -> dict[str, float]:
 def run_preflight(profile_path=None, prefix=None, probe_s: float = 5.0, firmware: str | None = None,
                   data_root=None, min_free_gb: float | None = None, expect: dict | None = None,
                   settle_s: float = 2.0, image_mode: str = "raw", quiet_system: bool = False,
-                  clock_s: float = 0.0
+                  clock_s: float = 0.0, camera_api: str | None = None
                   ) -> tuple[Report, Discovery | None, dict]:
     prof = load_profile(profile_path)
     th = prof["thresholds"]
@@ -99,6 +99,23 @@ def run_preflight(profile_path=None, prefix=None, probe_s: float = 5.0, firmware
     # 2. firmware --------------------------------------------------------
     fw = firmware or os.environ.get("INSIGHT_FIRMWARE")
     base = prof.get("firmware_baseline")
+    from . import camera_api as _ca
+    camera_api = camera_api or os.environ.get("INSIGHT_CAMERA_API")
+    api = None if camera_api == "off" else _ca.snapshot(camera_api or _ca.DEFAULT_BASE)
+    ctx["camera_api"] = api
+    if api:
+        sm = api["summary"]
+        rep.data["camera_api"] = sm
+        if fw and sm["firmware"] and fw.lstrip("v") != sm["firmware"]:
+            rep.add("WARN", "firmware_mismatch", f"--firmware {fw} disagrees with the camera API ({sm['firmware']})")
+        fw = sm["firmware"] or fw
+        rep.add("INFO", "camera_api", f"Camera web API (read-only): fw {sm['firmware']}, ROS domain {sm['ros_domain_id']}, dds {sm['dds_type']}",
+                f"depth_enabled={sm['depth_enabled']} stereo={sm['stereo_format']} hdr={sm['stereo_hdr']} color={sm['color_format']} "
+                f"time_sync={sm['time_sync_enabled']}(synced={sm['time_synced']}) camera_wall_clock_epoch={sm['camera_wall_clock_epoch']} "
+                f"temp={sm['temperature_c']}C")
+        if sm["ros_domain_id"] not in (None, "") and str(sm["ros_domain_id"]) != str(os.environ.get("ROS_DOMAIN_ID", "0")):
+            rep.add("WARN", "domain_mismatch", f"camera publishes on ROS_DOMAIN_ID={sm['ros_domain_id']} but this shell uses "
+                    f"{os.environ.get('ROS_DOMAIN_ID', '0')}", "export ROS_DOMAIN_ID to the camera's domain")
     ctx["firmware"] = fw
     if not fw:
         rep.add("WARN", "firmware", "Firmware version: unknown",
@@ -236,6 +253,7 @@ def _depth_check(rep: Report, disc: Discovery, sel: dict):
 
 
 def _judge_probe(rep, sel, probe, th, expect):
+    offs: list = []
     for role, ms in sel.items():
         for m in ms:
             st = probe.get(m.topic)
@@ -246,7 +264,9 @@ def _judge_probe(rep, sel, probe, th, expect):
                 lvl = "WARN" if role in ("tf_static", "depth", "depth_info") else "FAIL"
                 rep.add(lvl, f"rate_{role}", f"{role}: no messages in probe window", m.topic)
                 continue
-            findings = judge(st, expect.get(role), th)
+            findings = judge(st, expect.get(role), th, clock_check=False)
+            if st.get("recv_minus_stamp_median_s") is not None:
+                offs.append(st["recv_minus_stamp_median_s"])
             summ = (f"{role}: {st['count']} msgs, {hz if hz is not None else 'n/a'} Hz"
                     f" (recv {st.get('recv_rate_hz')}), drops~{st.get('est_missing_msgs', 0)},"
                     f" {st['bytes_per_s'] / 1e6:.2f} MB/s")
@@ -255,6 +275,9 @@ def _judge_probe(rep, sel, probe, th, expect):
             else:
                 worst = "FAIL" if any(l == "FAIL" for l, _ in findings) else "WARN"
                 rep.add(worst, f"rate_{role}", summ, "\n".join(msg for _, msg in findings))
+    if offs and all(abs(o) > th.get("max_clock_offset_s", 1.0) for o in offs):
+        rep.add("WARN", "clock_domain", f"Device header stamps are not host wall-clock (receive - stamp ≈ {sum(offs)/len(offs):.3g} s on all {len(offs)} stamped topics)",
+                "camera clock is boot-relative; host<->camera alignment unavailable until camera time-sync works (reported once)")
 
 
 def _info_tf_checks(rep, sel, probe):

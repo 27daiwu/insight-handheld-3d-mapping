@@ -4,7 +4,7 @@ from __future__ import annotations
 import sqlite3
 from pathlib import Path
 
-from .stats import analyze, parse_header_stamp
+from .stats import analyze, has_header, parse_header_stamp
 
 
 def db_files(bag: Path) -> list[Path]:
@@ -62,8 +62,7 @@ def scan(bag: Path, gap_factor: float = 1.5, nominal: dict[str, float] | None = 
                     continue
                 recv[n].append(ts)
                 sizes[n] += ln or 0
-                stamps[n].append(None if n in tf_topics or tinfo[n]["type"] == "tf2_msgs/msg/TFMessage"
-                                 else parse_header_stamp(head))
+                stamps[n].append(parse_header_stamp(head) if has_header(tinfo[n]["type"]) and n not in tf_topics else None)
             con.close()
         except sqlite3.DatabaseError as e:
             errors.append(f"{f.name}: {e}")
@@ -97,7 +96,7 @@ def tf_frames(bag: Path, topic_names=("/tf", "/tf_static")) -> set[tuple[str, st
 
 def read_series(bag: Path) -> dict[str, dict]:
     """name -> {'stamps': [...], 'recv': [...], 'type': str} in storage order (header stamps via first 12 bytes)."""
-    from .stats import parse_header_stamp
+    from .stats import has_header, parse_header_stamp
     tinfo = topics(bag)
     out = {n: {"stamps": [], "recv": [], "type": t["type"]} for n, t in tinfo.items()}
     for f in db_files(bag):
@@ -109,7 +108,7 @@ def read_series(bag: Path) -> dict[str, dict]:
                 if n is None:
                     continue
                 out[n]["recv"].append(ts)
-                out[n]["stamps"].append(None if out[n]["type"] == "tf2_msgs/msg/TFMessage" else parse_header_stamp(head))
+                out[n]["stamps"].append(parse_header_stamp(head) if has_header(out[n]["type"]) else None)
             con.close()
         except sqlite3.DatabaseError:
             continue

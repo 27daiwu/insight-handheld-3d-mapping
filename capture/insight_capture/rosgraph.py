@@ -4,7 +4,7 @@ from __future__ import annotations
 import time
 
 from .discovery import TopicInfo
-from .stats import analyze, parse_frame_id, parse_header_stamp
+from .stats import analyze, has_header, parse_frame_id, parse_header_stamp
 
 
 def _rclpy():
@@ -93,7 +93,7 @@ class Graph:
                     for t in deserialize_message(data, cls).transforms:
                         r["edges"].add((t.header.frame_id.strip("/"), t.child_frame_id.strip("/")))
                     return
-                r["stamps"].append(parse_header_stamp(data))
+                r["stamps"].append(parse_header_stamp(data) if has_header(typ) else None)
                 if r["first"] is None:
                     r["first"] = _first_info(data, cls, typ, deserialize_message)
 

@@ -1,0 +1,174 @@
+# Topic profile for Insight 9, firmware / software 2.1.5 (project device baseline since 2026-11-26).
+# Derived from topics_v2.1.4.yaml (kept unchanged as history) and calibrated against a REAL device:
+#   Insight 9, fw 2.1.5, ROS_DOMAIN_ID 9, prefix /camera/camera, observed from WSL2 (Humble, Fast DDS).
+#   Evidence: reports/camera_data/topics_domain9.txt, probe_60s_run1.json, real5min_*.json,
+#             reports/depth_loss/runs/*, reports/camera_param_experiment/*.
+#
+# VERIFICATION POLICY (no bulk changes):
+#   file-level `verified` stays false until EVERY required role is verified AND a native-Ubuntu run exists.
+#   role-level `verification.verified: true` only if, on fw 2.1.5, in >= 2 independent runs:
+#     name+type+frame_id observed, header stamps monotonic, measured rate == nominal, loss <= 0.1 % (header-stamp space).
+#   Every role lists its evidence and what is still pending. Change one role at a time, with a changelog entry.
+profile: insight9-v2.1.5
+verified: false
+firmware_baseline: "2.1.5"
+ros_domain_id_observed: 9
+default_prefix_observed: /camera/camera
+
+image_types: &image_types
+  - sensor_msgs/msg/Image
+  - sensor_msgs/msg/CompressedImage
+
+roles:
+  rgb:
+    kind: image
+    verification:
+      verified: true
+      evidence: 'color/image_rect_raw/compressed jpeg 1088x1920, 30.019 Hz, 0 stamp gaps in 340 s, loss 0.00-0.01% in 6 runs'
+      pending:
+        - 'color/image_raw/compressed has a publisher but 0 msgs (unused)'
+        - 'JPEG only - no raw RGB topic exists on 2.1.5'
+        - 'colour space/range of JPEG unconfirmed'
+    required: true
+    types: *image_types
+    suffix: '/(rgb|color)/image[^/]*(/compressed)?'
+  stereo_left:
+    kind: image
+    verification:
+      verified: true
+      evidence: 'infra1/image_rect_raw mono8 544x640 30.000 Hz; pooled loss ~0.02% (0.11% in one 90 s run with depth on, 0 in depth-off run)'
+      pending:
+        - 'rectified vs raw semantics (infra1/image_raw empty)'
+        - 'HDR on at 30 fps (vendor option) - effect on exposure not characterised'
+    required: true
+    types: *image_types
+    suffix: '/(stereo/)?(left|stereo_left|infra1)(_camera)?/image[^/]*(/compressed)?'
+  stereo_right:
+    kind: image
+    verification:
+      verified: true
+      evidence: 'infra2/image_rect_raw mono8 544x640 30.000 Hz; L/R stamps identical (skew 0 ms, 100% matched); pooled loss ~0.03%'
+      pending:
+        - 'rectified vs raw semantics'
+    required: true
+    types: *image_types
+    suffix: '/(stereo/)?(right|stereo_right|infra2)(_camera)?/image[^/]*(/compressed)?'
+  depth:
+    kind: image
+    verification:
+      verified: false
+      evidence: 'depth/image_rect_raw mono16 544x640, frame camera_camera_depth, aligned to left-stereo stamps; mean rate 13.0-13.2 Hz vs 15 Hz nominal => 11.8-13.1% missing in EVERY run'
+      pending:
+        - '12-13% shortfall is camera-side (reports/3_depth_loss_root_cause.md): vendor to confirm intended rate'
+        - 'unit of mono16 values unconfirmed (mm assumed from vendor doc; median 542)'
+        - 'value 65535 / 0 meaning (invalid) unconfirmed'
+    required: false          # Depth is OFF by default on the camera
+    default_off: true
+    types: *image_types
+    suffix: '/depth/image[^/]*(/compressed|/compressedDepth)?'
+  imu:
+    kind: imu
+    verification:
+      verified: true
+      evidence: 'imu 400.0 Hz, frame camera_camera_imu_optical, |a|=9.78 m/s2 at rest (so m/s2); pooled loss ~0.05% (0.12% in the 340 s run, 0 with depth off)'
+      pending:
+        - 'axes/gravity sign vs camera_camera_imu_optical (tf says identity to left) unconfirmed'
+        - 'covariances all 0 (unknown), orientation identity (not estimated)'
+        - 'BEST_EFFORT history depth 1 on the camera'
+    required: true
+    types: [sensor_msgs/msg/Imu]
+    suffix: '/imu(/data)?(_raw)?'
+  vio:
+    kind: vio
+    verification:
+      verified: false
+      evidence: "vio_100hz PoseStamped frame 'world', 100.0 Hz; pooled loss ~0.15% (0.29% in 340 s run) - above 0.1% policy limit"
+      pending:
+        - 'pose semantics (T_world_imu per vendor doc) unconfirmed'
+        - "'world' frame has no TF link to the camera tree"
+        - 'vendor doc says 15 Hz /insight/vio_pose - does not exist on 2.1.5'
+        - 'vio_status stays TRACKING_STATIC when stationary; behaviour in motion untested'
+    required: true
+    types:
+      - nav_msgs/msg/Odometry
+      - geometry_msgs/msg/PoseStamped
+      - geometry_msgs/msg/PoseWithCovarianceStamped
+    any_prefix: true         # vendor doc puts VIO under /insight/*, camera under /camera/*
+    suffix: '/(vio|vio_pose|vio_100hz|odom|odometry|pose)(/[^/]+)?'
+  rgb_info:
+    kind: camera_info
+    verification:
+      verified: true
+      evidence: 'color/camera_info 1088x1920, K fx=768.9, plumb_bob D=0, 30 Hz, frame matches image'
+      pending:
+        - 'D = 0 although distortion_model plumb_bob (rectified images assumed)'
+    required: true
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/(rgb|color)/camera_info'
+    for: rgb
+  stereo_left_info:
+    kind: camera_info
+    verification:
+      verified: true
+      evidence: 'infra1/camera_info 544x640 fx=307.385 cx=269.4 cy=323.5, 30 Hz'
+      pending:
+        - 'D=0 (rectified assumed)'
+    required: true
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/(stereo/)?(left|stereo_left|infra1)(_camera)?/camera_info'
+    for: stereo_left
+  stereo_right_info:
+    kind: camera_info
+    verification:
+      verified: true
+      evidence: 'infra2/camera_info same K, P[3]=-30.776 => baseline 0.10012 m (matches tf_static)'
+      pending:
+        - 'D=0 (rectified assumed)'
+    required: true
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/(stereo/)?(right|stereo_right|infra2)(_camera)?/camera_info'
+    for: stereo_right
+  depth_info:
+    kind: camera_info
+    verification:
+      verified: false
+      evidence: 'NO depth/camera_info topic exists on 2.1.5 (18 topics listed)'
+      pending:
+        - 'depth intrinsics presumably = infra1 (depth frame is identity from left in tf_static) - unconfirmed'
+    required: false
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/depth/camera_info'
+    for: depth
+
+# Global (un-prefixed) topics.
+global_topics:
+  tf:        {name: /tf,        type: tf2_msgs/msg/TFMessage, required: false,   # ABSENT on fw 2.1.5 (never published in any run)
+              verification: {verified: false, evidence: 'not published by the device in any run', pending: ['confirm absence is by design']}}
+  tf_static: {name: /tf_static, type: tf2_msgs/msg/TFMessage, required: true,
+              verification: {verified: false, evidence: '5 static edges rooted at camera_camera_left, identical in every run; baseline 0.10012 m consistent with CameraInfo',
+                             pending: ['extrinsic values not validated against calibration', 'camera_camera_imu_optical is identity from left: IMU axes unconfirmed', 'frame world (VIO) not connected']}}
+
+# Optional topics under the camera prefix recorded with --include-extra.
+extra_types:
+  - sensor_msgs/msg/Image
+  - sensor_msgs/msg/CompressedImage
+  - sensor_msgs/msg/CameraInfo
+  - sensor_msgs/msg/Imu
+  - nav_msgs/msg/Odometry
+  - geometry_msgs/msg/PoseStamped
+  - geometry_msgs/msg/PoseWithCovarianceStamped
+  - std_msgs/msg/String
+  - diagnostic_msgs/msg/DiagnosticArray
+  - tf2_msgs/msg/TFMessage
+
+# Sanity limits used by preflight/inspect.
+thresholds:
+  gap_factor: 1.5          # stamp gap > factor * median period counts as a drop
+  min_rate_ratio: 0.9      # measured / nominal rate below this => WARN
+  max_clock_offset_s: 1.0  # |receive time - header stamp| above this => WARN
+  min_free_gb: 5.0         # refuse/stop recording below this free space
+  max_loss_ratio: 0.001    # diagnostics: tolerated loss vs reference rate (0.1 %)
+
+# Extra topics observed on fw 2.1.5 (recorded with --include-extra; NOT verified roles):
+#   vio_image (PoseStamped 30 Hz, follows the image rate: 20 Hz when stereo=20 fps), vio_image_cov (PoseWithCovarianceStamped 30 Hz),
+#   vio_status (std_msgs/String 1 Hz, TRANSIENT_LOCAL, constant stamps), */image_raw and color/image_raw/compressed (publisher, 0 messages).

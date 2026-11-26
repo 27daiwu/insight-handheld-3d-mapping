@@ -49,3 +49,16 @@ def test_empty_and_unstamped():
     assert judge(analyze([], []), 30, TH)[0][0] == "FAIL"
     st = analyze([None] * 5, [i * NS for i in range(5)])
     assert st["stamped"] == 0 and st["recv_rate_hz"] == 1.0
+
+
+def test_clock_offset_finding_can_be_aggregated_by_caller():
+    s = series(30, 100, offset_ns=5 * NS)
+    st = analyze([x[1] for x in s], [x[0] for x in s])
+    assert any("clocks not aligned" in m for _, m in judge(st, 30, TH))
+    assert not any("clocks not aligned" in m for _, m in judge(st, 30, TH, clock_check=False))
+
+
+def test_headerless_types_are_not_stamp_parsed():
+    from insight_capture.stats import has_header
+    assert not has_header("std_msgs/msg/String") and not has_header("tf2_msgs/msg/TFMessage")
+    assert has_header("sensor_msgs/msg/Imu") and has_header("geometry_msgs/msg/PoseStamped")

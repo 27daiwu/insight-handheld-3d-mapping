@@ -1,0 +1,915 @@
+{
+  "topics": {
+    "/camera/camera/vio_status": {
+      "basis": "recv_time",
+      "count": 321,
+      "span_s": 319.557,
+      "median_period_ms": 999.9854,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 321,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 548.968,
+        "p50": 999.986,
+        "p99": 1001.583,
+        "max": 1009.517
+      },
+      "jitter_ms": 25.1869,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_only_gap_events": 0,
+      "recv_gap_events": 0,
+      "gaps_head": [],
+      "recv_gaps_head": []
+    },
+    "/camera/camera/infra2/camera_info": {
+      "basis": "header_stamp",
+      "count": 9607,
+      "span_s": 320.2,
+      "median_period_ms": 33.3338,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9607,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.135,
+        "p50": 33.334,
+        "p99": 33.399,
+        "max": 33.529
+      },
+      "jitter_ms": 0.0187,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5242,
+        "spread_ms": 17.235
+      },
+      "recv_only_gap_events": 0,
+      "recv_gap_events": 0,
+      "gaps_head": [],
+      "recv_gaps_head": []
+    },
+    "/camera/camera/vio_image_cov": {
+      "basis": "header_stamp",
+      "count": 9607,
+      "span_s": 320.2,
+      "median_period_ms": 33.3338,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9607,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.135,
+        "p50": 33.334,
+        "p99": 33.399,
+        "max": 33.529
+      },
+      "jitter_ms": 0.0187,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5246,
+        "spread_ms": 15.732
+      },
+      "recv_only_gap_events": 0,
+      "recv_gap_events": 0,
+      "gaps_head": [],
+      "recv_gaps_head": []
+    },
+    "/camera/camera/vio_100hz": {
+      "basis": "header_stamp",
+      "count": 31989,
+      "span_s": 320.2,
+      "median_period_ms": 10.0,
+      "gap_events": 122,
+      "est_missing": 123,
+      "loss_vs_median": 0.00383,
+      "expected_count": 32021,
+      "loss_vs_reference": 0.001,
+      "interval_ms": {
+        "min": 2.5,
+        "p50": 10.0,
+        "p99": 15.0,
+        "max": 27.5
+      },
+      "jitter_ms": 1.0793,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5037,
+        "spread_ms": 13.188
+      },
+      "recv_only_gap_events": 86,
+      "recv_gap_events": 89,
+      "gaps_head": [
+        {
+          "start_ns": 2474552454108,
+          "end_ns": 2474569954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 505
+        },
+        {
+          "start_ns": 2474952454108,
+          "end_ns": 2474969954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 545
+        },
+        {
+          "start_ns": 2475152454108,
+          "end_ns": 2475169954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 565
+        },
+        {
+          "start_ns": 2476549954108,
+          "end_ns": 2476569954108,
+          "dur_ms": 20.0,
+          "missing": 1,
+          "idx": 704
+        },
+        {
+          "start_ns": 2476919954108,
+          "end_ns": 2476939954108,
+          "dur_ms": 20.0,
+          "missing": 1,
+          "idx": 740
+        },
+        {
+          "start_ns": 2476952454108,
+          "end_ns": 2476969954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 743
+        },
+        {
+          "start_ns": 2480182454108,
+          "end_ns": 2480199954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 1066
+        },
+        {
+          "start_ns": 2483489954108,
+          "end_ns": 2483509954108,
+          "dur_ms": 20.0,
+          "missing": 1,
+          "idx": 1396
+        },
+        {
+          "start_ns": 2486607454108,
+          "end_ns": 2486624954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 1707
+        },
+        {
+          "start_ns": 2488752454108,
+          "end_ns": 2488769954108,
+          "dur_ms": 17.5,
+          "missing": 1,
+          "idx": 1922
+        }
+      ],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690122544475379,
+          "end_ns": 1795690122560428925,
+          "dur_ms": 15.954,
+          "missing": 1,
+          "idx": 253,
+          "stamp_dt_ms": 15.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690127054674980,
+          "end_ns": 1795690127074390896,
+          "dur_ms": 19.716,
+          "missing": 1,
+          "idx": 704,
+          "stamp_dt_ms": 20.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690127425794265,
+          "end_ns": 1795690127444239942,
+          "dur_ms": 18.446,
+          "missing": 1,
+          "idx": 740,
+          "stamp_dt_ms": 20.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690133294424812,
+          "end_ns": 1795690133310145165,
+          "dur_ms": 15.72,
+          "missing": 1,
+          "idx": 1326,
+          "stamp_dt_ms": 10.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690133994946306,
+          "end_ns": 1795690134014461957,
+          "dur_ms": 19.516,
+          "missing": 1,
+          "idx": 1396,
+          "stamp_dt_ms": 20.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690139365723948,
+          "end_ns": 1795690139384833548,
+          "dur_ms": 19.11,
+          "missing": 1,
+          "idx": 1932,
+          "stamp_dt_ms": 20.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690142674273090,
+          "end_ns": 1795690142691324841,
+          "dur_ms": 17.052,
+          "missing": 1,
+          "idx": 2262,
+          "stamp_dt_ms": 10.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690148354675934,
+          "end_ns": 1795690148374247723,
+          "dur_ms": 19.572,
+          "missing": 1,
+          "idx": 2830,
+          "stamp_dt_ms": 20.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690154254664166,
+          "end_ns": 1795690154274666618,
+          "dur_ms": 20.002,
+          "missing": 1,
+          "idx": 3419,
+          "stamp_dt_ms": 20.0,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690164214384027,
+          "end_ns": 1795690164229969349,
+          "dur_ms": 15.585,
+          "missing": 1,
+          "idx": 4414,
+          "stamp_dt_ms": 15.0,
+          "recv_only": true
+        }
+      ]
+    },
+    "/camera/camera/infra1/image_rect_raw": {
+      "basis": "header_stamp",
+      "count": 9607,
+      "span_s": 320.2,
+      "median_period_ms": 33.3338,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9607,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.135,
+        "p50": 33.334,
+        "p99": 33.399,
+        "max": 33.529
+      },
+      "jitter_ms": 0.0187,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5279,
+        "spread_ms": 23.18
+      },
+      "recv_only_gap_events": 1,
+      "recv_gap_events": 1,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690233791883808,
+          "end_ns": 1795690233843097523,
+          "dur_ms": 51.214,
+          "missing": 1,
+          "idx": 3414,
+          "stamp_dt_ms": 33.339,
+          "recv_only": true
+        }
+      ]
+    },
+    "/camera/camera/infra1/camera_info": {
+      "basis": "header_stamp",
+      "count": 9607,
+      "span_s": 320.2,
+      "median_period_ms": 33.3338,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9607,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.135,
+        "p50": 33.334,
+        "p99": 33.399,
+        "max": 33.529
+      },
+      "jitter_ms": 0.0187,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.524,
+        "spread_ms": 17.261
+      },
+      "recv_only_gap_events": 0,
+      "recv_gap_events": 0,
+      "gaps_head": [],
+      "recv_gaps_head": []
+    },
+    "/camera/camera/imu": {
+      "basis": "header_stamp",
+      "count": 128081,
+      "span_s": 320.2,
+      "median_period_ms": 2.5,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 128081,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 2.5,
+        "p50": 2.5,
+        "p99": 2.5,
+        "max": 2.5
+      },
+      "jitter_ms": 0.0,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5004,
+        "spread_ms": 18.987
+      },
+      "recv_only_gap_events": 6407,
+      "recv_gap_events": 6407,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690120068942360,
+          "end_ns": 1795690120073071681,
+          "dur_ms": 4.129,
+          "missing": 1,
+          "idx": 20,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120089331865,
+          "end_ns": 1795690120095113590,
+          "dur_ms": 5.782,
+          "missing": 1,
+          "idx": 28,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120130620322,
+          "end_ns": 1795690120134389470,
+          "dur_ms": 3.769,
+          "missing": 1,
+          "idx": 45,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120253853784,
+          "end_ns": 1795690120262834906,
+          "dur_ms": 8.981,
+          "missing": 3,
+          "idx": 94,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120263166836,
+          "end_ns": 1795690120267675891,
+          "dur_ms": 4.509,
+          "missing": 1,
+          "idx": 98,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120353157817,
+          "end_ns": 1795690120357070715,
+          "dur_ms": 3.913,
+          "missing": 1,
+          "idx": 134,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120365587595,
+          "end_ns": 1795690120369407539,
+          "dur_ms": 3.82,
+          "missing": 1,
+          "idx": 139,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120466379163,
+          "end_ns": 1795690120471890678,
+          "dur_ms": 5.512,
+          "missing": 1,
+          "idx": 179,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120478712370,
+          "end_ns": 1795690120482698858,
+          "dur_ms": 3.986,
+          "missing": 1,
+          "idx": 184,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690120489685409,
+          "end_ns": 1795690120497961713,
+          "dur_ms": 8.276,
+          "missing": 2,
+          "idx": 188,
+          "stamp_dt_ms": 2.5,
+          "recv_only": true
+        }
+      ]
+    },
+    "/camera/camera/depth/image_rect_raw": {
+      "basis": "header_stamp",
+      "count": 4186,
+      "span_s": 320.033,
+      "median_period_ms": 66.6712,
+      "gap_events": 774,
+      "est_missing": 774,
+      "loss_vs_median": 0.15605,
+      "expected_count": 4802,
+      "loss_vs_reference": 0.12828,
+      "interval_ms": {
+        "min": 33.242,
+        "p50": 66.671,
+        "p99": 133.34,
+        "max": 133.442
+      },
+      "jitter_ms": 18.2547,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.6664,
+        "spread_ms": 84.019
+      },
+      "recv_only_gap_events": 223,
+      "recv_gap_events": 223,
+      "gaps_head": [
+        {
+          "start_ns": 2469498179760,
+          "end_ns": 2469598204844,
+          "dur_ms": 100.025,
+          "missing": 1,
+          "idx": 2
+        },
+        {
+          "start_ns": 2469731515969,
+          "end_ns": 2469831517885,
+          "dur_ms": 100.002,
+          "missing": 1,
+          "idx": 5
+        },
+        {
+          "start_ns": 2469864833385,
+          "end_ns": 2469998170302,
+          "dur_ms": 133.337,
+          "missing": 1,
+          "idx": 7
+        },
+        {
+          "start_ns": 2470364841302,
+          "end_ns": 2470464842677,
+          "dur_ms": 100.001,
+          "missing": 1,
+          "idx": 13
+        },
+        {
+          "start_ns": 2470731515094,
+          "end_ns": 2470831526678,
+          "dur_ms": 100.012,
+          "missing": 1,
+          "idx": 18
+        },
+        {
+          "start_ns": 2471364840011,
+          "end_ns": 2471464841178,
+          "dur_ms": 100.001,
+          "missing": 1,
+          "idx": 26
+        },
+        {
+          "start_ns": 2471598178678,
+          "end_ns": 2471698181928,
+          "dur_ms": 100.003,
+          "missing": 1,
+          "idx": 29
+        },
+        {
+          "start_ns": 2471731514845,
+          "end_ns": 2471864944553,
+          "dur_ms": 133.43,
+          "missing": 1,
+          "idx": 31
+        },
+        {
+          "start_ns": 2472364841387,
+          "end_ns": 2472464897303,
+          "dur_ms": 100.056,
+          "missing": 1,
+          "idx": 39
+        },
+        {
+          "start_ns": 2472664847053,
+          "end_ns": 2472764949553,
+          "dur_ms": 100.103,
+          "missing": 1,
+          "idx": 43
+        }
+      ],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690120399065223,
+          "end_ns": 1795690120501649384,
+          "dur_ms": 102.584,
+          "missing": 1,
+          "idx": 5,
+          "stamp_dt_ms": 100.002,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690122258991323,
+          "end_ns": 1795690122372801645,
+          "dur_ms": 113.81,
+          "missing": 1,
+          "idx": 29,
+          "stamp_dt_ms": 100.003,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690123339758420,
+          "end_ns": 1795690123440843744,
+          "dur_ms": 101.085,
+          "missing": 1,
+          "idx": 43,
+          "stamp_dt_ms": 100.103,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690124262196438,
+          "end_ns": 1795690124364811745,
+          "dur_ms": 102.615,
+          "missing": 1,
+          "idx": 55,
+          "stamp_dt_ms": 99.995,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690124726689365,
+          "end_ns": 1795690124840163545,
+          "dur_ms": 113.474,
+          "missing": 1,
+          "idx": 61,
+          "stamp_dt_ms": 100.005,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690127262347535,
+          "end_ns": 1795690127371605715,
+          "dur_ms": 109.258,
+          "missing": 1,
+          "idx": 94,
+          "stamp_dt_ms": 100.003,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690127734271850,
+          "end_ns": 1795690127835734287,
+          "dur_ms": 101.462,
+          "missing": 1,
+          "idx": 100,
+          "stamp_dt_ms": 100.001,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690128133983370,
+          "end_ns": 1795690128240944316,
+          "dur_ms": 106.961,
+          "missing": 1,
+          "idx": 105,
+          "stamp_dt_ms": 100.004,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690128529959126,
+          "end_ns": 1795690128643939836,
+          "dur_ms": 113.981,
+          "missing": 1,
+          "idx": 110,
+          "stamp_dt_ms": 99.998,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690130067237677,
+          "end_ns": 1795690130170349697,
+          "dur_ms": 103.112,
+          "missing": 1,
+          "idx": 130,
+          "stamp_dt_ms": 100.006,
+          "recv_only": true
+        }
+      ]
+    },
+    "/camera/camera/infra2/image_rect_raw": {
+      "basis": "header_stamp",
+      "count": 9606,
+      "span_s": 320.167,
+      "median_period_ms": 33.3338,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9606,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.135,
+        "p50": 33.334,
+        "p99": 33.399,
+        "max": 33.529
+      },
+      "jitter_ms": 0.0187,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5308,
+        "spread_ms": 44.485
+      },
+      "recv_only_gap_events": 5,
+      "recv_gap_events": 5,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690191629178139,
+          "end_ns": 1795690191680345716,
+          "dur_ms": 51.168,
+          "missing": 1,
+          "idx": 2149,
+          "stamp_dt_ms": 33.337,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690233794748841,
+          "end_ns": 1795690233847467886,
+          "dur_ms": 52.719,
+          "missing": 1,
+          "idx": 3414,
+          "stamp_dt_ms": 33.339,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690236095174837,
+          "end_ns": 1795690236145394661,
+          "dur_ms": 50.22,
+          "missing": 1,
+          "idx": 3483,
+          "stamp_dt_ms": 33.336,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690326925701947,
+          "end_ns": 1795690326977658310,
+          "dur_ms": 51.956,
+          "missing": 1,
+          "idx": 6208,
+          "stamp_dt_ms": 33.336,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690404331846627,
+          "end_ns": 1795690404402194327,
+          "dur_ms": 70.348,
+          "missing": 1,
+          "idx": 8530,
+          "stamp_dt_ms": 33.325,
+          "recv_only": true
+        }
+      ]
+    },
+    "/camera/camera/color/image_rect_raw/compressed": {
+      "basis": "header_stamp",
+      "count": 9612,
+      "span_s": 320.166,
+      "median_period_ms": 33.3125,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9606,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.177,
+        "p50": 33.312,
+        "p99": 33.345,
+        "max": 33.449
+      },
+      "jitter_ms": 0.0111,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5487,
+        "spread_ms": 31.195
+      },
+      "recv_only_gap_events": 4,
+      "recv_gap_events": 4,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690153286337699,
+          "end_ns": 1795690153337381776,
+          "dur_ms": 51.044,
+          "missing": 1,
+          "idx": 999,
+          "stamp_dt_ms": 33.315,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690326075990075,
+          "end_ns": 1795690326126700059,
+          "dur_ms": 50.71,
+          "missing": 1,
+          "idx": 6186,
+          "stamp_dt_ms": 33.317,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690339569826314,
+          "end_ns": 1795690339630558897,
+          "dur_ms": 60.733,
+          "missing": 1,
+          "idx": 6591,
+          "stamp_dt_ms": 33.308,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690419950797205,
+          "end_ns": 1795690420001358833,
+          "dur_ms": 50.562,
+          "missing": 1,
+          "idx": 9004,
+          "stamp_dt_ms": 33.31,
+          "recv_only": true
+        }
+      ]
+    },
+    "/camera/camera/vio_image": {
+      "basis": "header_stamp",
+      "count": 9606,
+      "span_s": 320.167,
+      "median_period_ms": 33.3338,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9606,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.135,
+        "p50": 33.334,
+        "p99": 33.399,
+        "max": 33.529
+      },
+      "jitter_ms": 0.0187,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5245,
+        "spread_ms": 15.932
+      },
+      "recv_only_gap_events": 0,
+      "recv_gap_events": 0,
+      "gaps_head": [],
+      "recv_gaps_head": []
+    },
+    "/camera/camera/color/camera_info": {
+      "basis": "header_stamp",
+      "count": 9612,
+      "span_s": 320.166,
+      "median_period_ms": 33.3125,
+      "gap_events": 0,
+      "est_missing": 0,
+      "loss_vs_median": 0.0,
+      "expected_count": 9606,
+      "loss_vs_reference": 0.0,
+      "interval_ms": {
+        "min": 33.177,
+        "p50": 33.312,
+        "p99": 33.345,
+        "max": 33.449
+      },
+      "jitter_ms": 0.0111,
+      "non_monotonic": 0,
+      "duplicates": 0,
+      "recv_minus_stamp_s": {
+        "median": 1795687650.5489,
+        "spread_ms": 31.619
+      },
+      "recv_only_gap_events": 5,
+      "recv_gap_events": 5,
+      "gaps_head": [],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795690153286368525,
+          "end_ns": 1795690153337395377,
+          "dur_ms": 51.027,
+          "missing": 1,
+          "idx": 999,
+          "stamp_dt_ms": 33.315,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690326075793241,
+          "end_ns": 1795690326126944527,
+          "dur_ms": 51.151,
+          "missing": 1,
+          "idx": 6186,
+          "stamp_dt_ms": 33.317,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690339569777960,
+          "end_ns": 1795690339631013803,
+          "dur_ms": 61.236,
+          "missing": 1,
+          "idx": 6591,
+          "stamp_dt_ms": 33.308,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690368216977027,
+          "end_ns": 1795690368268086331,
+          "dur_ms": 51.109,
+          "missing": 1,
+          "idx": 7451,
+          "stamp_dt_ms": 33.304,
+          "recv_only": true
+        },
+        {
+          "start_ns": 1795690419950827967,
+          "end_ns": 1795690420001476616,
+          "dur_ms": 50.649,
+          "missing": 1,
+          "idx": 9004,
+          "stamp_dt_ms": 33.31,
+          "recv_only": true
+        }
+      ]
+    }
+  },
+  "systemic": {
+    "clusters_total": 0,
+    "systemic_events": 0,
+    "min_topics": 3,
+    "events": [],
+    "recv_only_events": 0,
+    "data_loss_events": 0,
+    "periodic": false
+  },
+  "pair_skew": {
+    "/camera/camera/infra1/image_rect_raw ~ /camera/camera/infra2/image_rect_raw": {
+      "matched": 9606,
+      "unmatched": 1,
+      "match_ratio": 0.9999,
+      "mean_ms": 0.0,
+      "max_abs_ms": 0.0
+    },
+    "/camera/camera/color/image_rect_raw/compressed ~ /camera/camera/infra1/image_rect_raw": {
+      "matched": 9612,
+      "unmatched": 0,
+      "match_ratio": 1.0,
+      "mean_ms": -0.0071,
+      "max_abs_ms": 16.6769
+    }
+  }
+}

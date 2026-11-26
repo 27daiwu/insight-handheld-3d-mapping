@@ -1,0 +1,4914 @@
+{
+ "original_state": {
+  "journal_lines_since_stop": null,
+  "active": "active",
+  "enabled": "enabled"
+ },
+ "start_epoch": 1795688306.6505444,
+ "phases": [
+  {
+   "name": "A_baseline_active",
+   "t_start": 0.0,
+   "adjtimex": {
+    "tick": 9999,
+    "freq_ppm": 75.97,
+    "status": "0x0"
+   },
+   "timesyncd": {
+    "offset": "+386us",
+    "packets": "4",
+    "poll": "8min 32s (min: 32s; max 34min 8s)"
+   },
+   "state": {
+    "journal_lines_since_stop": null,
+    "active": "active",
+    "enabled": "enabled"
+   },
+   "active_enter_mono": "ActiveEnterTimestampMonotonic=7942395237",
+   "t_end": 90.35,
+   "adjtimex_end": {
+    "tick": 9999,
+    "freq_ppm": 98.65,
+    "status": "0x0"
+   },
+   "timesyncd_end": {
+    "offset": "+386us",
+    "packets": "4",
+    "poll": "8min 32s (min: 32s; max 34min 8s)"
+   },
+   "state_end": {
+    "journal_lines_since_stop": null,
+    "active": "active",
+    "enabled": "enabled"
+   },
+   "active_enter_mono_end": "ActiveEnterTimestampMonotonic=7942395237"
+  },
+  {
+   "name": "B_timesyncd_stopped",
+   "t_start": 90.5,
+   "adjtimex": {
+    "tick": 9999,
+    "freq_ppm": 98.65,
+    "status": "0x0"
+   },
+   "timesyncd": "NOT QUERIED (timedatectl would D-Bus-activate timesyncd)",
+   "state": {
+    "journal_lines_since_stop": null,
+    "active": "inactive",
+    "enabled": "enabled"
+   },
+   "active_enter_mono": "ActiveEnterTimestampMonotonic=7942395237",
+   "t_end": 391.03,
+   "adjtimex_end": {
+    "tick": 9999,
+    "freq_ppm": 99.61,
+    "status": "0x0"
+   },
+   "timesyncd_end": "NOT QUERIED",
+   "state_end": {
+    "journal_lines_since_stop": null,
+    "active": "inactive",
+    "enabled": "enabled"
+   },
+   "active_enter_mono_end": "ActiveEnterTimestampMonotonic=7942395237"
+  },
+  {
+   "name": "C_restored",
+   "t_start": 391.23,
+   "adjtimex": {
+    "tick": 9999,
+    "freq_ppm": 99.67,
+    "status": "0x0"
+   },
+   "timesyncd": {
+    "offset": null,
+    "packets": "0",
+    "poll": "0 (min: 32s; max 34min 8s)"
+   },
+   "state": {
+    "journal_lines_since_stop": null,
+    "active": "active",
+    "enabled": "enabled"
+   },
+   "active_enter_mono": "ActiveEnterTimestampMonotonic=8820781979",
+   "t_end": 471.87,
+   "adjtimex_end": {
+    "tick": 10000,
+    "freq_ppm": -121.33,
+    "status": "0x0"
+   },
+   "timesyncd_end": {
+    "offset": "+11.154ms",
+    "packets": "2",
+    "poll": "2min 8s (min: 32s; max 34min 8s)"
+   },
+   "state_end": {
+    "journal_lines_since_stop": null,
+    "active": "active",
+    "enabled": "enabled"
+   },
+   "active_enter_mono_end": "ActiveEnterTimestampMonotonic=8820781979"
+  }
+ ],
+ "events": [
+  {
+   "t": 1795688397.1463747,
+   "tmono": 90.5,
+   "ev": "STOP systemd-timesyncd",
+   "rc": 0,
+   "state": {
+    "journal_lines_since_stop": null,
+    "active": "inactive",
+    "enabled": "enabled"
+   }
+  },
+  {
+   "t": 1795688697.868309,
+   "ev": "RESTORE start",
+   "rc": 0,
+   "state": {
+    "journal_lines_since_stop": null,
+    "active": "active",
+    "enabled": "enabled"
+   },
+   "tmono": 391.23
+  }
+ ],
+ "steps": [],
+ "samples": [
+  {
+   "t": 0.11,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -75.5,
+   "latency_ms": 197,
+   "mono_ns": 8429683503053,
+   "win_ms": 1795688306837
+  },
+  {
+   "t": 0.9,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 189,
+   "mono_ns": 8430477064835,
+   "win_ms": 1795688307628
+  },
+  {
+   "t": 1.7,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 192,
+   "mono_ns": 8431268061475,
+   "win_ms": 1795688308419
+  },
+  {
+   "t": 2.48,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.6,
+   "latency_ms": 183,
+   "mono_ns": 8432056385005,
+   "win_ms": 1795688309204
+  },
+  {
+   "t": 3.27,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.5,
+   "latency_ms": 181,
+   "mono_ns": 8432839473186,
+   "win_ms": 1795688309988
+  },
+  {
+   "t": 4.05,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 179,
+   "mono_ns": 8433620310352,
+   "win_ms": 1795688310768
+  },
+  {
+   "t": 4.83,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.5,
+   "latency_ms": 178,
+   "mono_ns": 8434399496777,
+   "win_ms": 1795688311546
+  },
+  {
+   "t": 5.6,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -66.6,
+   "latency_ms": 174,
+   "mono_ns": 8435176373355,
+   "win_ms": 1795688312321
+  },
+  {
+   "t": 6.38,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 186,
+   "mono_ns": 8435957129274,
+   "win_ms": 1795688313107
+  },
+  {
+   "t": 7.17,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -67.4,
+   "latency_ms": 176,
+   "mono_ns": 8436738613384,
+   "win_ms": 1795688313884
+  },
+  {
+   "t": 7.94,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.7,
+   "latency_ms": 178,
+   "mono_ns": 8437516299835,
+   "win_ms": 1795688314663
+  },
+  {
+   "t": 8.72,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 181,
+   "mono_ns": 8438296249623,
+   "win_ms": 1795688315444
+  },
+  {
+   "t": 9.51,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.5,
+   "latency_ms": 182,
+   "mono_ns": 8439078493867,
+   "win_ms": 1795688316227
+  },
+  {
+   "t": 10.29,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.6,
+   "latency_ms": 184,
+   "mono_ns": 8439862396543,
+   "win_ms": 1795688317011
+  },
+  {
+   "t": 11.07,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.4,
+   "latency_ms": 183,
+   "mono_ns": 8440646576881,
+   "win_ms": 1795688317794
+  },
+  {
+   "t": 11.86,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 183,
+   "mono_ns": 8441430208229,
+   "win_ms": 1795688318579
+  },
+  {
+   "t": 12.64,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 184,
+   "mono_ns": 8442214629201,
+   "win_ms": 1795688319365
+  },
+  {
+   "t": 13.43,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 183,
+   "mono_ns": 8442999058048,
+   "win_ms": 1795688320148
+  },
+  {
+   "t": 14.21,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 183,
+   "mono_ns": 8443782707290,
+   "win_ms": 1795688320931
+  },
+  {
+   "t": 14.99,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 182,
+   "mono_ns": 8444565774102,
+   "win_ms": 1795688321715
+  },
+  {
+   "t": 15.78,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 192,
+   "mono_ns": 8445353532940,
+   "win_ms": 1795688322503
+  },
+  {
+   "t": 16.57,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 186,
+   "mono_ns": 8446143539717,
+   "win_ms": 1795688323293
+  },
+  {
+   "t": 17.36,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 180,
+   "mono_ns": 8446927663033,
+   "win_ms": 1795688324076
+  },
+  {
+   "t": 18.14,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.1,
+   "latency_ms": 179,
+   "mono_ns": 8447707932366,
+   "win_ms": 1795688324854
+  },
+  {
+   "t": 18.92,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.4,
+   "latency_ms": 179,
+   "mono_ns": 8448487579180,
+   "win_ms": 1795688325635
+  },
+  {
+   "t": 19.7,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.8,
+   "latency_ms": 183,
+   "mono_ns": 8449269174359,
+   "win_ms": 1795688326416
+  },
+  {
+   "t": 20.48,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -67.2,
+   "latency_ms": 177,
+   "mono_ns": 8450049809608,
+   "win_ms": 1795688327195
+  },
+  {
+   "t": 21.27,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -76.4,
+   "latency_ms": 197,
+   "mono_ns": 8450837585226,
+   "win_ms": 1795688327992
+  },
+  {
+   "t": 22.1,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -89.6,
+   "latency_ms": 225,
+   "mono_ns": 8451673434363,
+   "win_ms": 1795688328841
+  },
+  {
+   "t": 22.92,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -81.1,
+   "latency_ms": 207,
+   "mono_ns": 8452489932611,
+   "win_ms": 1795688329649
+  },
+  {
+   "t": 23.72,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -74.8,
+   "latency_ms": 194,
+   "mono_ns": 8453291190804,
+   "win_ms": 1795688330444
+  },
+  {
+   "t": 24.51,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -74.0,
+   "latency_ms": 190,
+   "mono_ns": 8454083970646,
+   "win_ms": 1795688331236
+  },
+  {
+   "t": 25.3,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 184,
+   "mono_ns": 8454871398985,
+   "win_ms": 1795688332021
+  },
+  {
+   "t": 26.08,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -67.9,
+   "latency_ms": 178,
+   "mono_ns": 8455653064005,
+   "win_ms": 1795688332799
+  },
+  {
+   "t": 26.86,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.4,
+   "latency_ms": 181,
+   "mono_ns": 8456433616571,
+   "win_ms": 1795688333582
+  },
+  {
+   "t": 27.64,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 184,
+   "mono_ns": 8457216787668,
+   "win_ms": 1795688334366
+  },
+  {
+   "t": 28.43,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.0,
+   "latency_ms": 187,
+   "mono_ns": 8458003023250,
+   "win_ms": 1795688335153
+  },
+  {
+   "t": 29.21,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 180,
+   "mono_ns": 8458787341074,
+   "win_ms": 1795688335935
+  },
+  {
+   "t": 30.0,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 184,
+   "mono_ns": 8459569981820,
+   "win_ms": 1795688336719
+  },
+  {
+   "t": 30.78,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.0,
+   "latency_ms": 181,
+   "mono_ns": 8460353019345,
+   "win_ms": 1795688337501
+  },
+  {
+   "t": 31.56,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 184,
+   "mono_ns": 8461136088841,
+   "win_ms": 1795688338284
+  },
+  {
+   "t": 32.35,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 180,
+   "mono_ns": 8461918658708,
+   "win_ms": 1795688339067
+  },
+  {
+   "t": 33.13,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -66.8,
+   "latency_ms": 178,
+   "mono_ns": 8462698168195,
+   "win_ms": 1795688339843
+  },
+  {
+   "t": 33.9,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.7,
+   "latency_ms": 177,
+   "mono_ns": 8463476306239,
+   "win_ms": 1795688340623
+  },
+  {
+   "t": 34.68,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.0,
+   "latency_ms": 179,
+   "mono_ns": 8464254995223,
+   "win_ms": 1795688341401
+  },
+  {
+   "t": 35.46,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -67.9,
+   "latency_ms": 174,
+   "mono_ns": 8465032119295,
+   "win_ms": 1795688342178
+  },
+  {
+   "t": 36.24,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.8,
+   "latency_ms": 181,
+   "mono_ns": 8465810232637,
+   "win_ms": 1795688342957
+  },
+  {
+   "t": 37.02,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 180,
+   "mono_ns": 8466591277556,
+   "win_ms": 1795688343739
+  },
+  {
+   "t": 37.81,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -76.2,
+   "latency_ms": 194,
+   "mono_ns": 8467378802022,
+   "win_ms": 1795688344533
+  },
+  {
+   "t": 38.59,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.8,
+   "latency_ms": 180,
+   "mono_ns": 8468166214015,
+   "win_ms": 1795688345313
+  },
+  {
+   "t": 39.37,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -67.8,
+   "latency_ms": 181,
+   "mono_ns": 8468947191167,
+   "win_ms": 1795688346093
+  },
+  {
+   "t": 40.16,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 179,
+   "mono_ns": 8469727919408,
+   "win_ms": 1795688346875
+  },
+  {
+   "t": 40.94,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 189,
+   "mono_ns": 8470513067217,
+   "win_ms": 1795688347665
+  },
+  {
+   "t": 41.73,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 188,
+   "mono_ns": 8471302440704,
+   "win_ms": 1795688348452
+  },
+  {
+   "t": 42.52,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 184,
+   "mono_ns": 8472088770041,
+   "win_ms": 1795688349237
+  },
+  {
+   "t": 43.3,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.0,
+   "latency_ms": 180,
+   "mono_ns": 8472870949628,
+   "win_ms": 1795688350018
+  },
+  {
+   "t": 44.08,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 183,
+   "mono_ns": 8473652838441,
+   "win_ms": 1795688350801
+  },
+  {
+   "t": 44.86,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 183,
+   "mono_ns": 8474436696722,
+   "win_ms": 1795688351585
+  },
+  {
+   "t": 45.65,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.3,
+   "latency_ms": 181,
+   "mono_ns": 8475219704341,
+   "win_ms": 1795688352367
+  },
+  {
+   "t": 46.44,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -76.7,
+   "latency_ms": 195,
+   "mono_ns": 8476008327992,
+   "win_ms": 1795688353163
+  },
+  {
+   "t": 47.22,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -66.9,
+   "latency_ms": 173,
+   "mono_ns": 8476793067778,
+   "win_ms": 1795688353938
+  },
+  {
+   "t": 48.0,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 181,
+   "mono_ns": 8477571080086,
+   "win_ms": 1795688354719
+  },
+  {
+   "t": 48.79,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -79.6,
+   "latency_ms": 206,
+   "mono_ns": 8478365369308,
+   "win_ms": 1795688355523
+  },
+  {
+   "t": 49.61,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -88.0,
+   "latency_ms": 222,
+   "mono_ns": 8479179951638,
+   "win_ms": 1795688356346
+  },
+  {
+   "t": 50.43,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -84.6,
+   "latency_ms": 220,
+   "mono_ns": 8480001353774,
+   "win_ms": 1795688357164
+  },
+  {
+   "t": 51.25,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -85.2,
+   "latency_ms": 216,
+   "mono_ns": 8480819792947,
+   "win_ms": 1795688357983
+  },
+  {
+   "t": 52.06,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -84.6,
+   "latency_ms": 214,
+   "mono_ns": 8481635408963,
+   "win_ms": 1795688358798
+  },
+  {
+   "t": 52.88,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -82.3,
+   "latency_ms": 211,
+   "mono_ns": 8482448658274,
+   "win_ms": 1795688359609
+  },
+  {
+   "t": 53.69,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -81.7,
+   "latency_ms": 209,
+   "mono_ns": 8483259343551,
+   "win_ms": 1795688360419
+  },
+  {
+   "t": 54.5,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -82.8,
+   "latency_ms": 214,
+   "mono_ns": 8484071238280,
+   "win_ms": 1795688361232
+  },
+  {
+   "t": 55.32,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -88.0,
+   "latency_ms": 221,
+   "mono_ns": 8484888952033,
+   "win_ms": 1795688362055
+  },
+  {
+   "t": 56.14,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -84.8,
+   "latency_ms": 217,
+   "mono_ns": 8485708198368,
+   "win_ms": 1795688362871
+  },
+  {
+   "t": 56.95,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -82.5,
+   "latency_ms": 215,
+   "mono_ns": 8486524526994,
+   "win_ms": 1795688363685
+  },
+  {
+   "t": 57.77,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -85.9,
+   "latency_ms": 219,
+   "mono_ns": 8487342054169,
+   "win_ms": 1795688364506
+  },
+  {
+   "t": 58.59,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -87.0,
+   "latency_ms": 223,
+   "mono_ns": 8488163959326,
+   "win_ms": 1795688365329
+  },
+  {
+   "t": 59.42,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -88.9,
+   "latency_ms": 225,
+   "mono_ns": 8488989062072,
+   "win_ms": 1795688366156
+  },
+  {
+   "t": 60.24,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -87.1,
+   "latency_ms": 221,
+   "mono_ns": 8489812874822,
+   "win_ms": 1795688366978
+  },
+  {
+   "t": 61.07,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -91.8,
+   "latency_ms": 238,
+   "mono_ns": 8490643239580,
+   "win_ms": 1795688367813
+  },
+  {
+   "t": 61.9,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -87.4,
+   "latency_ms": 223,
+   "mono_ns": 8491474585869,
+   "win_ms": 1795688368640
+  },
+  {
+   "t": 62.72,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -87.2,
+   "latency_ms": 220,
+   "mono_ns": 8492296793262,
+   "win_ms": 1795688369462
+  },
+  {
+   "t": 63.54,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -78.8,
+   "latency_ms": 201,
+   "mono_ns": 8493108182957,
+   "win_ms": 1795688370265
+  },
+  {
+   "t": 64.33,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 189,
+   "mono_ns": 8493903897763,
+   "win_ms": 1795688371055
+  },
+  {
+   "t": 65.12,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 185,
+   "mono_ns": 8494691384298,
+   "win_ms": 1795688371841
+  },
+  {
+   "t": 65.91,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.8,
+   "latency_ms": 187,
+   "mono_ns": 8495478151237,
+   "win_ms": 1795688372628
+  },
+  {
+   "t": 66.69,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.0,
+   "latency_ms": 186,
+   "mono_ns": 8496264954623,
+   "win_ms": 1795688373415
+  },
+  {
+   "t": 67.48,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 184,
+   "mono_ns": 8497050257962,
+   "win_ms": 1795688374198
+  },
+  {
+   "t": 68.28,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -92.7,
+   "latency_ms": 227,
+   "mono_ns": 8497856317377,
+   "win_ms": 1795688375027
+  },
+  {
+   "t": 69.09,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.3,
+   "latency_ms": 188,
+   "mono_ns": 8498664727059,
+   "win_ms": 1795688375815
+  },
+  {
+   "t": 69.88,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 184,
+   "mono_ns": 8499451537874,
+   "win_ms": 1795688376601
+  },
+  {
+   "t": 70.7,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -36.6,
+   "latency_ms": 256,
+   "mono_ns": 8500272423724,
+   "win_ms": 1795688377387
+  },
+  {
+   "t": 71.52,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 184,
+   "mono_ns": 8501093100089,
+   "win_ms": 1795688378242
+  },
+  {
+   "t": 72.3,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 183,
+   "mono_ns": 8501877248901,
+   "win_ms": 1795688379026
+  },
+  {
+   "t": 73.09,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -75.3,
+   "latency_ms": 194,
+   "mono_ns": 8502666690671,
+   "win_ms": 1795688379820
+  },
+  {
+   "t": 73.88,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.6,
+   "latency_ms": 184,
+   "mono_ns": 8503456403801,
+   "win_ms": 1795688380605
+  },
+  {
+   "t": 74.67,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 185,
+   "mono_ns": 8504241399285,
+   "win_ms": 1795688381391
+  },
+  {
+   "t": 75.45,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -70.0,
+   "latency_ms": 183,
+   "mono_ns": 8505025988317,
+   "win_ms": 1795688382174
+  },
+  {
+   "t": 76.24,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 185,
+   "mono_ns": 8505810782884,
+   "win_ms": 1795688382960
+  },
+  {
+   "t": 77.03,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 190,
+   "mono_ns": 8506599114348,
+   "win_ms": 1795688383751
+  },
+  {
+   "t": 77.82,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -77.9,
+   "latency_ms": 200,
+   "mono_ns": 8507395077096,
+   "win_ms": 1795688384551
+  },
+  {
+   "t": 78.62,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -74.4,
+   "latency_ms": 191,
+   "mono_ns": 8508191637851,
+   "win_ms": 1795688385344
+  },
+  {
+   "t": 79.41,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.7,
+   "latency_ms": 185,
+   "mono_ns": 8508980336334,
+   "win_ms": 1795688386130
+  },
+  {
+   "t": 80.19,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 188,
+   "mono_ns": 8509767274071,
+   "win_ms": 1795688386918
+  },
+  {
+   "t": 80.98,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -69.6,
+   "latency_ms": 187,
+   "mono_ns": 8510555382324,
+   "win_ms": 1795688387703
+  },
+  {
+   "t": 81.77,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 188,
+   "mono_ns": 8511343454348,
+   "win_ms": 1795688388493
+  },
+  {
+   "t": 82.56,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 187,
+   "mono_ns": 8512131734221,
+   "win_ms": 1795688389281
+  },
+  {
+   "t": 83.35,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 187,
+   "mono_ns": 8512919507054,
+   "win_ms": 1795688390070
+  },
+  {
+   "t": 84.13,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 183,
+   "mono_ns": 8513704967043,
+   "win_ms": 1795688390854
+  },
+  {
+   "t": 84.91,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -68.6,
+   "latency_ms": 179,
+   "mono_ns": 8514486412379,
+   "win_ms": 1795688391633
+  },
+  {
+   "t": 85.7,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 185,
+   "mono_ns": 8515268928431,
+   "win_ms": 1795688392419
+  },
+  {
+   "t": 86.48,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.8,
+   "latency_ms": 186,
+   "mono_ns": 8516055213697,
+   "win_ms": 1795688393205
+  },
+  {
+   "t": 87.27,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 188,
+   "mono_ns": 8516843113634,
+   "win_ms": 1795688393993
+  },
+  {
+   "t": 88.06,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 186,
+   "mono_ns": 8517631181702,
+   "win_ms": 1795688394782
+  },
+  {
+   "t": 88.85,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -77.3,
+   "latency_ms": 195,
+   "mono_ns": 8518422714832,
+   "win_ms": 1795688395578
+  },
+  {
+   "t": 89.65,
+   "phase": "A_baseline_active",
+   "rt_minus_win_ms": -79.5,
+   "latency_ms": 203,
+   "mono_ns": 8519222526908,
+   "win_ms": 1795688396380
+  },
+  {
+   "t": 90.61,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -81.4,
+   "latency_ms": 206,
+   "mono_ns": 8520185570845,
+   "win_ms": 1795688397345
+  },
+  {
+   "t": 91.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 186,
+   "mono_ns": 8520981945421,
+   "win_ms": 1795688398131
+  },
+  {
+   "t": 92.2,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.7,
+   "latency_ms": 192,
+   "mono_ns": 8521771304524,
+   "win_ms": 1795688398924
+  },
+  {
+   "t": 92.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.1,
+   "latency_ms": 194,
+   "mono_ns": 8522564879904,
+   "win_ms": 1795688399717
+  },
+  {
+   "t": 93.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 187,
+   "mono_ns": 8523356242239,
+   "win_ms": 1795688400505
+  },
+  {
+   "t": 94.58,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.5,
+   "latency_ms": 200,
+   "mono_ns": 8524150516860,
+   "win_ms": 1795688401305
+  },
+  {
+   "t": 95.37,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 192,
+   "mono_ns": 8524947225628,
+   "win_ms": 1795688402099
+  },
+  {
+   "t": 96.17,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.0,
+   "latency_ms": 190,
+   "mono_ns": 8525739035937,
+   "win_ms": 1795688402891
+  },
+  {
+   "t": 96.96,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 190,
+   "mono_ns": 8526529741722,
+   "win_ms": 1795688403681
+  },
+  {
+   "t": 97.75,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.7,
+   "latency_ms": 188,
+   "mono_ns": 8527319311906,
+   "win_ms": 1795688404469
+  },
+  {
+   "t": 98.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.3,
+   "latency_ms": 188,
+   "mono_ns": 8528107707027,
+   "win_ms": 1795688405258
+  },
+  {
+   "t": 99.32,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.6,
+   "latency_ms": 190,
+   "mono_ns": 8528897405745,
+   "win_ms": 1795688406050
+  },
+  {
+   "t": 100.11,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.6,
+   "latency_ms": 178,
+   "mono_ns": 8529682403915,
+   "win_ms": 1795688406829
+  },
+  {
+   "t": 100.89,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 183,
+   "mono_ns": 8530463801086,
+   "win_ms": 1795688407612
+  },
+  {
+   "t": 101.68,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 186,
+   "mono_ns": 8531249313099,
+   "win_ms": 1795688408400
+  },
+  {
+   "t": 102.46,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 187,
+   "mono_ns": 8532036889862,
+   "win_ms": 1795688409187
+  },
+  {
+   "t": 103.25,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.9,
+   "latency_ms": 178,
+   "mono_ns": 8532820145034,
+   "win_ms": 1795688409966
+  },
+  {
+   "t": 104.04,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 212,
+   "mono_ns": 8533615752490,
+   "win_ms": 1795688410764
+  },
+  {
+   "t": 104.84,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 181,
+   "mono_ns": 8534413145707,
+   "win_ms": 1795688411561
+  },
+  {
+   "t": 105.62,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 183,
+   "mono_ns": 8535195920478,
+   "win_ms": 1795688412345
+  },
+  {
+   "t": 106.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 182,
+   "mono_ns": 8535979044102,
+   "win_ms": 1795688413128
+  },
+  {
+   "t": 107.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.8,
+   "latency_ms": 177,
+   "mono_ns": 8536759192102,
+   "win_ms": 1795688413905
+  },
+  {
+   "t": 107.97,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 183,
+   "mono_ns": 8537540007279,
+   "win_ms": 1795688414689
+  },
+  {
+   "t": 108.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -92.0,
+   "latency_ms": 241,
+   "mono_ns": 8538352962306,
+   "win_ms": 1795688415523
+  },
+  {
+   "t": 109.59,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.4,
+   "latency_ms": 181,
+   "mono_ns": 8539164646115,
+   "win_ms": 1795688416312
+  },
+  {
+   "t": 110.38,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.5,
+   "latency_ms": 199,
+   "mono_ns": 8539955452421,
+   "win_ms": 1795688417111
+  },
+  {
+   "t": 111.18,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 184,
+   "mono_ns": 8540747693295,
+   "win_ms": 1795688417897
+  },
+  {
+   "t": 111.97,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.0,
+   "latency_ms": 202,
+   "mono_ns": 8541541026762,
+   "win_ms": 1795688418699
+  },
+  {
+   "t": 112.77,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -79.4,
+   "latency_ms": 202,
+   "mono_ns": 8542343605077,
+   "win_ms": 1795688419501
+  },
+  {
+   "t": 113.56,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.5,
+   "latency_ms": 182,
+   "mono_ns": 8543136524326,
+   "win_ms": 1795688420285
+  },
+  {
+   "t": 114.34,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.1,
+   "latency_ms": 177,
+   "mono_ns": 8543916910624,
+   "win_ms": 1795688421062
+  },
+  {
+   "t": 115.12,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.4,
+   "latency_ms": 181,
+   "mono_ns": 8544696597554,
+   "win_ms": 1795688421844
+  },
+  {
+   "t": 115.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 183,
+   "mono_ns": 8545479273317,
+   "win_ms": 1795688422628
+  },
+  {
+   "t": 116.69,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 185,
+   "mono_ns": 8546263992097,
+   "win_ms": 1795688423413
+  },
+  {
+   "t": 117.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.3,
+   "latency_ms": 203,
+   "mono_ns": 8547058743258,
+   "win_ms": 1795688424217
+  },
+  {
+   "t": 118.28,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 181,
+   "mono_ns": 8547851331423,
+   "win_ms": 1795688424999
+  },
+  {
+   "t": 119.06,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 187,
+   "mono_ns": 8548636150942,
+   "win_ms": 1795688425787
+  },
+  {
+   "t": 119.85,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.6,
+   "latency_ms": 178,
+   "mono_ns": 8549419362533,
+   "win_ms": 1795688426565
+  },
+  {
+   "t": 120.63,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 185,
+   "mono_ns": 8550201609352,
+   "win_ms": 1795688427352
+  },
+  {
+   "t": 121.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.7,
+   "latency_ms": 179,
+   "mono_ns": 8550984306600,
+   "win_ms": 1795688428130
+  },
+  {
+   "t": 122.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.6,
+   "latency_ms": 180,
+   "mono_ns": 8551764375517,
+   "win_ms": 1795688428912
+  },
+  {
+   "t": 122.97,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.4,
+   "latency_ms": 179,
+   "mono_ns": 8552544640639,
+   "win_ms": 1795688429691
+  },
+  {
+   "t": 123.75,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.4,
+   "latency_ms": 183,
+   "mono_ns": 8553326559273,
+   "win_ms": 1795688430476
+  },
+  {
+   "t": 124.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.3,
+   "latency_ms": 182,
+   "mono_ns": 8554109744780,
+   "win_ms": 1795688431257
+  },
+  {
+   "t": 125.32,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 181,
+   "mono_ns": 8554891901489,
+   "win_ms": 1795688432039
+  },
+  {
+   "t": 126.1,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.5,
+   "latency_ms": 180,
+   "mono_ns": 8555673476049,
+   "win_ms": 1795688432820
+  },
+  {
+   "t": 126.88,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.4,
+   "latency_ms": 181,
+   "mono_ns": 8556454595728,
+   "win_ms": 1795688433602
+  },
+  {
+   "t": 127.67,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 187,
+   "mono_ns": 8557239245530,
+   "win_ms": 1795688434388
+  },
+  {
+   "t": 128.45,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 186,
+   "mono_ns": 8558026520350,
+   "win_ms": 1795688435176
+  },
+  {
+   "t": 129.25,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.9,
+   "latency_ms": 200,
+   "mono_ns": 8558820087880,
+   "win_ms": 1795688435976
+  },
+  {
+   "t": 130.04,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 189,
+   "mono_ns": 8559615124576,
+   "win_ms": 1795688436766
+  },
+  {
+   "t": 130.83,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 191,
+   "mono_ns": 8560405460647,
+   "win_ms": 1795688437556
+  },
+  {
+   "t": 131.62,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 188,
+   "mono_ns": 8561195319482,
+   "win_ms": 1795688438346
+  },
+  {
+   "t": 132.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.3,
+   "latency_ms": 188,
+   "mono_ns": 8561983689040,
+   "win_ms": 1795688439134
+  },
+  {
+   "t": 133.2,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 189,
+   "mono_ns": 8562772563649,
+   "win_ms": 1795688439923
+  },
+  {
+   "t": 133.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 187,
+   "mono_ns": 8563561375883,
+   "win_ms": 1795688440712
+  },
+  {
+   "t": 134.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 189,
+   "mono_ns": 8564350504825,
+   "win_ms": 1795688441501
+  },
+  {
+   "t": 135.57,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 190,
+   "mono_ns": 8565140750224,
+   "win_ms": 1795688442292
+  },
+  {
+   "t": 136.36,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 186,
+   "mono_ns": 8565929648314,
+   "win_ms": 1795688443079
+  },
+  {
+   "t": 137.14,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 187,
+   "mono_ns": 8566717072723,
+   "win_ms": 1795688443867
+  },
+  {
+   "t": 137.93,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.2,
+   "latency_ms": 189,
+   "mono_ns": 8567505820036,
+   "win_ms": 1795688444656
+  },
+  {
+   "t": 138.72,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 186,
+   "mono_ns": 8568294130236,
+   "win_ms": 1795688445444
+  },
+  {
+   "t": 139.51,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 189,
+   "mono_ns": 8569082503474,
+   "win_ms": 1795688446233
+  },
+  {
+   "t": 140.3,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 188,
+   "mono_ns": 8569871547570,
+   "win_ms": 1795688447022
+  },
+  {
+   "t": 141.09,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.5,
+   "latency_ms": 193,
+   "mono_ns": 8570662520530,
+   "win_ms": 1795688447815
+  },
+  {
+   "t": 141.88,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 187,
+   "mono_ns": 8571453370444,
+   "win_ms": 1795688448603
+  },
+  {
+   "t": 142.67,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 190,
+   "mono_ns": 8572242816734,
+   "win_ms": 1795688449395
+  },
+  {
+   "t": 143.47,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.1,
+   "latency_ms": 199,
+   "mono_ns": 8573037896420,
+   "win_ms": 1795688450193
+  },
+  {
+   "t": 144.26,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.9,
+   "latency_ms": 194,
+   "mono_ns": 8573835100268,
+   "win_ms": 1795688450989
+  },
+  {
+   "t": 145.06,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 191,
+   "mono_ns": 8574628260328,
+   "win_ms": 1795688451779
+  },
+  {
+   "t": 145.85,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.5,
+   "latency_ms": 190,
+   "mono_ns": 8575419470772,
+   "win_ms": 1795688452571
+  },
+  {
+   "t": 146.64,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 190,
+   "mono_ns": 8576210066945,
+   "win_ms": 1795688453361
+  },
+  {
+   "t": 147.43,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.4,
+   "latency_ms": 190,
+   "mono_ns": 8577000556025,
+   "win_ms": 1795688454152
+  },
+  {
+   "t": 148.22,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.1,
+   "latency_ms": 202,
+   "mono_ns": 8577796939178,
+   "win_ms": 1795688454952
+  },
+  {
+   "t": 149.03,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -78.6,
+   "latency_ms": 200,
+   "mono_ns": 8578598367585,
+   "win_ms": 1795688455755
+  },
+  {
+   "t": 149.82,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 191,
+   "mono_ns": 8579394297434,
+   "win_ms": 1795688456545
+  },
+  {
+   "t": 150.61,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 193,
+   "mono_ns": 8580186800888,
+   "win_ms": 1795688457339
+  },
+  {
+   "t": 151.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.7,
+   "latency_ms": 196,
+   "mono_ns": 8580982329503,
+   "win_ms": 1795688458137
+  },
+  {
+   "t": 152.2,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.0,
+   "latency_ms": 192,
+   "mono_ns": 8581777028106,
+   "win_ms": 1795688458929
+  },
+  {
+   "t": 153.0,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.4,
+   "latency_ms": 192,
+   "mono_ns": 8582569548564,
+   "win_ms": 1795688459722
+  },
+  {
+   "t": 153.79,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 185,
+   "mono_ns": 8583358667494,
+   "win_ms": 1795688460508
+  },
+  {
+   "t": 154.57,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 184,
+   "mono_ns": 8584143775675,
+   "win_ms": 1795688461293
+  },
+  {
+   "t": 155.36,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 185,
+   "mono_ns": 8584928900296,
+   "win_ms": 1795688462078
+  },
+  {
+   "t": 156.14,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.4,
+   "latency_ms": 185,
+   "mono_ns": 8585714611493,
+   "win_ms": 1795688462863
+  },
+  {
+   "t": 156.92,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.6,
+   "latency_ms": 179,
+   "mono_ns": 8586497378224,
+   "win_ms": 1795688463645
+  },
+  {
+   "t": 157.7,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.9,
+   "latency_ms": 179,
+   "mono_ns": 8587277108183,
+   "win_ms": 1795688464424
+  },
+  {
+   "t": 158.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.6,
+   "latency_ms": 182,
+   "mono_ns": 8588058399209,
+   "win_ms": 1795688465207
+  },
+  {
+   "t": 159.27,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.7,
+   "latency_ms": 182,
+   "mono_ns": 8588841333894,
+   "win_ms": 1795688465989
+  },
+  {
+   "t": 160.05,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 186,
+   "mono_ns": 8589625911378,
+   "win_ms": 1795688466775
+  },
+  {
+   "t": 160.84,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.7,
+   "latency_ms": 190,
+   "mono_ns": 8590414253256,
+   "win_ms": 1795688467567
+  },
+  {
+   "t": 161.64,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.2,
+   "latency_ms": 202,
+   "mono_ns": 8591210779115,
+   "win_ms": 1795688468369
+  },
+  {
+   "t": 162.43,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 181,
+   "mono_ns": 8592002899309,
+   "win_ms": 1795688469150
+  },
+  {
+   "t": 163.22,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 188,
+   "mono_ns": 8592788077094,
+   "win_ms": 1795688469939
+  },
+  {
+   "t": 164.01,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 191,
+   "mono_ns": 8593578067171,
+   "win_ms": 1795688470730
+  },
+  {
+   "t": 164.8,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 190,
+   "mono_ns": 8594369260214,
+   "win_ms": 1795688471521
+  },
+  {
+   "t": 165.59,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 194,
+   "mono_ns": 8595162142536,
+   "win_ms": 1795688472314
+  },
+  {
+   "t": 166.38,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 189,
+   "mono_ns": 8595954065229,
+   "win_ms": 1795688473105
+  },
+  {
+   "t": 167.17,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 194,
+   "mono_ns": 8596745930187,
+   "win_ms": 1795688473897
+  },
+  {
+   "t": 167.96,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.4,
+   "latency_ms": 188,
+   "mono_ns": 8597537569786,
+   "win_ms": 1795688474687
+  },
+  {
+   "t": 168.75,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.2,
+   "latency_ms": 187,
+   "mono_ns": 8598325819673,
+   "win_ms": 1795688475476
+  },
+  {
+   "t": 169.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.4,
+   "latency_ms": 189,
+   "mono_ns": 8599114605292,
+   "win_ms": 1795688476264
+  },
+  {
+   "t": 170.34,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.9,
+   "latency_ms": 196,
+   "mono_ns": 8599908129560,
+   "win_ms": 1795688477062
+  },
+  {
+   "t": 171.13,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 191,
+   "mono_ns": 8600702713154,
+   "win_ms": 1795688477854
+  },
+  {
+   "t": 171.93,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -83.2,
+   "latency_ms": 210,
+   "mono_ns": 8601503817910,
+   "win_ms": 1795688478665
+  },
+  {
+   "t": 172.73,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 186,
+   "mono_ns": 8602302037978,
+   "win_ms": 1795688479451
+  },
+  {
+   "t": 173.52,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 187,
+   "mono_ns": 8603088918278,
+   "win_ms": 1795688480239
+  },
+  {
+   "t": 174.3,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.3,
+   "latency_ms": 187,
+   "mono_ns": 8603876681493,
+   "win_ms": 1795688481027
+  },
+  {
+   "t": 175.09,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.5,
+   "latency_ms": 193,
+   "mono_ns": 8604667459404,
+   "win_ms": 1795688481820
+  },
+  {
+   "t": 175.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -90.9,
+   "latency_ms": 227,
+   "mono_ns": 8605478048574,
+   "win_ms": 1795688482647
+  },
+  {
+   "t": 176.71,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 190,
+   "mono_ns": 8606287345350,
+   "win_ms": 1795688483438
+  },
+  {
+   "t": 177.5,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.7,
+   "latency_ms": 188,
+   "mono_ns": 8607077300345,
+   "win_ms": 1795688484227
+  },
+  {
+   "t": 178.3,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.3,
+   "latency_ms": 193,
+   "mono_ns": 8607868740689,
+   "win_ms": 1795688485022
+  },
+  {
+   "t": 179.09,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.9,
+   "latency_ms": 196,
+   "mono_ns": 8608664111507,
+   "win_ms": 1795688485818
+  },
+  {
+   "t": 179.89,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 189,
+   "mono_ns": 8609457651205,
+   "win_ms": 1795688486609
+  },
+  {
+   "t": 180.68,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.9,
+   "latency_ms": 192,
+   "mono_ns": 8610249122075,
+   "win_ms": 1795688487402
+  },
+  {
+   "t": 181.47,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 189,
+   "mono_ns": 8611040351037,
+   "win_ms": 1795688488190
+  },
+  {
+   "t": 182.26,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 190,
+   "mono_ns": 8611830781989,
+   "win_ms": 1795688488982
+  },
+  {
+   "t": 183.05,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 187,
+   "mono_ns": 8612620326087,
+   "win_ms": 1795688489771
+  },
+  {
+   "t": 183.84,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 186,
+   "mono_ns": 8613407675390,
+   "win_ms": 1795688490557
+  },
+  {
+   "t": 184.63,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.0,
+   "latency_ms": 195,
+   "mono_ns": 8614198955936,
+   "win_ms": 1795688491353
+  },
+  {
+   "t": 185.42,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -78.1,
+   "latency_ms": 199,
+   "mono_ns": 8614996869044,
+   "win_ms": 1795688492153
+  },
+  {
+   "t": 186.22,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.4,
+   "latency_ms": 195,
+   "mono_ns": 8615794605075,
+   "win_ms": 1795688492948
+  },
+  {
+   "t": 187.02,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 193,
+   "mono_ns": 8616588904523,
+   "win_ms": 1795688493742
+  },
+  {
+   "t": 187.81,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.7,
+   "latency_ms": 191,
+   "mono_ns": 8617381303045,
+   "win_ms": 1795688494534
+  },
+  {
+   "t": 188.6,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.0,
+   "latency_ms": 195,
+   "mono_ns": 8618174971070,
+   "win_ms": 1795688495328
+  },
+  {
+   "t": 189.4,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.8,
+   "latency_ms": 196,
+   "mono_ns": 8618971168130,
+   "win_ms": 1795688496125
+  },
+  {
+   "t": 190.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 186,
+   "mono_ns": 8619762546328,
+   "win_ms": 1795688496912
+  },
+  {
+   "t": 190.98,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 185,
+   "mono_ns": 8620548695702,
+   "win_ms": 1795688497697
+  },
+  {
+   "t": 191.76,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.2,
+   "latency_ms": 182,
+   "mono_ns": 8621332792525,
+   "win_ms": 1795688498480
+  },
+  {
+   "t": 192.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 183,
+   "mono_ns": 8622115914417,
+   "win_ms": 1795688499263
+  },
+  {
+   "t": 193.33,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.1,
+   "latency_ms": 183,
+   "mono_ns": 8622899926932,
+   "win_ms": 1795688500048
+  },
+  {
+   "t": 194.11,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.0,
+   "latency_ms": 189,
+   "mono_ns": 8623687001448,
+   "win_ms": 1795688500837
+  },
+  {
+   "t": 194.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.1,
+   "latency_ms": 197,
+   "mono_ns": 8624480919610,
+   "win_ms": 1795688501635
+  },
+  {
+   "t": 195.7,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 183,
+   "mono_ns": 8625271847709,
+   "win_ms": 1795688502420
+  },
+  {
+   "t": 196.48,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 186,
+   "mono_ns": 8626057073405,
+   "win_ms": 1795688503206
+  },
+  {
+   "t": 197.27,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 186,
+   "mono_ns": 8626843497946,
+   "win_ms": 1795688503993
+  },
+  {
+   "t": 198.06,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.2,
+   "latency_ms": 187,
+   "mono_ns": 8627630795890,
+   "win_ms": 1795688504781
+  },
+  {
+   "t": 198.85,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 189,
+   "mono_ns": 8628419510832,
+   "win_ms": 1795688505569
+  },
+  {
+   "t": 199.64,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -79.6,
+   "latency_ms": 200,
+   "mono_ns": 8629214350626,
+   "win_ms": 1795688506372
+  },
+  {
+   "t": 200.44,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.2,
+   "latency_ms": 196,
+   "mono_ns": 8630012792045,
+   "win_ms": 1795688507167
+  },
+  {
+   "t": 201.23,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 192,
+   "mono_ns": 8630807243711,
+   "win_ms": 1795688507959
+  },
+  {
+   "t": 202.03,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.6,
+   "latency_ms": 191,
+   "mono_ns": 8631599398839,
+   "win_ms": 1795688508752
+  },
+  {
+   "t": 202.83,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -79.2,
+   "latency_ms": 204,
+   "mono_ns": 8632397813420,
+   "win_ms": 1795688509555
+  },
+  {
+   "t": 203.62,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.4,
+   "latency_ms": 194,
+   "mono_ns": 8633197550201,
+   "win_ms": 1795688510349
+  },
+  {
+   "t": 204.42,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.9,
+   "latency_ms": 200,
+   "mono_ns": 8633995101802,
+   "win_ms": 1795688511140
+  },
+  {
+   "t": 205.22,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -78.2,
+   "latency_ms": 200,
+   "mono_ns": 8634795832748,
+   "win_ms": 1795688511952
+  },
+  {
+   "t": 206.02,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.3,
+   "latency_ms": 192,
+   "mono_ns": 8635592687192,
+   "win_ms": 1795688512743
+  },
+  {
+   "t": 206.81,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 191,
+   "mono_ns": 8636385101898,
+   "win_ms": 1795688513535
+  },
+  {
+   "t": 207.61,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.6,
+   "latency_ms": 200,
+   "mono_ns": 8637181399436,
+   "win_ms": 1795688514337
+  },
+  {
+   "t": 208.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.6,
+   "latency_ms": 198,
+   "mono_ns": 8637981357668,
+   "win_ms": 1795688515137
+  },
+  {
+   "t": 209.2,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.5,
+   "latency_ms": 192,
+   "mono_ns": 8638777486047,
+   "win_ms": 1795688515930
+  },
+  {
+   "t": 210.0,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 193,
+   "mono_ns": 8639570848093,
+   "win_ms": 1795688516722
+  },
+  {
+   "t": 210.79,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 192,
+   "mono_ns": 8640364102034,
+   "win_ms": 1795688517516
+  },
+  {
+   "t": 211.58,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.5,
+   "latency_ms": 191,
+   "mono_ns": 8641156504449,
+   "win_ms": 1795688518308
+  },
+  {
+   "t": 212.38,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.6,
+   "latency_ms": 191,
+   "mono_ns": 8641948399976,
+   "win_ms": 1795688519101
+  },
+  {
+   "t": 213.17,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.4,
+   "latency_ms": 200,
+   "mono_ns": 8642744623681,
+   "win_ms": 1795688519899
+  },
+  {
+   "t": 213.97,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 187,
+   "mono_ns": 8643538532596,
+   "win_ms": 1795688520688
+  },
+  {
+   "t": 214.76,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.8,
+   "latency_ms": 193,
+   "mono_ns": 8644329236004,
+   "win_ms": 1795688521482
+  },
+  {
+   "t": 215.55,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.3,
+   "latency_ms": 194,
+   "mono_ns": 8645123695683,
+   "win_ms": 1795688522277
+  },
+  {
+   "t": 216.34,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 192,
+   "mono_ns": 8645917338850,
+   "win_ms": 1795688523069
+  },
+  {
+   "t": 217.14,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 190,
+   "mono_ns": 8646709083928,
+   "win_ms": 1795688523861
+  },
+  {
+   "t": 217.93,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 192,
+   "mono_ns": 8647500701410,
+   "win_ms": 1795688524653
+  },
+  {
+   "t": 218.73,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -78.4,
+   "latency_ms": 205,
+   "mono_ns": 8648299567611,
+   "win_ms": 1795688525456
+  },
+  {
+   "t": 219.53,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 192,
+   "mono_ns": 8649098672640,
+   "win_ms": 1795688526251
+  },
+  {
+   "t": 220.32,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 195,
+   "mono_ns": 8649892855743,
+   "win_ms": 1795688527046
+  },
+  {
+   "t": 221.12,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.8,
+   "latency_ms": 194,
+   "mono_ns": 8650688181320,
+   "win_ms": 1795688527842
+  },
+  {
+   "t": 221.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.2,
+   "latency_ms": 194,
+   "mono_ns": 8651482815484,
+   "win_ms": 1795688528636
+  },
+  {
+   "t": 222.71,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 195,
+   "mono_ns": 8652277858703,
+   "win_ms": 1795688529431
+  },
+  {
+   "t": 223.5,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 192,
+   "mono_ns": 8653072107253,
+   "win_ms": 1795688530224
+  },
+  {
+   "t": 224.3,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -82.5,
+   "latency_ms": 211,
+   "mono_ns": 8653874462942,
+   "win_ms": 1795688531035
+  },
+  {
+   "t": 225.1,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 192,
+   "mono_ns": 8654676740983,
+   "win_ms": 1795688531828
+  },
+  {
+   "t": 225.9,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 192,
+   "mono_ns": 8655469655923,
+   "win_ms": 1795688532622
+  },
+  {
+   "t": 226.69,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.4,
+   "latency_ms": 196,
+   "mono_ns": 8656264564701,
+   "win_ms": 1795688533418
+  },
+  {
+   "t": 227.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.1,
+   "latency_ms": 193,
+   "mono_ns": 8657059900559,
+   "win_ms": 1795688534212
+  },
+  {
+   "t": 228.28,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.0,
+   "latency_ms": 194,
+   "mono_ns": 8657853981637,
+   "win_ms": 1795688535007
+  },
+  {
+   "t": 229.08,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.4,
+   "latency_ms": 194,
+   "mono_ns": 8658648570166,
+   "win_ms": 1795688535801
+  },
+  {
+   "t": 229.88,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -84.3,
+   "latency_ms": 215,
+   "mono_ns": 8659453672920,
+   "win_ms": 1795688536616
+  },
+  {
+   "t": 230.69,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.4,
+   "latency_ms": 194,
+   "mono_ns": 8660258647606,
+   "win_ms": 1795688537411
+  },
+  {
+   "t": 231.48,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.0,
+   "latency_ms": 193,
+   "mono_ns": 8661052997143,
+   "win_ms": 1795688538206
+  },
+  {
+   "t": 232.27,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.6,
+   "latency_ms": 192,
+   "mono_ns": 8661846417388,
+   "win_ms": 1795688538998
+  },
+  {
+   "t": 233.07,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.8,
+   "latency_ms": 194,
+   "mono_ns": 8662640171652,
+   "win_ms": 1795688539793
+  },
+  {
+   "t": 233.86,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.9,
+   "latency_ms": 192,
+   "mono_ns": 8663434051691,
+   "win_ms": 1795688540587
+  },
+  {
+   "t": 234.66,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.3,
+   "latency_ms": 194,
+   "mono_ns": 8664227719548,
+   "win_ms": 1795688541382
+  },
+  {
+   "t": 235.45,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.1,
+   "latency_ms": 197,
+   "mono_ns": 8665023893682,
+   "win_ms": 1795688542179
+  },
+  {
+   "t": 236.25,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.7,
+   "latency_ms": 192,
+   "mono_ns": 8665819302722,
+   "win_ms": 1795688542972
+  },
+  {
+   "t": 237.04,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.7,
+   "latency_ms": 194,
+   "mono_ns": 8666613342376,
+   "win_ms": 1795688543766
+  },
+  {
+   "t": 237.83,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 191,
+   "mono_ns": 8667406703154,
+   "win_ms": 1795688544558
+  },
+  {
+   "t": 238.64,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -88.6,
+   "latency_ms": 225,
+   "mono_ns": 8668215424561,
+   "win_ms": 1795688545382
+  },
+  {
+   "t": 239.45,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.8,
+   "latency_ms": 185,
+   "mono_ns": 8669021201747,
+   "win_ms": 1795688546171
+  },
+  {
+   "t": 240.23,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 186,
+   "mono_ns": 8669807520262,
+   "win_ms": 1795688546957
+  },
+  {
+   "t": 241.03,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 193,
+   "mono_ns": 8670597765730,
+   "win_ms": 1795688547749
+  },
+  {
+   "t": 241.82,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.3,
+   "latency_ms": 190,
+   "mono_ns": 8671389724724,
+   "win_ms": 1795688548540
+  },
+  {
+   "t": 242.61,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 193,
+   "mono_ns": 8672181878971,
+   "win_ms": 1795688549335
+  },
+  {
+   "t": 243.4,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 191,
+   "mono_ns": 8672974656188,
+   "win_ms": 1795688550127
+  },
+  {
+   "t": 244.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 192,
+   "mono_ns": 8673766816687,
+   "win_ms": 1795688550919
+  },
+  {
+   "t": 244.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.6,
+   "latency_ms": 190,
+   "mono_ns": 8674558435209,
+   "win_ms": 1795688551710
+  },
+  {
+   "t": 245.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.8,
+   "latency_ms": 198,
+   "mono_ns": 8675353220931,
+   "win_ms": 1795688552508
+  },
+  {
+   "t": 246.58,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.1,
+   "latency_ms": 196,
+   "mono_ns": 8676150863401,
+   "win_ms": 1795688553306
+  },
+  {
+   "t": 247.37,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 191,
+   "mono_ns": 8676945098638,
+   "win_ms": 1795688554097
+  },
+  {
+   "t": 248.17,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.2,
+   "latency_ms": 197,
+   "mono_ns": 8677739772876,
+   "win_ms": 1795688554894
+  },
+  {
+   "t": 248.96,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 194,
+   "mono_ns": 8678535696033,
+   "win_ms": 1795688555688
+  },
+  {
+   "t": 249.76,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.7,
+   "latency_ms": 208,
+   "mono_ns": 8679337297027,
+   "win_ms": 1795688556491
+  },
+  {
+   "t": 250.57,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -81.1,
+   "latency_ms": 206,
+   "mono_ns": 8680144911275,
+   "win_ms": 1795688557304
+  },
+  {
+   "t": 251.38,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.3,
+   "latency_ms": 208,
+   "mono_ns": 8680952708722,
+   "win_ms": 1795688558111
+  },
+  {
+   "t": 252.18,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 195,
+   "mono_ns": 8681754919313,
+   "win_ms": 1795688558908
+  },
+  {
+   "t": 252.98,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -78.3,
+   "latency_ms": 202,
+   "mono_ns": 8682553747279,
+   "win_ms": 1795688559710
+  },
+  {
+   "t": 253.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -78.9,
+   "latency_ms": 204,
+   "mono_ns": 8683357113747,
+   "win_ms": 1795688560514
+  },
+  {
+   "t": 254.6,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -90.9,
+   "latency_ms": 229,
+   "mono_ns": 8684174121704,
+   "win_ms": 1795688561343
+  },
+  {
+   "t": 255.42,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -82.0,
+   "latency_ms": 208,
+   "mono_ns": 8684993025073,
+   "win_ms": 1795688562153
+  },
+  {
+   "t": 256.22,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 192,
+   "mono_ns": 8685793731915,
+   "win_ms": 1795688562946
+  },
+  {
+   "t": 257.01,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 193,
+   "mono_ns": 8686587322641,
+   "win_ms": 1795688563739
+  },
+  {
+   "t": 257.81,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.8,
+   "latency_ms": 195,
+   "mono_ns": 8687382201208,
+   "win_ms": 1795688564535
+  },
+  {
+   "t": 258.6,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 188,
+   "mono_ns": 8688174506990,
+   "win_ms": 1795688565325
+  },
+  {
+   "t": 259.39,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.6,
+   "latency_ms": 194,
+   "mono_ns": 8688966404206,
+   "win_ms": 1795688566118
+  },
+  {
+   "t": 260.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.9,
+   "latency_ms": 200,
+   "mono_ns": 8689764128161,
+   "win_ms": 1795688566919
+  },
+  {
+   "t": 260.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.4,
+   "latency_ms": 192,
+   "mono_ns": 8690560611403,
+   "win_ms": 1795688567712
+  },
+  {
+   "t": 261.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 191,
+   "mono_ns": 8691352782718,
+   "win_ms": 1795688568505
+  },
+  {
+   "t": 262.57,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 192,
+   "mono_ns": 8692145461752,
+   "win_ms": 1795688569296
+  },
+  {
+   "t": 263.37,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.6,
+   "latency_ms": 192,
+   "mono_ns": 8692938385052,
+   "win_ms": 1795688570091
+  },
+  {
+   "t": 264.16,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 193,
+   "mono_ns": 8693731750991,
+   "win_ms": 1795688570884
+  },
+  {
+   "t": 264.95,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.3,
+   "latency_ms": 193,
+   "mono_ns": 8694525664501,
+   "win_ms": 1795688571679
+  },
+  {
+   "t": 265.75,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.8,
+   "latency_ms": 191,
+   "mono_ns": 8695318164861,
+   "win_ms": 1795688572468
+  },
+  {
+   "t": 266.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 192,
+   "mono_ns": 8696110158167,
+   "win_ms": 1795688573262
+  },
+  {
+   "t": 267.33,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 189,
+   "mono_ns": 8696901542726,
+   "win_ms": 1795688574052
+  },
+  {
+   "t": 268.12,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 192,
+   "mono_ns": 8697692853987,
+   "win_ms": 1795688574843
+  },
+  {
+   "t": 268.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 193,
+   "mono_ns": 8698486166235,
+   "win_ms": 1795688575638
+  },
+  {
+   "t": 269.71,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.8,
+   "latency_ms": 195,
+   "mono_ns": 8699281160118,
+   "win_ms": 1795688576435
+  },
+  {
+   "t": 270.51,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.9,
+   "latency_ms": 213,
+   "mono_ns": 8700086095691,
+   "win_ms": 1795688577239
+  },
+  {
+   "t": 271.32,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 190,
+   "mono_ns": 8700888590348,
+   "win_ms": 1795688578039
+  },
+  {
+   "t": 272.11,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.8,
+   "latency_ms": 199,
+   "mono_ns": 8701684218144,
+   "win_ms": 1795688578840
+  },
+  {
+   "t": 272.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 191,
+   "mono_ns": 8702480261176,
+   "win_ms": 1795688579632
+  },
+  {
+   "t": 273.7,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.1,
+   "latency_ms": 193,
+   "mono_ns": 8703272899226,
+   "win_ms": 1795688580425
+  },
+  {
+   "t": 274.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 190,
+   "mono_ns": 8704065080221,
+   "win_ms": 1795688581217
+  },
+  {
+   "t": 275.29,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.7,
+   "latency_ms": 195,
+   "mono_ns": 8704858343300,
+   "win_ms": 1795688582011
+  },
+  {
+   "t": 276.08,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.6,
+   "latency_ms": 190,
+   "mono_ns": 8705651369716,
+   "win_ms": 1795688582803
+  },
+  {
+   "t": 276.87,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 191,
+   "mono_ns": 8706442667845,
+   "win_ms": 1795688583595
+  },
+  {
+   "t": 277.66,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 190,
+   "mono_ns": 8707233783617,
+   "win_ms": 1795688584385
+  },
+  {
+   "t": 278.45,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 188,
+   "mono_ns": 8708023210343,
+   "win_ms": 1795688585174
+  },
+  {
+   "t": 279.24,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.0,
+   "latency_ms": 188,
+   "mono_ns": 8708812045929,
+   "win_ms": 1795688585962
+  },
+  {
+   "t": 280.03,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 190,
+   "mono_ns": 8709601882166,
+   "win_ms": 1795688586752
+  },
+  {
+   "t": 280.82,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 193,
+   "mono_ns": 8710393785750,
+   "win_ms": 1795688587546
+  },
+  {
+   "t": 281.61,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.2,
+   "latency_ms": 192,
+   "mono_ns": 8711186823887,
+   "win_ms": 1795688588339
+  },
+  {
+   "t": 282.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -79.7,
+   "latency_ms": 203,
+   "mono_ns": 8711985257284,
+   "win_ms": 1795688589143
+  },
+  {
+   "t": 283.21,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.0,
+   "latency_ms": 191,
+   "mono_ns": 8712783017492,
+   "win_ms": 1795688589935
+  },
+  {
+   "t": 284.0,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 188,
+   "mono_ns": 8713573145265,
+   "win_ms": 1795688590724
+  },
+  {
+   "t": 284.79,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 188,
+   "mono_ns": 8714362032528,
+   "win_ms": 1795688591513
+  },
+  {
+   "t": 285.58,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 189,
+   "mono_ns": 8715151116798,
+   "win_ms": 1795688592302
+  },
+  {
+   "t": 286.37,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 189,
+   "mono_ns": 8715940648974,
+   "win_ms": 1795688593092
+  },
+  {
+   "t": 287.16,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.5,
+   "latency_ms": 191,
+   "mono_ns": 8716731465999,
+   "win_ms": 1795688593884
+  },
+  {
+   "t": 287.95,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.0,
+   "latency_ms": 196,
+   "mono_ns": 8717525949240,
+   "win_ms": 1795688594680
+  },
+  {
+   "t": 288.75,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.3,
+   "latency_ms": 192,
+   "mono_ns": 8718320680490,
+   "win_ms": 1795688595474
+  },
+  {
+   "t": 289.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 189,
+   "mono_ns": 8719111592102,
+   "win_ms": 1795688596262
+  },
+  {
+   "t": 290.33,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.4,
+   "latency_ms": 190,
+   "mono_ns": 8719901600117,
+   "win_ms": 1795688597053
+  },
+  {
+   "t": 291.12,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 192,
+   "mono_ns": 8720693191037,
+   "win_ms": 1795688597844
+  },
+  {
+   "t": 291.91,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 184,
+   "mono_ns": 8721482038541,
+   "win_ms": 1795688598631
+  },
+  {
+   "t": 292.73,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -110.6,
+   "latency_ms": 265,
+   "mono_ns": 8722307440128,
+   "win_ms": 1795688599496
+  },
+  {
+   "t": 293.57,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.4,
+   "latency_ms": 196,
+   "mono_ns": 8723138616864,
+   "win_ms": 1795688600293
+  },
+  {
+   "t": 294.36,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 187,
+   "mono_ns": 8723930871938,
+   "win_ms": 1795688601081
+  },
+  {
+   "t": 295.15,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 189,
+   "mono_ns": 8724719715459,
+   "win_ms": 1795688601871
+  },
+  {
+   "t": 295.94,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -79.1,
+   "latency_ms": 204,
+   "mono_ns": 8725516940964,
+   "win_ms": 1795688602674
+  },
+  {
+   "t": 296.74,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.2,
+   "latency_ms": 189,
+   "mono_ns": 8726313826819,
+   "win_ms": 1795688603464
+  },
+  {
+   "t": 297.53,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.4,
+   "latency_ms": 187,
+   "mono_ns": 8727102614356,
+   "win_ms": 1795688604252
+  },
+  {
+   "t": 298.32,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 191,
+   "mono_ns": 8727892348296,
+   "win_ms": 1795688605043
+  },
+  {
+   "t": 299.11,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.6,
+   "latency_ms": 194,
+   "mono_ns": 8728685397806,
+   "win_ms": 1795688605839
+  },
+  {
+   "t": 299.9,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 189,
+   "mono_ns": 8729477463802,
+   "win_ms": 1795688606627
+  },
+  {
+   "t": 300.7,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.9,
+   "latency_ms": 191,
+   "mono_ns": 8730268125316,
+   "win_ms": 1795688607421
+  },
+  {
+   "t": 301.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.7,
+   "latency_ms": 196,
+   "mono_ns": 8731062323093,
+   "win_ms": 1795688608216
+  },
+  {
+   "t": 302.28,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 193,
+   "mono_ns": 8731857298697,
+   "win_ms": 1795688609009
+  },
+  {
+   "t": 303.08,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 188,
+   "mono_ns": 8732648406666,
+   "win_ms": 1795688609798
+  },
+  {
+   "t": 303.87,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.5,
+   "latency_ms": 191,
+   "mono_ns": 8733438454515,
+   "win_ms": 1795688610590
+  },
+  {
+   "t": 304.66,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -77.8,
+   "latency_ms": 200,
+   "mono_ns": 8734234197662,
+   "win_ms": 1795688611390
+  },
+  {
+   "t": 305.46,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 189,
+   "mono_ns": 8735029199650,
+   "win_ms": 1795688612180
+  },
+  {
+   "t": 306.25,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 187,
+   "mono_ns": 8735817662527,
+   "win_ms": 1795688612967
+  },
+  {
+   "t": 307.04,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.5,
+   "latency_ms": 194,
+   "mono_ns": 8736608460134,
+   "win_ms": 1795688613761
+  },
+  {
+   "t": 307.83,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 190,
+   "mono_ns": 8737401232681,
+   "win_ms": 1795688614553
+  },
+  {
+   "t": 308.62,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 187,
+   "mono_ns": 8738190842101,
+   "win_ms": 1795688615340
+  },
+  {
+   "t": 309.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 186,
+   "mono_ns": 8738978157610,
+   "win_ms": 1795688616127
+  },
+  {
+   "t": 310.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 188,
+   "mono_ns": 8739765554804,
+   "win_ms": 1795688616916
+  },
+  {
+   "t": 310.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.7,
+   "latency_ms": 206,
+   "mono_ns": 8740563310607,
+   "win_ms": 1795688617722
+  },
+  {
+   "t": 311.79,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 189,
+   "mono_ns": 8741361928300,
+   "win_ms": 1795688618512
+  },
+  {
+   "t": 312.58,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 193,
+   "mono_ns": 8742154001763,
+   "win_ms": 1795688619305
+  },
+  {
+   "t": 313.37,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.0,
+   "latency_ms": 187,
+   "mono_ns": 8742945014667,
+   "win_ms": 1795688620095
+  },
+  {
+   "t": 314.16,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 189,
+   "mono_ns": 8743733754884,
+   "win_ms": 1795688620885
+  },
+  {
+   "t": 314.95,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 189,
+   "mono_ns": 8744523268303,
+   "win_ms": 1795688621674
+  },
+  {
+   "t": 315.74,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 195,
+   "mono_ns": 8745315934829,
+   "win_ms": 1795688622469
+  },
+  {
+   "t": 316.54,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 191,
+   "mono_ns": 8746109364937,
+   "win_ms": 1795688623259
+  },
+  {
+   "t": 317.33,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 187,
+   "mono_ns": 8746898852067,
+   "win_ms": 1795688624049
+  },
+  {
+   "t": 318.11,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 188,
+   "mono_ns": 8747686936684,
+   "win_ms": 1795688624837
+  },
+  {
+   "t": 318.9,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 187,
+   "mono_ns": 8748475067646,
+   "win_ms": 1795688625625
+  },
+  {
+   "t": 319.69,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 186,
+   "mono_ns": 8749261869082,
+   "win_ms": 1795688626411
+  },
+  {
+   "t": 320.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.3,
+   "latency_ms": 204,
+   "mono_ns": 8750057677401,
+   "win_ms": 1795688627216
+  },
+  {
+   "t": 321.28,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.5,
+   "latency_ms": 190,
+   "mono_ns": 8750855465865,
+   "win_ms": 1795688628007
+  },
+  {
+   "t": 322.08,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -79.2,
+   "latency_ms": 199,
+   "mono_ns": 8751650757700,
+   "win_ms": 1795688628808
+  },
+  {
+   "t": 322.87,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.3,
+   "latency_ms": 179,
+   "mono_ns": 8752440676769,
+   "win_ms": 1795688629587
+  },
+  {
+   "t": 323.65,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.6,
+   "latency_ms": 181,
+   "mono_ns": 8753221411918,
+   "win_ms": 1795688630369
+  },
+  {
+   "t": 324.43,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 181,
+   "mono_ns": 8754002816432,
+   "win_ms": 1795688631151
+  },
+  {
+   "t": 325.21,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.0,
+   "latency_ms": 180,
+   "mono_ns": 8754783966495,
+   "win_ms": 1795688631932
+  },
+  {
+   "t": 325.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.5,
+   "latency_ms": 179,
+   "mono_ns": 8755564486647,
+   "win_ms": 1795688632712
+  },
+  {
+   "t": 326.77,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 182,
+   "mono_ns": 8756345851840,
+   "win_ms": 1795688633493
+  },
+  {
+   "t": 327.55,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -65.2,
+   "latency_ms": 175,
+   "mono_ns": 8757124761696,
+   "win_ms": 1795688634268
+  },
+  {
+   "t": 328.34,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.8,
+   "latency_ms": 196,
+   "mono_ns": 8757910228109,
+   "win_ms": 1795688635065
+  },
+  {
+   "t": 329.13,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.7,
+   "latency_ms": 179,
+   "mono_ns": 8758698318910,
+   "win_ms": 1795688635845
+  },
+  {
+   "t": 329.9,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -65.4,
+   "latency_ms": 177,
+   "mono_ns": 8759476639997,
+   "win_ms": 1795688636620
+  },
+  {
+   "t": 330.69,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 184,
+   "mono_ns": 8760257680572,
+   "win_ms": 1795688637407
+  },
+  {
+   "t": 331.47,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.0,
+   "latency_ms": 177,
+   "mono_ns": 8761039012430,
+   "win_ms": 1795688638186
+  },
+  {
+   "t": 332.24,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.5,
+   "latency_ms": 177,
+   "mono_ns": 8761816519631,
+   "win_ms": 1795688638961
+  },
+  {
+   "t": 333.02,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.2,
+   "latency_ms": 179,
+   "mono_ns": 8762594821430,
+   "win_ms": 1795688639742
+  },
+  {
+   "t": 333.8,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.2,
+   "latency_ms": 176,
+   "mono_ns": 8763372811351,
+   "win_ms": 1795688640517
+  },
+  {
+   "t": 334.59,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -82.2,
+   "latency_ms": 205,
+   "mono_ns": 8764163812912,
+   "win_ms": 1795688641324
+  },
+  {
+   "t": 335.38,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.1,
+   "latency_ms": 178,
+   "mono_ns": 8764955911345,
+   "win_ms": 1795688642102
+  },
+  {
+   "t": 336.16,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.6,
+   "latency_ms": 176,
+   "mono_ns": 8765733445057,
+   "win_ms": 1795688642878
+  },
+  {
+   "t": 336.94,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.4,
+   "latency_ms": 179,
+   "mono_ns": 8766511593178,
+   "win_ms": 1795688643658
+  },
+  {
+   "t": 337.72,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 182,
+   "mono_ns": 8767292816439,
+   "win_ms": 1795688644441
+  },
+  {
+   "t": 338.5,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.6,
+   "latency_ms": 184,
+   "mono_ns": 8768076444594,
+   "win_ms": 1795688645225
+  },
+  {
+   "t": 339.29,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.2,
+   "latency_ms": 187,
+   "mono_ns": 8768862770289,
+   "win_ms": 1795688646009
+  },
+  {
+   "t": 340.07,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.2,
+   "latency_ms": 174,
+   "mono_ns": 8769643812269,
+   "win_ms": 1795688646788
+  },
+  {
+   "t": 340.85,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.1,
+   "latency_ms": 181,
+   "mono_ns": 8770421865835,
+   "win_ms": 1795688647570
+  },
+  {
+   "t": 341.63,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 187,
+   "mono_ns": 8771206354486,
+   "win_ms": 1795688648357
+  },
+  {
+   "t": 342.42,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.6,
+   "latency_ms": 178,
+   "mono_ns": 8771989447361,
+   "win_ms": 1795688649135
+  },
+  {
+   "t": 343.2,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.6,
+   "latency_ms": 178,
+   "mono_ns": 8772768414043,
+   "win_ms": 1795688649914
+  },
+  {
+   "t": 343.98,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 183,
+   "mono_ns": 8773550005324,
+   "win_ms": 1795688650699
+  },
+  {
+   "t": 344.76,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.6,
+   "latency_ms": 176,
+   "mono_ns": 8774330383199,
+   "win_ms": 1795688651476
+  },
+  {
+   "t": 345.53,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -67.5,
+   "latency_ms": 175,
+   "mono_ns": 8775106535304,
+   "win_ms": 1795688652252
+  },
+  {
+   "t": 346.31,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -65.6,
+   "latency_ms": 171,
+   "mono_ns": 8775880360804,
+   "win_ms": 1795688653024
+  },
+  {
+   "t": 347.08,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.2,
+   "latency_ms": 178,
+   "mono_ns": 8776655778115,
+   "win_ms": 1795688653802
+  },
+  {
+   "t": 347.86,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -65.9,
+   "latency_ms": 175,
+   "mono_ns": 8777433122120,
+   "win_ms": 1795688654577
+  },
+  {
+   "t": 348.64,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.9,
+   "latency_ms": 177,
+   "mono_ns": 8778210049331,
+   "win_ms": 1795688655355
+  },
+  {
+   "t": 349.42,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.8,
+   "latency_ms": 182,
+   "mono_ns": 8778990155822,
+   "win_ms": 1795688656137
+  },
+  {
+   "t": 350.2,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.2,
+   "latency_ms": 174,
+   "mono_ns": 8779768801421,
+   "win_ms": 1795688656913
+  },
+  {
+   "t": 350.97,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 182,
+   "mono_ns": 8780547137292,
+   "win_ms": 1795688657695
+  },
+  {
+   "t": 351.75,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -66.8,
+   "latency_ms": 177,
+   "mono_ns": 8781327230325,
+   "win_ms": 1795688658472
+  },
+  {
+   "t": 352.53,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.6,
+   "latency_ms": 180,
+   "mono_ns": 8782106435699,
+   "win_ms": 1795688659253
+  },
+  {
+   "t": 353.32,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 188,
+   "mono_ns": 8782891190228,
+   "win_ms": 1795688660042
+  },
+  {
+   "t": 354.1,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.4,
+   "latency_ms": 178,
+   "mono_ns": 8783674633579,
+   "win_ms": 1795688660821
+  },
+  {
+   "t": 354.88,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -68.7,
+   "latency_ms": 180,
+   "mono_ns": 8784454254339,
+   "win_ms": 1795688661601
+  },
+  {
+   "t": 355.67,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -80.2,
+   "latency_ms": 201,
+   "mono_ns": 8785245834486,
+   "win_ms": 1795688662404
+  },
+  {
+   "t": 356.47,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.8,
+   "latency_ms": 182,
+   "mono_ns": 8786038148174,
+   "win_ms": 1795688663186
+  },
+  {
+   "t": 357.25,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.0,
+   "latency_ms": 183,
+   "mono_ns": 8786821034036,
+   "win_ms": 1795688663968
+  },
+  {
+   "t": 358.04,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -76.7,
+   "latency_ms": 197,
+   "mono_ns": 8787611305251,
+   "win_ms": 1795688664766
+  },
+  {
+   "t": 358.83,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 188,
+   "mono_ns": 8788404440166,
+   "win_ms": 1795688665555
+  },
+  {
+   "t": 359.62,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.6,
+   "latency_ms": 186,
+   "mono_ns": 8789192376558,
+   "win_ms": 1795688666342
+  },
+  {
+   "t": 360.41,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 185,
+   "mono_ns": 8789978867840,
+   "win_ms": 1795688667128
+  },
+  {
+   "t": 361.19,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 188,
+   "mono_ns": 8790765907603,
+   "win_ms": 1795688667915
+  },
+  {
+   "t": 361.98,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.1,
+   "latency_ms": 191,
+   "mono_ns": 8791555849575,
+   "win_ms": 1795688668708
+  },
+  {
+   "t": 362.77,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 187,
+   "mono_ns": 8792345423283,
+   "win_ms": 1795688669496
+  },
+  {
+   "t": 363.56,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 189,
+   "mono_ns": 8793134032664,
+   "win_ms": 1795688670285
+  },
+  {
+   "t": 364.35,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.8,
+   "latency_ms": 182,
+   "mono_ns": 8793920227490,
+   "win_ms": 1795688671068
+  },
+  {
+   "t": 365.13,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 186,
+   "mono_ns": 8794704803455,
+   "win_ms": 1795688671854
+  },
+  {
+   "t": 365.92,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 185,
+   "mono_ns": 8795491000218,
+   "win_ms": 1795688672640
+  },
+  {
+   "t": 366.71,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 187,
+   "mono_ns": 8796277920769,
+   "win_ms": 1795688673428
+  },
+  {
+   "t": 367.49,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.2,
+   "latency_ms": 185,
+   "mono_ns": 8797064781663,
+   "win_ms": 1795688674213
+  },
+  {
+   "t": 368.28,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 188,
+   "mono_ns": 8797852362107,
+   "win_ms": 1795688675003
+  },
+  {
+   "t": 369.07,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.5,
+   "latency_ms": 183,
+   "mono_ns": 8798638536281,
+   "win_ms": 1795688675787
+  },
+  {
+   "t": 369.85,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.7,
+   "latency_ms": 184,
+   "mono_ns": 8799422312074,
+   "win_ms": 1795688676572
+  },
+  {
+   "t": 370.63,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 185,
+   "mono_ns": 8800207250962,
+   "win_ms": 1795688677356
+  },
+  {
+   "t": 371.42,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 188,
+   "mono_ns": 8800994270804,
+   "win_ms": 1795688678145
+  },
+  {
+   "t": 372.21,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 184,
+   "mono_ns": 8801781146421,
+   "win_ms": 1795688678929
+  },
+  {
+   "t": 372.99,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 186,
+   "mono_ns": 8802567135494,
+   "win_ms": 1795688679717
+  },
+  {
+   "t": 373.78,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.4,
+   "latency_ms": 189,
+   "mono_ns": 8803355619511,
+   "win_ms": 1795688680505
+  },
+  {
+   "t": 374.57,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 186,
+   "mono_ns": 8804144110739,
+   "win_ms": 1795688681294
+  },
+  {
+   "t": 375.36,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 187,
+   "mono_ns": 8804931253866,
+   "win_ms": 1795688682080
+  },
+  {
+   "t": 376.15,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.5,
+   "latency_ms": 192,
+   "mono_ns": 8805721478477,
+   "win_ms": 1795688682873
+  },
+  {
+   "t": 376.94,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 187,
+   "mono_ns": 8806511612664,
+   "win_ms": 1795688683662
+  },
+  {
+   "t": 377.73,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 188,
+   "mono_ns": 8807299510022,
+   "win_ms": 1795688684449
+  },
+  {
+   "t": 378.51,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 183,
+   "mono_ns": 8808085671575,
+   "win_ms": 1795688685234
+  },
+  {
+   "t": 379.3,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 188,
+   "mono_ns": 8808872013124,
+   "win_ms": 1795688686023
+  },
+  {
+   "t": 380.09,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 187,
+   "mono_ns": 8809660017515,
+   "win_ms": 1795688686811
+  },
+  {
+   "t": 380.87,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 184,
+   "mono_ns": 8810446164926,
+   "win_ms": 1795688687595
+  },
+  {
+   "t": 381.66,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -74.9,
+   "latency_ms": 194,
+   "mono_ns": 8811236057590,
+   "win_ms": 1795688688389
+  },
+  {
+   "t": 382.45,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 185,
+   "mono_ns": 8812026027398,
+   "win_ms": 1795688689175
+  },
+  {
+   "t": 383.24,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 186,
+   "mono_ns": 8812811922836,
+   "win_ms": 1795688689961
+  },
+  {
+   "t": 384.03,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 187,
+   "mono_ns": 8813599086699,
+   "win_ms": 1795688690749
+  },
+  {
+   "t": 384.81,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.1,
+   "latency_ms": 185,
+   "mono_ns": 8814385913375,
+   "win_ms": 1795688691535
+  },
+  {
+   "t": 385.6,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -72.2,
+   "latency_ms": 187,
+   "mono_ns": 8815172753530,
+   "win_ms": 1795688692323
+  },
+  {
+   "t": 386.39,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 189,
+   "mono_ns": 8815961299653,
+   "win_ms": 1795688693113
+  },
+  {
+   "t": 387.18,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -75.1,
+   "latency_ms": 193,
+   "mono_ns": 8816752847904,
+   "win_ms": 1795688693906
+  },
+  {
+   "t": 387.97,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 189,
+   "mono_ns": 8817544494109,
+   "win_ms": 1795688694694
+  },
+  {
+   "t": 388.76,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 189,
+   "mono_ns": 8818333877959,
+   "win_ms": 1795688695485
+  },
+  {
+   "t": 389.55,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -70.5,
+   "latency_ms": 185,
+   "mono_ns": 8819121511056,
+   "win_ms": 1795688696270
+  },
+  {
+   "t": 390.33,
+   "phase": "B_timesyncd_stopped",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 183,
+   "mono_ns": 8819906513087,
+   "win_ms": 1795688697056
+  },
+  {
+   "t": 391.34,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 185,
+   "mono_ns": 8820908962895,
+   "win_ms": 1795688698058
+  },
+  {
+   "t": 392.12,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 189,
+   "mono_ns": 8821696782955,
+   "win_ms": 1795688698848
+  },
+  {
+   "t": 392.91,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.0,
+   "latency_ms": 186,
+   "mono_ns": 8822485000349,
+   "win_ms": 1795688699634
+  },
+  {
+   "t": 393.7,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 185,
+   "mono_ns": 8823271287078,
+   "win_ms": 1795688700420
+  },
+  {
+   "t": 394.49,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 191,
+   "mono_ns": 8824060254802,
+   "win_ms": 1795688701212
+  },
+  {
+   "t": 395.28,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 186,
+   "mono_ns": 8824849315084,
+   "win_ms": 1795688701998
+  },
+  {
+   "t": 396.07,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -76.7,
+   "latency_ms": 197,
+   "mono_ns": 8825641307786,
+   "win_ms": 1795688702796
+  },
+  {
+   "t": 396.86,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 183,
+   "mono_ns": 8826432086578,
+   "win_ms": 1795688703580
+  },
+  {
+   "t": 397.66,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -87.8,
+   "latency_ms": 220,
+   "mono_ns": 8827234240952,
+   "win_ms": 1795688704400
+  },
+  {
+   "t": 398.47,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 188,
+   "mono_ns": 8828038695213,
+   "win_ms": 1795688705188
+  },
+  {
+   "t": 399.25,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 187,
+   "mono_ns": 8828826680258,
+   "win_ms": 1795688705976
+  },
+  {
+   "t": 400.04,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 188,
+   "mono_ns": 8829614704121,
+   "win_ms": 1795688706763
+  },
+  {
+   "t": 400.83,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.7,
+   "latency_ms": 188,
+   "mono_ns": 8830403283898,
+   "win_ms": 1795688707553
+  },
+  {
+   "t": 401.62,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.8,
+   "latency_ms": 186,
+   "mono_ns": 8831191204707,
+   "win_ms": 1795688708339
+  },
+  {
+   "t": 402.4,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.0,
+   "latency_ms": 184,
+   "mono_ns": 8831977018195,
+   "win_ms": 1795688709124
+  },
+  {
+   "t": 403.19,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.1,
+   "latency_ms": 189,
+   "mono_ns": 8832763920976,
+   "win_ms": 1795688709912
+  },
+  {
+   "t": 403.98,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 190,
+   "mono_ns": 8833554104077,
+   "win_ms": 1795688710705
+  },
+  {
+   "t": 404.77,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.2,
+   "latency_ms": 186,
+   "mono_ns": 8834342845572,
+   "win_ms": 1795688711489
+  },
+  {
+   "t": 405.56,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 185,
+   "mono_ns": 8835128875791,
+   "win_ms": 1795688712276
+  },
+  {
+   "t": 406.34,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.0,
+   "latency_ms": 188,
+   "mono_ns": 8835915998552,
+   "win_ms": 1795688713064
+  },
+  {
+   "t": 407.13,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.9,
+   "latency_ms": 183,
+   "mono_ns": 8836702136539,
+   "win_ms": 1795688713849
+  },
+  {
+   "t": 407.91,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 185,
+   "mono_ns": 8837486936986,
+   "win_ms": 1795688714634
+  },
+  {
+   "t": 408.7,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.0,
+   "latency_ms": 187,
+   "mono_ns": 8838273988768,
+   "win_ms": 1795688715421
+  },
+  {
+   "t": 409.49,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 194,
+   "mono_ns": 8839065583163,
+   "win_ms": 1795688716216
+  },
+  {
+   "t": 410.29,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 190,
+   "mono_ns": 8839858545981,
+   "win_ms": 1795688717009
+  },
+  {
+   "t": 411.08,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.9,
+   "latency_ms": 187,
+   "mono_ns": 8840648071037,
+   "win_ms": 1795688717795
+  },
+  {
+   "t": 411.86,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.8,
+   "latency_ms": 187,
+   "mono_ns": 8841436195809,
+   "win_ms": 1795688718584
+  },
+  {
+   "t": 412.65,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.4,
+   "latency_ms": 188,
+   "mono_ns": 8842224615811,
+   "win_ms": 1795688719373
+  },
+  {
+   "t": 413.44,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.1,
+   "latency_ms": 189,
+   "mono_ns": 8843013870814,
+   "win_ms": 1795688720161
+  },
+  {
+   "t": 414.24,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -78.7,
+   "latency_ms": 207,
+   "mono_ns": 8843812335579,
+   "win_ms": 1795688720969
+  },
+  {
+   "t": 415.04,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 194,
+   "mono_ns": 8844613181666,
+   "win_ms": 1795688721765
+  },
+  {
+   "t": 415.83,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.2,
+   "latency_ms": 188,
+   "mono_ns": 8845404834925,
+   "win_ms": 1795688722552
+  },
+  {
+   "t": 416.62,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 192,
+   "mono_ns": 8846195902377,
+   "win_ms": 1795688723347
+  },
+  {
+   "t": 417.41,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.3,
+   "latency_ms": 186,
+   "mono_ns": 8846985656961,
+   "win_ms": 1795688724134
+  },
+  {
+   "t": 418.2,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.8,
+   "latency_ms": 190,
+   "mono_ns": 8847774236901,
+   "win_ms": 1795688724924
+  },
+  {
+   "t": 418.99,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.4,
+   "latency_ms": 185,
+   "mono_ns": 8848562593567,
+   "win_ms": 1795688725710
+  },
+  {
+   "t": 419.78,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.4,
+   "latency_ms": 187,
+   "mono_ns": 8849349627114,
+   "win_ms": 1795688726499
+  },
+  {
+   "t": 420.57,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -77.3,
+   "latency_ms": 200,
+   "mono_ns": 8850143682792,
+   "win_ms": 1795688727299
+  },
+  {
+   "t": 421.36,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 186,
+   "mono_ns": 8850937071976,
+   "win_ms": 1795688728086
+  },
+  {
+   "t": 422.15,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 192,
+   "mono_ns": 8851726729433,
+   "win_ms": 1795688728878
+  },
+  {
+   "t": 422.94,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.7,
+   "latency_ms": 186,
+   "mono_ns": 8852516251244,
+   "win_ms": 1795688729665
+  },
+  {
+   "t": 423.73,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.5,
+   "latency_ms": 185,
+   "mono_ns": 8853302502029,
+   "win_ms": 1795688730449
+  },
+  {
+   "t": 424.51,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.7,
+   "latency_ms": 183,
+   "mono_ns": 8854087317935,
+   "win_ms": 1795688731234
+  },
+  {
+   "t": 425.3,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.5,
+   "latency_ms": 184,
+   "mono_ns": 8854871494262,
+   "win_ms": 1795688732018
+  },
+  {
+   "t": 426.09,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.9,
+   "latency_ms": 194,
+   "mono_ns": 8855661097714,
+   "win_ms": 1795688732813
+  },
+  {
+   "t": 426.88,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.0,
+   "latency_ms": 188,
+   "mono_ns": 8856452957428,
+   "win_ms": 1795688733603
+  },
+  {
+   "t": 427.67,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.7,
+   "latency_ms": 189,
+   "mono_ns": 8857242278458,
+   "win_ms": 1795688734392
+  },
+  {
+   "t": 428.46,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 190,
+   "mono_ns": 8858032378443,
+   "win_ms": 1795688735183
+  },
+  {
+   "t": 429.25,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.0,
+   "latency_ms": 186,
+   "mono_ns": 8858820962583,
+   "win_ms": 1795688735969
+  },
+  {
+   "t": 430.03,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 185,
+   "mono_ns": 8859607120572,
+   "win_ms": 1795688736756
+  },
+  {
+   "t": 430.82,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.2,
+   "latency_ms": 191,
+   "mono_ns": 8860395762450,
+   "win_ms": 1795688737547
+  },
+  {
+   "t": 431.61,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 191,
+   "mono_ns": 8861187166956,
+   "win_ms": 1795688738336
+  },
+  {
+   "t": 432.41,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 190,
+   "mono_ns": 8861978300529,
+   "win_ms": 1795688739130
+  },
+  {
+   "t": 433.2,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 188,
+   "mono_ns": 8862768274205,
+   "win_ms": 1795688739919
+  },
+  {
+   "t": 433.98,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.8,
+   "latency_ms": 188,
+   "mono_ns": 8863557238246,
+   "win_ms": 1795688740709
+  },
+  {
+   "t": 434.77,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.4,
+   "latency_ms": 183,
+   "mono_ns": 8864343583860,
+   "win_ms": 1795688741492
+  },
+  {
+   "t": 435.55,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.6,
+   "latency_ms": 183,
+   "mono_ns": 8865127439186,
+   "win_ms": 1795688742276
+  },
+  {
+   "t": 436.34,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.8,
+   "latency_ms": 187,
+   "mono_ns": 8865913228485,
+   "win_ms": 1795688743064
+  },
+  {
+   "t": 437.13,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -74.0,
+   "latency_ms": 189,
+   "mono_ns": 8866702033208,
+   "win_ms": 1795688743854
+  },
+  {
+   "t": 437.92,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -74.1,
+   "latency_ms": 191,
+   "mono_ns": 8867492923481,
+   "win_ms": 1795688744645
+  },
+  {
+   "t": 438.71,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.6,
+   "latency_ms": 186,
+   "mono_ns": 8868282400963,
+   "win_ms": 1795688745433
+  },
+  {
+   "t": 439.5,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.1,
+   "latency_ms": 185,
+   "mono_ns": 8869068897267,
+   "win_ms": 1795688746219
+  },
+  {
+   "t": 440.28,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 190,
+   "mono_ns": 8869857269507,
+   "win_ms": 1795688747008
+  },
+  {
+   "t": 441.07,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 188,
+   "mono_ns": 8870647285289,
+   "win_ms": 1795688747799
+  },
+  {
+   "t": 441.86,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.4,
+   "latency_ms": 187,
+   "mono_ns": 8871435627812,
+   "win_ms": 1795688748586
+  },
+  {
+   "t": 442.65,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.2,
+   "latency_ms": 186,
+   "mono_ns": 8872222771414,
+   "win_ms": 1795688749372
+  },
+  {
+   "t": 443.44,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 190,
+   "mono_ns": 8873011547482,
+   "win_ms": 1795688750162
+  },
+  {
+   "t": 444.23,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 189,
+   "mono_ns": 8873801980054,
+   "win_ms": 1795688750953
+  },
+  {
+   "t": 445.02,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.7,
+   "latency_ms": 190,
+   "mono_ns": 8874592308064,
+   "win_ms": 1795688751744
+  },
+  {
+   "t": 445.81,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.4,
+   "latency_ms": 191,
+   "mono_ns": 8875383646607,
+   "win_ms": 1795688752535
+  },
+  {
+   "t": 446.61,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -81.5,
+   "latency_ms": 209,
+   "mono_ns": 8876184457145,
+   "win_ms": 1795688753344
+  },
+  {
+   "t": 447.41,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.8,
+   "latency_ms": 183,
+   "mono_ns": 8876981195227,
+   "win_ms": 1795688754130
+  },
+  {
+   "t": 448.19,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 185,
+   "mono_ns": 8877766132037,
+   "win_ms": 1795688754915
+  },
+  {
+   "t": 448.98,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 186,
+   "mono_ns": 8878552544694,
+   "win_ms": 1795688755702
+  },
+  {
+   "t": 449.77,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -69.9,
+   "latency_ms": 184,
+   "mono_ns": 8879338058566,
+   "win_ms": 1795688756486
+  },
+  {
+   "t": 450.55,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 189,
+   "mono_ns": 8880124939060,
+   "win_ms": 1795688757276
+  },
+  {
+   "t": 451.34,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -75.5,
+   "latency_ms": 193,
+   "mono_ns": 8880916523131,
+   "win_ms": 1795688758070
+  },
+  {
+   "t": 452.14,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.5,
+   "latency_ms": 190,
+   "mono_ns": 8881708547419,
+   "win_ms": 1795688758859
+  },
+  {
+   "t": 452.93,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -76.3,
+   "latency_ms": 195,
+   "mono_ns": 8882501716674,
+   "win_ms": 1795688759656
+  },
+  {
+   "t": 453.72,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.7,
+   "latency_ms": 188,
+   "mono_ns": 8883294297284,
+   "win_ms": 1795688760445
+  },
+  {
+   "t": 454.52,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -76.4,
+   "latency_ms": 199,
+   "mono_ns": 8884088605597,
+   "win_ms": 1795688761243
+  },
+  {
+   "t": 455.31,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -75.7,
+   "latency_ms": 195,
+   "mono_ns": 8884886306911,
+   "win_ms": 1795688762040
+  },
+  {
+   "t": 456.11,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -74.4,
+   "latency_ms": 190,
+   "mono_ns": 8885679599488,
+   "win_ms": 1795688762832
+  },
+  {
+   "t": 456.9,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.9,
+   "latency_ms": 190,
+   "mono_ns": 8886470049174,
+   "win_ms": 1795688763619
+  },
+  {
+   "t": 457.69,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -74.5,
+   "latency_ms": 192,
+   "mono_ns": 8887261531871,
+   "win_ms": 1795688764414
+  },
+  {
+   "t": 458.48,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -74.3,
+   "latency_ms": 193,
+   "mono_ns": 8888054681883,
+   "win_ms": 1795688765207
+  },
+  {
+   "t": 459.27,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.3,
+   "latency_ms": 190,
+   "mono_ns": 8888846747212,
+   "win_ms": 1795688765996
+  },
+  {
+   "t": 460.07,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.1,
+   "latency_ms": 192,
+   "mono_ns": 8889638922805,
+   "win_ms": 1795688766790
+  },
+  {
+   "t": 460.86,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 191,
+   "mono_ns": 8890431104815,
+   "win_ms": 1795688767582
+  },
+  {
+   "t": 461.65,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.0,
+   "latency_ms": 190,
+   "mono_ns": 8891221954773,
+   "win_ms": 1795688768370
+  },
+  {
+   "t": 462.44,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.5,
+   "latency_ms": 188,
+   "mono_ns": 8892011456586,
+   "win_ms": 1795688769161
+  },
+  {
+   "t": 463.23,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.0,
+   "latency_ms": 196,
+   "mono_ns": 8892804016945,
+   "win_ms": 1795688769955
+  },
+  {
+   "t": 464.03,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -76.4,
+   "latency_ms": 202,
+   "mono_ns": 8893603552204,
+   "win_ms": 1795688770758
+  },
+  {
+   "t": 464.83,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.6,
+   "latency_ms": 186,
+   "mono_ns": 8894398347820,
+   "win_ms": 1795688771545
+  },
+  {
+   "t": 465.62,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.4,
+   "latency_ms": 197,
+   "mono_ns": 8895190571378,
+   "win_ms": 1795688772342
+  },
+  {
+   "t": 466.41,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.7,
+   "latency_ms": 187,
+   "mono_ns": 8895983293662,
+   "win_ms": 1795688773130
+  },
+  {
+   "t": 467.2,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -72.9,
+   "latency_ms": 195,
+   "mono_ns": 8896775078609,
+   "win_ms": 1795688773926
+  },
+  {
+   "t": 468.0,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -73.3,
+   "latency_ms": 195,
+   "mono_ns": 8897570741625,
+   "win_ms": 1795688774722
+  },
+  {
+   "t": 468.79,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 196,
+   "mono_ns": 8898367131030,
+   "win_ms": 1795688775517
+  },
+  {
+   "t": 469.59,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -71.9,
+   "latency_ms": 195,
+   "mono_ns": 8899163139733,
+   "win_ms": 1795688776313
+  },
+  {
+   "t": 470.39,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -70.4,
+   "latency_ms": 193,
+   "mono_ns": 8899957634965,
+   "win_ms": 1795688777106
+  },
+  {
+   "t": 471.18,
+   "phase": "C_restored",
+   "rt_minus_win_ms": -68.3,
+   "latency_ms": 190,
+   "mono_ns": 8900749659159,
+   "win_ms": 1795688777896
+  }
+ ],
+ "final_state": {
+  "journal_lines_since_stop": null,
+  "active": "active",
+  "enabled": "enabled"
+ },
+ "end_epoch": 1795688778.5512276
+}

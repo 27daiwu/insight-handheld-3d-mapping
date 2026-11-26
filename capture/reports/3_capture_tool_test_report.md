@@ -1,7 +1,7 @@
 # 3. Capture tool test report — 2026-11-26
 
-## Automated: `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest capture/tests` → **42 passed, run twice (134 s each)**
-The original **26 tests are unchanged and pass**; 16 added. (Tests run on synthetic data / the simulator on an isolated random ROS domain; they are **software tests, not camera acceptance**.)
+## Automated: `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest capture/tests` → **51 passed, run twice (135 s each) — updated 2026-11-26 19:00**
+The original **26 tests are unchanged and pass**; 25 added (16 earlier today + 9 this round: camera API ×3, profile governance ×4, stats ×2). (Tests run on synthetic data / the simulator on an isolated random ROS domain; they are **software tests, not camera acceptance**.)
 | file | tests | covers |
 |---|---|---|
 | test_discovery.py | 8 → 12 | any prefix, foreign device rejected, depth on/off, raw/compressed, extras, **vendor-doc layout (docs ≠ device, labelled)**, **real fw2.1.5 topic list** (prefers `*_rect_raw`, /tf optional) |
@@ -12,6 +12,8 @@ The original **26 tests are unchanged and pass**; 16 added. (Tests run on synthe
 
 New tool features: `diagnostics.py` (continuity, interval p50/p99/max, jitter, loss vs median and vs reference, systemic multi-topic holes with periodicity, recv-only vs stamp-gap classification, pair skew), `inspect` writes `diagnostics.json`, `preflight --clock-seconds` host-clock check, discovery rank (`*rect*` first) + sibling-prefix/any_prefix roles, `sim --stamp-clock monotonic`.
 Test-hardening found while working: DDS discovery on a fresh domain lags on this WSL2 host (preflight re-poll 4×3 s; tests start the daemon first). One test failed 3× before that fix (order-dependent), 0× after.
+
+> Superseded for acceptance by `P1_acceptance_report.md` (two real 5-min runs, clock artefacts vs sensor loss separated).
 
 ## Real-device results (WSL2, Insight 9 fw 2.1.5, domain 9; NOT simulator)
 | item | result |

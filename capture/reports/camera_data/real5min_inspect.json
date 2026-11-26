@@ -14,58 +14,58 @@
       "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_rgb",
       "title": "rgb /camera/camera/color/image_rect_raw/compressed: 10250 msgs, 30.019 Hz (ref 30.0), est. missing 0, 1672.7 MB",
-      "detail": "receive time - header stamp = 1795673487.19s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_stereo_left",
       "title": "stereo_left /camera/camera/infra1/image_rect_raw: 10243 msgs, 30.0 Hz (ref 30.0), est. missing 0, 3566.9 MB",
-      "detail": "receive time - header stamp = 1795673487.17s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_stereo_right",
       "title": "stereo_right /camera/camera/infra2/image_rect_raw: 10243 msgs, 30.0 Hz (ref 30.0), est. missing 0, 3566.9 MB",
-      "detail": "receive time - header stamp = 1795673487.18s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
       "level": "WARN",
       "id": "data_depth",
       "title": "depth /camera/camera/depth/image_rect_raw: 4473 msgs, 14.999 Hz (ref 15.0), est. missing 440, 3114.9 MB",
-      "detail": "440 stamp gaps (~440 msgs missing, max gap 133.47 ms)\nreceive time - header stamp = 1795673487.31s (camera/host clocks not aligned)"
+      "detail": "440 stamp gaps (~440 msgs missing, max gap 133.47 ms)"
     },
     {
       "level": "WARN",
       "id": "data_imu",
       "title": "imu /camera/camera/imu: 136416 msgs, 400.0 Hz (ref 400.0), est. missing 167, 46.4 MB",
-      "detail": "72 stamp gaps (~167 msgs missing, max gap 32.5 ms)\nreceive time - header stamp = 1795673487.15s (camera/host clocks not aligned)"
+      "detail": "72 stamp gaps (~167 msgs missing, max gap 32.5 ms)"
     },
     {
       "level": "WARN",
       "id": "data_vio",
       "title": "vio /camera/camera/vio_100hz: 34126 msgs, 100.0 Hz (ref 100.0), est. missing 98, 2.9 MB",
-      "detail": "98 stamp gaps (~98 msgs missing, max gap 25.0 ms)\nreceive time - header stamp = 1795673487.15s (camera/host clocks not aligned)"
+      "detail": "98 stamp gaps (~98 msgs missing, max gap 25.0 ms)"
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_rgb_info",
       "title": "rgb_info /camera/camera/color/camera_info: 10250 msgs, 30.019 Hz (ref 30.0), est. missing 0, 3.9 MB",
-      "detail": "receive time - header stamp = 1795673487.20s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_stereo_left_info",
       "title": "stereo_left_info /camera/camera/infra1/camera_info: 10243 msgs, 30.0 Hz (ref 30.0), est. missing 0, 3.8 MB",
-      "detail": "receive time - header stamp = 1795673487.17s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_stereo_right_info",
       "title": "stereo_right_info /camera/camera/infra2/camera_info: 10243 msgs, 30.0 Hz (ref 30.0), est. missing 0, 3.8 MB",
-      "detail": "receive time - header stamp = 1795673487.17s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
       "level": "PASS",
@@ -74,22 +74,28 @@
       "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_extra",
       "title": "extra /camera/camera/vio_image: 10243 msgs, 30.0 Hz, est. missing 0, 0.9 MB",
-      "detail": "receive time - header stamp = 1795673487.17s (camera/host clocks not aligned)"
+      "detail": ""
     },
     {
-      "level": "WARN",
+      "level": "PASS",
       "id": "data_extra",
       "title": "extra /camera/camera/vio_image_cov: 10243 msgs, 30.0 Hz, est. missing 0, 3.8 MB",
-      "detail": "receive time - header stamp = 1795673487.17s (camera/host clocks not aligned)"
+      "detail": ""
+    },
+    {
+      "level": "PASS",
+      "id": "data_extra",
+      "title": "extra /camera/camera/vio_status: 343 msgs, 1.005 Hz, est. missing 0, 0.0 MB",
+      "detail": ""
     },
     {
       "level": "WARN",
-      "id": "data_extra",
-      "title": "extra /camera/camera/vio_status: 343 msgs, 1.005 Hz, est. missing 0, 0.0 MB",
-      "detail": "342 duplicate header stamps"
+      "id": "clock_domain",
+      "title": "Device header stamps are NOT host wall-clock (receive - stamp = 1.8e+09 s on every stamped topic)",
+      "detail": "Expected on Insight 9 (camera clock is boot-relative, camera time-sync not working). Use header stamps for continuity/sync; host<->camera alignment is not available. Reported once instead of per topic."
     },
     {
       "level": "PASS",
@@ -153,12 +159,7 @@
       "recv_last_ns": 1795675336109601485,
       "recv_span_s": 340.454,
       "recv_rate_hz": 1.005,
-      "stamped": 343,
-      "stamp_first_ns": 17128354388,
-      "stamp_last_ns": 17128354388,
-      "zero_stamps": 0,
-      "non_monotonic": 0,
-      "duplicate_stamps": 342,
+      "stamped": 0,
       "type": "std_msgs/msg/String",
       "bytes": 8232
     },
@@ -825,103 +826,154 @@
   "diagnostics": {
     "topics": {
       "/camera/camera/vio_status": {
-        "basis": "header_stamp",
+        "basis": "recv_time",
         "count": 343,
-        "span_s": 0.0,
-        "median_period_ms": 0.0,
-        "gap_events": 0,
-        "est_missing": 0,
-        "loss_vs_median": 0.0,
-        "non_monotonic": 0,
-        "duplicates": 342,
-        "recv_minus_stamp_s": {
-          "median": 1795675148.8682,
-          "spread_ms": 340454.5
+        "span_s": 340.454,
+        "median_period_ms": 916.8818,
+        "gap_events": 9,
+        "est_missing": 20,
+        "loss_vs_median": 0.0551,
+        "expected_count": 372,
+        "loss_vs_reference": 0.07796,
+        "interval_ms": {
+          "min": 248.298,
+          "p50": 916.884,
+          "p99": 3165.431,
+          "max": 3998.424
         },
+        "jitter_ms": 378.6374,
+        "non_monotonic": 0,
+        "duplicates": 0,
         "recv_only_gap_events": 0,
         "recv_gap_events": 9,
-        "gaps_head": [],
-        "recv_gaps_head": [
+        "gaps_head": [
           {
             "start_ns": 1795674998781667498,
             "end_ns": 1795675001987013999,
             "dur_ms": 3205.347,
             "missing": 2,
-            "idx": 5,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 5
           },
           {
             "start_ns": 1795675032815100217,
             "end_ns": 1795675035960718009,
             "dur_ms": 3145.618,
             "missing": 2,
-            "idx": 39,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 39
           },
           {
             "start_ns": 1795675067799904747,
             "end_ns": 1795675070936180480,
             "dur_ms": 3136.276,
             "missing": 2,
-            "idx": 74,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 74
           },
           {
             "start_ns": 1795675101798872321,
             "end_ns": 1795675104964303217,
             "dur_ms": 3165.431,
             "missing": 2,
-            "idx": 108,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 108
           },
           {
             "start_ns": 1795675136799355306,
             "end_ns": 1795675139881408089,
             "dur_ms": 3082.053,
             "missing": 2,
-            "idx": 143,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 143
           },
           {
             "start_ns": 1795675170599472091,
             "end_ns": 1795675173937581144,
             "dur_ms": 3338.109,
             "missing": 3,
-            "idx": 177,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 177
           },
           {
             "start_ns": 1795675220932089228,
             "end_ns": 1795675224930513225,
             "dur_ms": 3998.424,
             "missing": 3,
-            "idx": 228,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 228
           },
           {
             "start_ns": 1795675255788423145,
             "end_ns": 1795675258943361748,
             "dur_ms": 3154.939,
             "missing": 2,
-            "idx": 262,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 262
           },
           {
             "start_ns": 1795675290746580766,
             "end_ns": 1795675293895077790,
             "dur_ms": 3148.497,
             "missing": 2,
-            "idx": 297,
-            "stamp_dt_ms": 0.0,
-            "recv_only": null
+            "idx": 297
+          }
+        ],
+        "recv_gaps_head": [
+          {
+            "start_ns": 1795674998781667498,
+            "end_ns": 1795675001987013999,
+            "dur_ms": 3205.347,
+            "missing": 2,
+            "idx": 5
+          },
+          {
+            "start_ns": 1795675032815100217,
+            "end_ns": 1795675035960718009,
+            "dur_ms": 3145.618,
+            "missing": 2,
+            "idx": 39
+          },
+          {
+            "start_ns": 1795675067799904747,
+            "end_ns": 1795675070936180480,
+            "dur_ms": 3136.276,
+            "missing": 2,
+            "idx": 74
+          },
+          {
+            "start_ns": 1795675101798872321,
+            "end_ns": 1795675104964303217,
+            "dur_ms": 3165.431,
+            "missing": 2,
+            "idx": 108
+          },
+          {
+            "start_ns": 1795675136799355306,
+            "end_ns": 1795675139881408089,
+            "dur_ms": 3082.053,
+            "missing": 2,
+            "idx": 143
+          },
+          {
+            "start_ns": 1795675170599472091,
+            "end_ns": 1795675173937581144,
+            "dur_ms": 3338.109,
+            "missing": 3,
+            "idx": 177
+          },
+          {
+            "start_ns": 1795675220932089228,
+            "end_ns": 1795675224930513225,
+            "dur_ms": 3998.424,
+            "missing": 3,
+            "idx": 228
+          },
+          {
+            "start_ns": 1795675255788423145,
+            "end_ns": 1795675258943361748,
+            "dur_ms": 3154.939,
+            "missing": 2,
+            "idx": 262
+          },
+          {
+            "start_ns": 1795675290746580766,
+            "end_ns": 1795675293895077790,
+            "dur_ms": 3148.497,
+            "missing": 2,
+            "idx": 297
           }
         ]
       },

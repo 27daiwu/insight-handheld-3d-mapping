@@ -24,3 +24,30 @@ WSL2 (mirrored networking). v2.1.4 was never observed, so the profile name/basel
 
 ## Still to verify before `verified: true`
 Run on firmware 2.1.4 (or accept 2.1.5 as new baseline, your call); confirm after a camera reboot; decide on `image_raw` topics (empty — only after subscriber?); native-Ubuntu repeat; real 5-min recording without systemic holes (see report 2 and 3).
+
+---
+# Addendum 2026-11-26 evening — baseline moved to firmware 2.1.5 (`config/topics_v2.1.5.yaml`)
+
+| change | detail |
+|---|---|
+| **new file** `config/topics_v2.1.5.yaml` | profile `insight9-v2.1.5`, `firmware_baseline: "2.1.5"`, default profile of the tool (`config.py`). Built from the calibrated v2.1.4 working copy |
+| **`config/topics_v2.1.4.yaml` restored to its original content** (+1 comment line "HISTORICAL") | the earlier same-day calibration edits (infra1/infra2 aliases etc.) now live only in 2.1.5; history preserved |
+| per-role `verification{verified,evidence,pending}` | **no bulk change.** Policy in the file header: ≥ 2 runs on 2.1.5, name/type/frame_id stable, monotonic stamps, rate = nominal, pooled loss ≤ 0.1 % (header-stamp space) |
+| file-level `verified` | **stays `false`** (VIO and Depth unverified; no native-Ubuntu run) |
+| `ros_domain_id_observed: 9`, `default_prefix_observed: /camera/camera` | informational |
+| `schema_version` 0.1-provisional → `0.2-draft`; manifest gets `camera.api_snapshot` | firmware etc. read via read-only GET (whitelist client `camera_api.py`) |
+
+Per-topic status (one decision each):
+| role | verified | reason |
+|---|---|---|
+| rgb `color/image_rect_raw/compressed` | **true** | 30.019 Hz, 0 stamp gaps in 340 s, 6 runs; (JPEG only, `image_raw` empty) |
+| stereo_left / stereo_right (`infra1|2/image_rect_raw`) | **true / true** | 30.000 Hz, L/R stamp-identical, pooled loss 0.02 / 0.03 % |
+| imu | **true** | 400.0 Hz, pooled loss ≈ 0.05 %; axes/gyro unit pending (contract §6) |
+| rgb_info / stereo_left_info / stereo_right_info | **true ×3** | 30 Hz, size/frame match images, baseline consistent |
+| depth | **false** | 11.8–13.1 % shortfall in every run, camera-side (report 3); unit unconfirmed |
+| vio (`vio_100hz`) | **false** | pooled loss ≈ 0.15 % > 0.1 %; semantics pending |
+| depth_info | **false** | topic does not exist on 2.1.5 |
+| `/tf_static` | **false** | extrinsics not validated; `/tf` never published |
+Guard tests: `tests/test_profiles.py` (baseline 2.1.5, history kept, depth/vio/depth_info/tf_static must stay unverified until evidence changes).
+
+Discovery changes (unchanged from earlier today): `*rect*` before `*_raw`; sibling prefixes; `any_prefix` roles; `vio_100hz`/`vio_pose` suffixes.

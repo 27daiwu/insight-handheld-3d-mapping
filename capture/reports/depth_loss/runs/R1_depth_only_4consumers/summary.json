@@ -1,0 +1,122 @@
+{
+ "summary": {
+  "be10": {
+   "n": 1589,
+   "span_s": 120.0,
+   "mean_hz": 13.237,
+   "missing_vs_15hz_pct": 11.75,
+   "step_units": {
+    "1": 15,
+    "2": 1149,
+    "3": 410,
+    "4": 14
+   },
+   "nonmono": 0
+  },
+  "rel10": {
+   "n": 1589,
+   "span_s": 120.0,
+   "mean_hz": 13.233,
+   "missing_vs_15hz_pct": 11.77,
+   "step_units": {
+    "1": 15,
+    "2": 1148,
+    "3": 411,
+    "4": 14
+   },
+   "nonmono": 0
+  },
+  "rel1000": {
+   "n": 1593,
+   "span_s": 120.3,
+   "mean_hz": 13.237,
+   "missing_vs_15hz_pct": 11.75,
+   "step_units": {
+    "1": 15,
+    "2": 1152,
+    "3": 411,
+    "4": 14
+   },
+   "nonmono": 0
+  },
+  "rel10_multi": {
+   "n": 1592,
+   "span_s": 120.2,
+   "mean_hz": 13.236,
+   "missing_vs_15hz_pct": 11.75,
+   "step_units": {
+    "1": 15,
+    "2": 1151,
+    "3": 411,
+    "4": 14
+   },
+   "nonmono": 0
+  },
+  "rosbag_depth": {
+   "n": 1616,
+   "span_s": 122.0,
+   "mean_hz": 13.238,
+   "missing_vs_15hz_pct": 11.74,
+   "step_units": {
+    "1": 17,
+    "2": 1166,
+    "3": 417,
+    "4": 15
+   },
+   "nonmono": 0
+  }
+ },
+ "udp_delta": {
+  "InDatagrams": 434795,
+  "NoPorts": 33,
+  "InErrors": 27,
+  "OutDatagrams": 7632,
+  "RcvbufErrors": 27,
+  "SndbufErrors": 0,
+  "InCsumErrors": 0,
+  "IgnoredMulti": 0,
+  "MemErrors": 0
+ },
+ "if_delta": {
+  "rx_packets": 4134742,
+  "rx_bytes": 5736858723,
+  "rx_dropped": 0,
+  "rx_errors": 0,
+  "rx_fifo_errors": 0,
+  "rx_over_errors": 0
+ },
+ "cam": [
+  [
+   42.2,
+   57.0
+  ],
+  [
+   43.4,
+   57.0
+  ],
+  [
+   39.2,
+   57.0
+  ],
+  [
+   43.4,
+   57.2
+  ],
+  [
+   44.4,
+   57.3
+  ],
+  [
+   42.9,
+   57.4
+  ],
+  [
+   44.9,
+   57.6
+  ],
+  [
+   40.0,
+   57.4
+  ]
+ ]
+}

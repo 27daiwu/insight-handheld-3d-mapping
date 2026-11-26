@@ -1,0 +1,358 @@
+{
+ "color_camera_info": {
+  "frame_id": "camera_camera_rgb",
+  "w": 1088,
+  "h": 1920,
+  "distortion_model": "plumb_bob",
+  "D": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "K": [
+   768.863,
+   0.0,
+   539.467,
+   0.0,
+   768.891,
+   959.494,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "R": [
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "P": [
+   768.863,
+   0.0,
+   539.467,
+   0.0,
+   0.0,
+   768.891,
+   959.494,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.0
+  ],
+  "binning": [
+   0,
+   0
+  ],
+  "roi": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "infra1_camera_info": {
+  "frame_id": "camera_camera_left",
+  "w": 544,
+  "h": 640,
+  "distortion_model": "plumb_bob",
+  "D": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "K": [
+   307.385,
+   0.0,
+   269.424,
+   0.0,
+   307.385,
+   323.476,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "R": [
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "P": [
+   307.385,
+   0.0,
+   269.424,
+   0.0,
+   0.0,
+   307.385,
+   323.476,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.0
+  ],
+  "binning": [
+   0,
+   0
+  ],
+  "roi": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "infra2_camera_info": {
+  "frame_id": "camera_camera_right",
+  "w": 544,
+  "h": 640,
+  "distortion_model": "plumb_bob",
+  "D": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "K": [
+   307.385,
+   0.0,
+   269.424,
+   0.0,
+   307.385,
+   323.476,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "R": [
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "P": [
+   307.385,
+   0.0,
+   269.424,
+   -30.776,
+   0.0,
+   307.385,
+   323.476,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   0.0
+  ],
+  "binning": [
+   0,
+   0
+  ],
+  "roi": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "tf_static": [
+  {
+   "parent": "camera_camera_left",
+   "child": "camera_camera_depth",
+   "t": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "q_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "parent": "camera_camera_left",
+   "child": "camera_camera_imu_optical",
+   "t": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "q_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "parent": "camera_camera_left",
+   "child": "camera_camera_right",
+   "t": [
+    0.10012,
+    0.0,
+    0.0
+   ],
+   "q_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "parent": "camera_camera_left",
+   "child": "camera_camera_rgb",
+   "t": [
+    0.05014,
+    -3e-05,
+    -3e-05
+   ],
+   "q_xyzw": [
+    -0.00032,
+    -0.00102,
+    0.00074,
+    1.0
+   ]
+  },
+  {
+   "parent": "camera_camera_imu",
+   "child": "camera_camera_left",
+   "t": [
+    -0.03898,
+    -0.01482,
+    0.0189
+   ],
+   "q_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "imu": {
+  "frame_id": "camera_camera_imu_optical",
+  "accel_norm_mean": 9.7835,
+  "accel_mean_xyz": [
+   -4.2987,
+   -8.784,
+   0.2778
+  ],
+  "gyro_mean_xyz": [
+   -0.0022,
+   0.002,
+   0.00095
+  ],
+  "orientation_first_xyzw": [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "cov_orient0": 0.0,
+  "cov_gyro0": 0.0,
+  "cov_acc0": 0.0
+ },
+ "vio_100hz": {
+  "frame_id": "world",
+  "first_pos": [
+   0.0,
+   -0.0001,
+   -0.0
+  ],
+  "first_q_xyzw": [
+   -0.2255,
+   0.6593,
+   -0.5075,
+   0.5069
+  ],
+  "later_pos": [
+   -0.0,
+   -0.0,
+   -0.0
+  ]
+ },
+ "vio_image": {
+  "frame_id": "world",
+  "first_pos": [
+   -0.0,
+   -0.0001,
+   -0.0
+  ],
+  "first_q_xyzw": [
+   -0.2254,
+   0.6593,
+   -0.5075,
+   0.5069
+  ],
+  "later_pos": [
+   -0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "vio_image_cov": {
+  "frame_id": "world",
+  "cov_diag": [
+   3e-06,
+   3e-06,
+   3e-06,
+   7.5e-05,
+   1.8e-05,
+   0.0
+  ]
+ },
+ "vio_status_values": {
+  "TRACKING_STATIC": 60
+ },
+ "depth": {
+  "frame_id": "camera_camera_depth",
+  "enc": "mono16",
+  "w": 544,
+  "h": 640,
+  "step": 1088,
+  "big_endian": 0,
+  "zero_frac": 0.004,
+  "min_nz": 69,
+  "p50_nz": 542,
+  "max": 65535
+ },
+ "infra1_image": {
+  "enc": "mono8",
+  "w": 544,
+  "h": 640,
+  "step": 544
+ },
+ "infra2_image": {
+  "enc": "mono8",
+  "w": 544,
+  "h": 640,
+  "step": 544
+ },
+ "color_image": {
+  "format": "jpeg",
+  "jpeg_bytes": 155432,
+  "soi": "ffd8"
+ }
+}

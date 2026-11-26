@@ -48,3 +48,10 @@ Depth **12.65 %** of frames missing vs 15 Hz (header stamps; RELIABLE QoS ⇒ lo
 2. If confirmed, durable options: disable timesyncd in WSL and rely on Windows host sync; or chrony in slew-only mode (`makestep 0 -1`); investigate who sets tick=9167 (`.wslconfig`/Hyper-V time sync); `wsl --shutdown` resync.
 3. Install `ros-humble-rmw-cyclonedds-cpp` only if a DDS comparison is still wanted after the above (not currently needed).
 4. Native Ubuntu 22.04 run of `run_native_control.sh` + a camera recording (the real acceptance run).
+
+---
+## Addendum (evening, authorised timesyncd experiment — see `1_timesyncd_experiment_report.md`)
+* With `systemd-timesyncd` actually stopped for 300 s the VM wall clock showed **no step and ≤ ~60 ppm rate error vs Windows**; the same was true with the service running (before and after). The **sawtooth of the afternoon is not present any more** (timesyncd now: offset −44 µs, poll 17 min). So the "timesyncd is the stepper" claim is **supported by correlation only (E3/E4) and could not be re-tested by intervention**; the trigger of the bad state is unknown.
+* The slow-tick finding (tick = 9167, ≈ 8–9 % slow between steps) was measured at ≈ 16:07–16:40 only; now tick = 9999.
+* My own first stop attempt was invalidated by `timedatectl` re-activating the service over D-Bus (documented in report 1).
+* Status change: root cause of the *holes* (host wall-clock steps; data not lost) stays CONFIRMED for the afternoon data; root cause of the *clock steps* stays NOT DETERMINED; the problem is currently dormant. A fresh 5-minute real recording at 18:48 is the dormant-state control.

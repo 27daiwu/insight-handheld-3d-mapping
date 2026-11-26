@@ -1,0 +1,1104 @@
+{
+ "backup": "backup_original_20261126_181847.json",
+ "original_core": {
+  "camera-format": "mjpg 1088x1920 30fps",
+  "stereo-format": "mono8 544x640 30fps",
+  "stereo-hdr": true,
+  "deep-flow": true,
+  "time-sync": false,
+  "pose-cov": true,
+  "ros-domain": "9",
+  "dds": "cyclonedds"
+ },
+ "log": [
+  {
+   "t": 1795689366.5147002,
+   "m": "S0 baseline"
+  },
+  {
+   "t": 1795689460.5930758,
+   "m": "S1 depth off"
+  },
+  {
+   "t": 1795689466.030584,
+   "m": "APPLY -> {'success': True, 'message': 'Deep Flow config updated successfully', 'data': 'none'}"
+  },
+  {
+   "t": 1795689481.1104236,
+   "m": "config readback deep-flow=False (wanted False)"
+  },
+  {
+   "t": 1795689574.9713466,
+   "m": "S1 restore depth on"
+  },
+  {
+   "t": 1795689579.445143,
+   "m": "APPLY -> {'success': True, 'message': 'Deep Flow config updated successfully', 'data': 'depth'}"
+  },
+  {
+   "t": 1795689594.5373464,
+   "m": "config readback deep-flow=True (wanted True)"
+  },
+  {
+   "t": 1795689646.6372302,
+   "m": "S2 stereo 20fps hdr=false"
+  },
+  {
+   "t": 1795689653.026184,
+   "m": "APPLY -> {'success': True, 'message': 'Stereo settings saved. Software will restart...', 'data': {'format': 'mono8 544x640 20fps', 'hdr': False}}"
+  },
+  {
+   "t": 1795689673.1276562,
+   "m": "config readback stereo-format=mono8 544x640 20fps (wanted mono8 544x640 20fps)"
+  },
+  {
+   "t": 1795689770.2810524,
+   "m": "S2 restore"
+  },
+  {
+   "t": 1795689776.2966304,
+   "m": "APPLY -> {'success': True, 'message': 'Stereo settings saved. Software will restart...', 'data': {'format': 'mono8 544x640 30fps', 'hdr': True}}"
+  },
+  {
+   "t": 1795689796.4047647,
+   "m": "config readback stereo-format=mono8 544x640 30fps (wanted mono8 544x640 30fps)"
+  },
+  {
+   "t": 1795689848.4341478,
+   "m": "S3 time-sync on"
+  },
+  {
+   "t": 1795689848.4425902,
+   "m": "APPLY -> {'data': {'synced': False, 'enabled': True}, 'message': 'Time sync enable setting saved', 'success': True}"
+  },
+  {
+   "t": 1795689868.5472977,
+   "m": "config readback time-sync=True (wanted True)"
+  },
+  {
+   "t": 1795689962.935955,
+   "m": "RESTORE all from backup"
+  },
+  {
+   "t": 1795689962.9436383,
+   "m": "restore call -> {'data': {'synced': False, 'enabled': False}, 'message': 'Time sync enable setting saved', 'success': True}"
+  },
+  {
+   "t": 1795689968.5723517,
+   "m": "restore call -> {'success': True, 'message': 'Deep Flow config updated successfully', 'data': 'depth'}"
+  },
+  {
+   "t": 1795689968.653474,
+   "m": "restore call -> {'success': True, 'message': 'Stereo settings saved. Software will restart...', 'data': {'format': 'mono8 544x640 30fps', 'hdr': True}}"
+  },
+  {
+   "t": 1795689983.7472205,
+   "m": "final {'camera-format': 'mjpg 1088x1920 30fps', 'stereo-format': 'mono8 544x640 30fps', 'stereo-hdr': True, 'deep-flow': True, 'time-sync': False, 'pose-cov': True, 'ros-domain': '9', 'dds': 'cyclonedds'} restored_ok=True"
+  }
+ ],
+ "scenarios": {
+  "S0_baseline": {
+   "name": "S0_baseline",
+   "secs": 90.0,
+   "meas_started": 1795689366.515028,
+   "topics": {
+    "depth/image_rect_raw": {
+     "count": 1174,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 13.038,
+     "stamp_first_s": 1719.2,
+     "recv_rate_hz": 13.042,
+     "gap_events": 103,
+     "est_missing": 103,
+     "max_gap_ms": 166.659,
+     "MBps": 9.09,
+     "missing_vs_nominal_pct": 13.07,
+     "first_frame_id": "camera_camera_depth"
+    },
+    "infra1/image_rect_raw": {
+     "count": 2698,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 29.967,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 29.97,
+     "gap_events": 3,
+     "est_missing": 3,
+     "max_gap_ms": 66.678,
+     "MBps": 10.44,
+     "missing_vs_nominal_pct": 0.11,
+     "first_frame_id": "camera_camera_left"
+    },
+    "infra2/image_rect_raw": {
+     "count": 2697,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 29.956,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 29.956,
+     "gap_events": 3,
+     "est_missing": 4,
+     "max_gap_ms": 100.014,
+     "MBps": 10.44,
+     "missing_vs_nominal_pct": 0.15,
+     "first_frame_id": "camera_camera_right"
+    },
+    "color/image_rect_raw/compressed": {
+     "count": 2701,
+     "type": "sensor_msgs/msg/CompressedImage",
+     "mean_hz": 29.997,
+     "stamp_first_s": 1719.3,
+     "recv_rate_hz": 30.002,
+     "gap_events": 2,
+     "est_missing": 2,
+     "max_gap_ms": 66.631,
+     "MBps": 4.24,
+     "missing_vs_nominal_pct": 0.01,
+     "first_frame_id": "camera_camera_rgb"
+    },
+    "imu": {
+     "count": 35994,
+     "type": "sensor_msgs/msg/Imu",
+     "mean_hz": 399.922,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 399.938,
+     "gap_events": 2,
+     "est_missing": 7,
+     "max_gap_ms": 17.5,
+     "MBps": 0.14,
+     "missing_vs_nominal_pct": 0.02,
+     "first_frame_id": "camera_camera_imu_optical"
+    },
+    "vio_100hz": {
+     "count": 8994,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 99.933,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 99.934,
+     "gap_events": 19,
+     "est_missing": 20,
+     "max_gap_ms": 30.0,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.07,
+     "first_frame_id": "world"
+    },
+    "vio_image": {
+     "count": 2699,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 29.989,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 29.989,
+     "gap_events": 1,
+     "est_missing": 1,
+     "max_gap_ms": 66.677,
+     "MBps": 0.0,
+     "missing_vs_nominal_pct": 0.04,
+     "first_frame_id": "world"
+    },
+    "infra1/camera_info": {
+     "count": 2699,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 29.989,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 29.989,
+     "gap_events": 1,
+     "est_missing": 1,
+     "max_gap_ms": 66.677,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.04,
+     "first_frame_id": "camera_camera_left"
+    },
+    "color/camera_info": {
+     "count": 2702,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.019,
+     "stamp_first_s": 1719.4,
+     "recv_rate_hz": 30.015,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.469,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    }
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 43.77,
+     "cores": {
+      "cpu1": 18.18,
+      "cpu7": 42.31,
+      "cpu0": 35.19,
+      "cpu2": 57.69,
+      "cpu5": 32.69,
+      "cpu3": 62.26,
+      "cpu6": 42.55,
+      "cpu": 44.83,
+      "cpu4": 59.26
+     }
+    },
+    "system-info": {
+     "temperature": 59.1,
+     "uptimeHours": 0.5,
+     "uptimeStr": "30Min"
+    },
+    "system-time": {
+     "timestamp": 1756223594,
+     "timestampNanos": 1756223594807127820,
+     "formatted": "2025-08-26 23:53:14"
+    }
+   },
+   "cfg": {
+    "camera-format": "mjpg 1088x1920 30fps",
+    "stereo-format": "mono8 544x640 30fps",
+    "stereo-hdr": true,
+    "deep-flow": true,
+    "time-sync": false,
+    "pose-cov": true,
+    "ros-domain": "9",
+    "dds": "cyclonedds"
+   }
+  },
+  "S1_depth_off": {
+   "name": "S1_depth_off",
+   "secs": 90.0,
+   "meas_started": 1795689481.110867,
+   "topics": {
+    "depth/image_rect_raw": {
+     "count": 0,
+     "type": "sensor_msgs/msg/Image"
+    },
+    "infra1/image_rect_raw": {
+     "count": 2700,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.405,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "infra2/image_rect_raw": {
+     "count": 2700,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.405,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_right"
+    },
+    "color/image_rect_raw/compressed": {
+     "count": 2702,
+     "type": "sensor_msgs/msg/CompressedImage",
+     "mean_hz": 30.019,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 30.018,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.373,
+     "MBps": 4.21,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    },
+    "imu": {
+     "count": 36002,
+     "type": "sensor_msgs/msg/Imu",
+     "mean_hz": 400.0,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 400.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 2.5,
+     "MBps": 0.14,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_imu_optical"
+    },
+    "vio_100hz": {
+     "count": 9000,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 99.989,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 99.99,
+     "gap_events": 3,
+     "est_missing": 3,
+     "max_gap_ms": 17.5,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.01,
+     "first_frame_id": "world"
+    },
+    "vio_image": {
+     "count": 2700,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.405,
+     "MBps": 0.0,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "world"
+    },
+    "infra1/camera_info": {
+     "count": 2700,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.405,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "color/camera_info": {
+     "count": 2702,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.019,
+     "stamp_first_s": 1833.8,
+     "recv_rate_hz": 30.018,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.373,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    }
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 21.22,
+     "cores": {
+      "cpu0": 8.7,
+      "cpu3": 18.0,
+      "cpu": 21.56,
+      "cpu1": 4.76,
+      "cpu5": 10.42,
+      "cpu6": 13.46,
+      "cpu2": 53.06,
+      "cpu4": 53.06,
+      "cpu7": 8.33
+     }
+    },
+    "system-info": {
+     "temperature": 55.9,
+     "uptimeHours": 0.53,
+     "uptimeStr": "32Min"
+    },
+    "system-time": {
+     "timestamp": 1756223709,
+     "timestampNanos": 1756223709205720500,
+     "formatted": "2025-08-26 23:55:09"
+    }
+   },
+   "cfg": {
+    "camera-format": "mjpg 1088x1920 30fps",
+    "stereo-format": "mono8 544x640 30fps",
+    "stereo-hdr": true,
+    "deep-flow": false,
+    "time-sync": false,
+    "pose-cov": true,
+    "ros-domain": "9",
+    "dds": "cyclonedds"
+   },
+   "config_applied": true
+  },
+  "S1r_after_restore": {
+   "name": "S1r_after_restore",
+   "secs": 45,
+   "meas_started": 1795689597.7416015,
+   "topics": {
+    "depth/image_rect_raw": {
+     "count": 588,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 13.083,
+     "stamp_first_s": 1950.3,
+     "recv_rate_hz": 13.078,
+     "gap_events": 52,
+     "est_missing": 52,
+     "max_gap_ms": 133.355,
+     "MBps": 9.12,
+     "missing_vs_nominal_pct": 12.76,
+     "first_frame_id": "camera_camera_depth"
+    },
+    "infra1/image_rect_raw": {
+     "count": 1349,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 30.001,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.464,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "infra2/image_rect_raw": {
+     "count": 1349,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 30.001,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.464,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "camera_camera_right"
+    },
+    "color/image_rect_raw/compressed": {
+     "count": 1351,
+     "type": "sensor_msgs/msg/CompressedImage",
+     "mean_hz": 30.019,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 30.019,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.486,
+     "MBps": 4.3,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    },
+    "imu": {
+     "count": 18000,
+     "type": "sensor_msgs/msg/Imu",
+     "mean_hz": 400.0,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 400.012,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 2.5,
+     "MBps": 0.14,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_imu_optical"
+    },
+    "vio_100hz": {
+     "count": 4497,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 99.933,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 99.934,
+     "gap_events": 23,
+     "est_missing": 23,
+     "max_gap_ms": 25.0,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.07,
+     "first_frame_id": "world"
+    },
+    "vio_image": {
+     "count": 1350,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.464,
+     "MBps": 0.0,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "world"
+    },
+    "infra1/camera_info": {
+     "count": 1350,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.0,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.464,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "color/camera_info": {
+     "count": 1351,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.019,
+     "stamp_first_s": 1950.4,
+     "recv_rate_hz": 30.019,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.486,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    }
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 35.17,
+     "cores": {
+      "cpu": 34.63,
+      "cpu7": 32.0,
+      "cpu0": 36.17,
+      "cpu1": 25.49,
+      "cpu5": 19.15,
+      "cpu2": 55.1,
+      "cpu6": 31.91,
+      "cpu3": 23.53,
+      "cpu4": 58.0
+     }
+    },
+    "system-info": {
+     "temperature": 58.0,
+     "uptimeHours": 0.55,
+     "uptimeStr": "33Min"
+    },
+    "system-time": {
+     "timestamp": 1756223780,
+     "timestampNanos": 1756223780787830451,
+     "formatted": "2025-08-26 23:56:20"
+    }
+   },
+   "cfg": {
+    "camera-format": "mjpg 1088x1920 30fps",
+    "stereo-format": "mono8 544x640 30fps",
+    "stereo-hdr": true,
+    "deep-flow": true,
+    "time-sync": false,
+    "pose-cov": true,
+    "ros-domain": "9",
+    "dds": "cyclonedds"
+   },
+   "config_restored": true
+  },
+  "S2_stereo20": {
+   "name": "S2_stereo20",
+   "secs": 90.0,
+   "meas_started": 1795689676.3238018,
+   "topics": {
+    "depth/image_rect_raw": {
+     "count": 1149,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 12.77,
+     "stamp_first_s": 2028.9,
+     "recv_rate_hz": 12.768,
+     "gap_events": 2,
+     "est_missing": 2,
+     "max_gap_ms": 150.007,
+     "MBps": 8.9,
+     "missing_vs_nominal_pct": 14.86,
+     "first_frame_id": "camera_camera_depth"
+    },
+    "infra1/image_rect_raw": {
+     "count": 1800,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 20.0,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 20.001,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 50.06,
+     "MBps": 6.97,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "infra2/image_rect_raw": {
+     "count": 1799,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 19.989,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 19.99,
+     "gap_events": 1,
+     "est_missing": 1,
+     "max_gap_ms": 100.008,
+     "MBps": 6.96,
+     "missing_vs_nominal_pct": 0.06,
+     "first_frame_id": "camera_camera_right"
+    },
+    "color/image_rect_raw/compressed": {
+     "count": 2701,
+     "type": "sensor_msgs/msg/CompressedImage",
+     "mean_hz": 30.008,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 30.01,
+     "gap_events": 1,
+     "est_missing": 1,
+     "max_gap_ms": 66.625,
+     "MBps": 4.3,
+     "missing_vs_nominal_pct": -0.03,
+     "first_frame_id": "camera_camera_rgb"
+    },
+    "imu": {
+     "count": 36002,
+     "type": "sensor_msgs/msg/Imu",
+     "mean_hz": 400.0,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 400.011,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 2.5,
+     "MBps": 0.14,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_imu_optical"
+    },
+    "vio_100hz": {
+     "count": 8998,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 99.978,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 99.979,
+     "gap_events": 8,
+     "est_missing": 8,
+     "max_gap_ms": 20.0,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.02,
+     "first_frame_id": "world"
+    },
+    "vio_image": {
+     "count": 1800,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 20.0,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 20.002,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 50.06,
+     "MBps": 0.0,
+     "missing_vs_nominal_pct": 33.32,
+     "first_frame_id": "world"
+    },
+    "infra1/camera_info": {
+     "count": 1800,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 20.0,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 20.001,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 50.06,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "color/camera_info": {
+     "count": 2702,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.019,
+     "stamp_first_s": 2029.0,
+     "recv_rate_hz": 30.021,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.403,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    }
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 24.14,
+     "cores": {
+      "cpu": 25.33,
+      "cpu2": 40.82,
+      "cpu1": 0.0,
+      "cpu5": 21.28,
+      "cpu6": 15.22,
+      "cpu0": 43.75,
+      "cpu3": 10.87,
+      "cpu4": 39.22,
+      "cpu7": 22.0
+     }
+    },
+    "system-info": {
+     "temperature": 57.8,
+     "uptimeHours": 0.59,
+     "uptimeStr": "35Min"
+    },
+    "system-time": {
+     "timestamp": 1756223904,
+     "timestampNanos": 1756223904397239385,
+     "formatted": "2025-08-26 23:58:24"
+    }
+   },
+   "cfg": {
+    "camera-format": "mjpg 1088x1920 30fps",
+    "stereo-format": "mono8 544x640 20fps",
+    "stereo-hdr": false,
+    "deep-flow": true,
+    "time-sync": false,
+    "pose-cov": true,
+    "ros-domain": "9",
+    "dds": "cyclonedds"
+   },
+   "config_applied": true
+  },
+  "S2r_after_restore": {
+   "name": "S2r_after_restore",
+   "secs": 45,
+   "meas_started": 1795689799.6098657,
+   "topics": {
+    "depth/image_rect_raw": {
+     "count": 592,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 13.172,
+     "stamp_first_s": 2152.2,
+     "recv_rate_hz": 13.169,
+     "gap_events": 44,
+     "est_missing": 44,
+     "max_gap_ms": 133.348,
+     "MBps": 9.19,
+     "missing_vs_nominal_pct": 12.17,
+     "first_frame_id": "camera_camera_depth"
+    },
+    "infra1/image_rect_raw": {
+     "count": 1350,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 30.001,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.546,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "infra2/image_rect_raw": {
+     "count": 1349,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 30.005,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.546,
+     "MBps": 10.46,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_right"
+    },
+    "color/image_rect_raw/compressed": {
+     "count": 1350,
+     "type": "sensor_msgs/msg/CompressedImage",
+     "mean_hz": 30.019,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 30.017,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.41,
+     "MBps": 4.31,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    },
+    "imu": {
+     "count": 18000,
+     "type": "sensor_msgs/msg/Imu",
+     "mean_hz": 400.0,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 399.998,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 2.5,
+     "MBps": 0.14,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_imu_optical"
+    },
+    "vio_100hz": {
+     "count": 4495,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 99.889,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 99.889,
+     "gap_events": 13,
+     "est_missing": 13,
+     "max_gap_ms": 22.5,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.11,
+     "first_frame_id": "world"
+    },
+    "vio_image": {
+     "count": 1350,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 29.998,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.546,
+     "MBps": 0.0,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "world"
+    },
+    "infra1/camera_info": {
+     "count": 1350,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 30.002,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.546,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "color/camera_info": {
+     "count": 1350,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.019,
+     "stamp_first_s": 2152.3,
+     "recv_rate_hz": 30.017,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.41,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    }
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 37.43,
+     "cores": {
+      "cpu1": 22.45,
+      "cpu5": 32.0,
+      "cpu6": 32.65,
+      "cpu": 37.24,
+      "cpu2": 60.87,
+      "cpu3": 59.57,
+      "cpu4": 23.08,
+      "cpu7": 34.78,
+      "cpu0": 34.0
+     }
+    },
+    "system-info": {
+     "temperature": 58.2,
+     "uptimeHours": 0.61,
+     "uptimeStr": "36Min"
+    },
+    "system-time": {
+     "timestamp": 1756223982,
+     "timestampNanos": 1756223982660329964,
+     "formatted": "2025-08-26 23:59:42"
+    }
+   },
+   "cfg": {
+    "camera-format": "mjpg 1088x1920 30fps",
+    "stereo-format": "mono8 544x640 30fps",
+    "stereo-hdr": true,
+    "deep-flow": true,
+    "time-sync": false,
+    "pose-cov": true,
+    "ros-domain": "9",
+    "dds": "cyclonedds"
+   },
+   "config_restored": true
+  },
+  "S3_timesync_on_t+20s": {
+   "api": {
+    "data": {
+     "synced": false,
+     "enabled": true
+    },
+    "success": true
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 36.49,
+     "cores": {
+      "cpu4": 39.22,
+      "cpu6": 35.42,
+      "cpu": 36.75,
+      "cpu2": 43.14,
+      "cpu5": 25.53,
+      "cpu7": 27.08,
+      "cpu0": 34.0,
+      "cpu1": 30.36,
+      "cpu3": 57.14
+     }
+    },
+    "system-info": {
+     "temperature": 58.4,
+     "uptimeHours": 0.62,
+     "uptimeStr": "36Min"
+    },
+    "system-time": {
+     "timestamp": 1756224003,
+     "timestampNanos": 1756224003366840307,
+     "formatted": "2025-08-27 00:00:03"
+    }
+   }
+  },
+  "S3_timesync_on": {
+   "name": "S3_timesync_on",
+   "secs": 90.0,
+   "meas_started": 1795689869.0632627,
+   "topics": {
+    "depth/image_rect_raw": {
+     "count": 1179,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 13.103,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 13.101,
+     "gap_events": 109,
+     "est_missing": 109,
+     "max_gap_ms": 133.384,
+     "MBps": 9.13,
+     "missing_vs_nominal_pct": 12.63,
+     "first_frame_id": "camera_camera_depth"
+    },
+    "infra1/image_rect_raw": {
+     "count": 2700,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.517,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "infra2/image_rect_raw": {
+     "count": 2700,
+     "type": "sensor_msgs/msg/Image",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 29.999,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.517,
+     "MBps": 10.45,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "camera_camera_right"
+    },
+    "color/image_rect_raw/compressed": {
+     "count": 2702,
+     "type": "sensor_msgs/msg/CompressedImage",
+     "mean_hz": 30.019,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 30.019,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.88,
+     "MBps": 4.31,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    },
+    "imu": {
+     "count": 36001,
+     "type": "sensor_msgs/msg/Imu",
+     "mean_hz": 400.0,
+     "stamp_first_s": 2221.8,
+     "recv_rate_hz": 399.999,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 2.5,
+     "MBps": 0.14,
+     "missing_vs_nominal_pct": 0.0,
+     "first_frame_id": "camera_camera_imu_optical"
+    },
+    "vio_100hz": {
+     "count": 8993,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 99.922,
+     "stamp_first_s": 2221.8,
+     "recv_rate_hz": 99.923,
+     "gap_events": 29,
+     "est_missing": 29,
+     "max_gap_ms": 22.5,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": 0.08,
+     "first_frame_id": "world"
+    },
+    "vio_image": {
+     "count": 2700,
+     "type": "geometry_msgs/msg/PoseStamped",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.517,
+     "MBps": 0.0,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "world"
+    },
+    "infra1/camera_info": {
+     "count": 2700,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.0,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 30.0,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.517,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.0,
+     "first_frame_id": "camera_camera_left"
+    },
+    "color/camera_info": {
+     "count": 2702,
+     "type": "sensor_msgs/msg/CameraInfo",
+     "mean_hz": 30.019,
+     "stamp_first_s": 2221.7,
+     "recv_rate_hz": 30.019,
+     "gap_events": 0,
+     "est_missing": 0,
+     "max_gap_ms": 33.88,
+     "MBps": 0.01,
+     "missing_vs_nominal_pct": -0.06,
+     "first_frame_id": "camera_camera_rgb"
+    }
+   },
+   "cam": {
+    "cpu-monitor": {
+     "average": 35.27,
+     "cores": {
+      "cpu2": 61.54,
+      "cpu5": 28.57,
+      "cpu7": 32.65,
+      "cpu": 35.38,
+      "cpu0": 23.26,
+      "cpu4": 42.86,
+      "cpu6": 28.26,
+      "cpu1": 29.63,
+      "cpu3": 35.42
+     }
+    },
+    "system-info": {
+     "temperature": 58.8,
+     "uptimeHours": 0.64,
+     "uptimeStr": "38Min"
+    },
+    "system-time": {
+     "timestamp": 1756224097,
+     "timestampNanos": 1756224097152028893,
+     "formatted": "2025-08-27 00:01:37"
+    }
+   },
+   "cfg": {
+    "camera-format": "mjpg 1088x1920 30fps",
+    "stereo-format": "mono8 544x640 30fps",
+    "stereo-hdr": true,
+    "deep-flow": true,
+    "time-sync": true,
+    "pose-cov": true,
+    "ros-domain": "9",
+    "dds": "cyclonedds"
+   },
+   "config_applied": true,
+   "host_epoch_end": 1795689962.935953
+  }
+ },
+ "final_core": {
+  "camera-format": "mjpg 1088x1920 30fps",
+  "stereo-format": "mono8 544x640 30fps",
+  "stereo-hdr": true,
+  "deep-flow": true,
+  "time-sync": false,
+  "pose-cov": true,
+  "ros-domain": "9",
+  "dds": "cyclonedds"
+ },
+ "restored_ok": true
+}

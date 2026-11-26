@@ -1,103 +1,154 @@
 {
   "topics": {
     "/camera/camera/vio_status": {
-      "basis": "header_stamp",
+      "basis": "recv_time",
       "count": 343,
-      "span_s": 0.0,
-      "median_period_ms": 0.0,
-      "gap_events": 0,
-      "est_missing": 0,
-      "loss_vs_median": 0.0,
-      "non_monotonic": 0,
-      "duplicates": 342,
-      "recv_minus_stamp_s": {
-        "median": 1795675148.8682,
-        "spread_ms": 340454.5
+      "span_s": 340.454,
+      "median_period_ms": 916.8818,
+      "gap_events": 9,
+      "est_missing": 20,
+      "loss_vs_median": 0.0551,
+      "expected_count": 372,
+      "loss_vs_reference": 0.07796,
+      "interval_ms": {
+        "min": 248.298,
+        "p50": 916.884,
+        "p99": 3165.431,
+        "max": 3998.424
       },
+      "jitter_ms": 378.6374,
+      "non_monotonic": 0,
+      "duplicates": 0,
       "recv_only_gap_events": 0,
       "recv_gap_events": 9,
-      "gaps_head": [],
-      "recv_gaps_head": [
+      "gaps_head": [
         {
           "start_ns": 1795674998781667498,
           "end_ns": 1795675001987013999,
           "dur_ms": 3205.347,
           "missing": 2,
-          "idx": 5,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 5
         },
         {
           "start_ns": 1795675032815100217,
           "end_ns": 1795675035960718009,
           "dur_ms": 3145.618,
           "missing": 2,
-          "idx": 39,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 39
         },
         {
           "start_ns": 1795675067799904747,
           "end_ns": 1795675070936180480,
           "dur_ms": 3136.276,
           "missing": 2,
-          "idx": 74,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 74
         },
         {
           "start_ns": 1795675101798872321,
           "end_ns": 1795675104964303217,
           "dur_ms": 3165.431,
           "missing": 2,
-          "idx": 108,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 108
         },
         {
           "start_ns": 1795675136799355306,
           "end_ns": 1795675139881408089,
           "dur_ms": 3082.053,
           "missing": 2,
-          "idx": 143,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 143
         },
         {
           "start_ns": 1795675170599472091,
           "end_ns": 1795675173937581144,
           "dur_ms": 3338.109,
           "missing": 3,
-          "idx": 177,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 177
         },
         {
           "start_ns": 1795675220932089228,
           "end_ns": 1795675224930513225,
           "dur_ms": 3998.424,
           "missing": 3,
-          "idx": 228,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 228
         },
         {
           "start_ns": 1795675255788423145,
           "end_ns": 1795675258943361748,
           "dur_ms": 3154.939,
           "missing": 2,
-          "idx": 262,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 262
         },
         {
           "start_ns": 1795675290746580766,
           "end_ns": 1795675293895077790,
           "dur_ms": 3148.497,
           "missing": 2,
-          "idx": 297,
-          "stamp_dt_ms": 0.0,
-          "recv_only": null
+          "idx": 297
+        }
+      ],
+      "recv_gaps_head": [
+        {
+          "start_ns": 1795674998781667498,
+          "end_ns": 1795675001987013999,
+          "dur_ms": 3205.347,
+          "missing": 2,
+          "idx": 5
+        },
+        {
+          "start_ns": 1795675032815100217,
+          "end_ns": 1795675035960718009,
+          "dur_ms": 3145.618,
+          "missing": 2,
+          "idx": 39
+        },
+        {
+          "start_ns": 1795675067799904747,
+          "end_ns": 1795675070936180480,
+          "dur_ms": 3136.276,
+          "missing": 2,
+          "idx": 74
+        },
+        {
+          "start_ns": 1795675101798872321,
+          "end_ns": 1795675104964303217,
+          "dur_ms": 3165.431,
+          "missing": 2,
+          "idx": 108
+        },
+        {
+          "start_ns": 1795675136799355306,
+          "end_ns": 1795675139881408089,
+          "dur_ms": 3082.053,
+          "missing": 2,
+          "idx": 143
+        },
+        {
+          "start_ns": 1795675170599472091,
+          "end_ns": 1795675173937581144,
+          "dur_ms": 3338.109,
+          "missing": 3,
+          "idx": 177
+        },
+        {
+          "start_ns": 1795675220932089228,
+          "end_ns": 1795675224930513225,
+          "dur_ms": 3998.424,
+          "missing": 3,
+          "idx": 228
+        },
+        {
+          "start_ns": 1795675255788423145,
+          "end_ns": 1795675258943361748,
+          "dur_ms": 3154.939,
+          "missing": 2,
+          "idx": 262
+        },
+        {
+          "start_ns": 1795675290746580766,
+          "end_ns": 1795675293895077790,
+          "dur_ms": 3148.497,
+          "missing": 2,
+          "idx": 297
         }
       ]
     },

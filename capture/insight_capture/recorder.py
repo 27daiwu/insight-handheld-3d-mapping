@@ -62,7 +62,8 @@ def start(args) -> int:
     if args.skip_preflight:
         print("preflight skipped (--skip-preflight); topic discovery only")
     rep, disc, ctx = run_preflight(args.profile, args.prefix, 0.0 if args.skip_preflight else args.probe_seconds,
-                                   args.firmware, args.root, min_free, expect, image_mode=args.image_mode)
+                                   args.firmware, args.root, min_free, expect, image_mode=args.image_mode,
+                                   camera_api=getattr(args, "camera_api", None))
     print(rep.render())
     if disc is None or not disc.found or disc.missing_required:
         if not args.allow_missing or disc is None or not disc.found:
@@ -101,7 +102,8 @@ def start(args) -> int:
         "host": rep.data["system"]["os"] | {"ros": rep.data["system"]["ros"]},
         "camera": {"model": "Insight 9", "firmware": ctx.get("firmware"),
                    "firmware_baseline": prof.get("firmware_baseline"), "profile": prof["profile"],
-                   "profile_verified": prof.get("verified"), "prefix": disc.prefix},
+                   "profile_verified": prof.get("verified"), "prefix": disc.prefix,
+                   "api_snapshot": (ctx.get("camera_api") or {}).get("summary")},
         "time": {"start_utc": utc_now(), "start_wall_ns": time.time_ns(), "end_utc": None, "duration_s": None,
                  "note": "bag timestamps (t_recv) are host receive times; header.stamp are untouched "
                          "camera stamps. Both are preserved."},

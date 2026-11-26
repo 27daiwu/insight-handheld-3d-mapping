@@ -117,6 +117,7 @@ def inspect(args) -> int:
             rep.add("WARN", "manifest_fw", "manifest: firmware version unknown")
 
     planned = {t["name"]: t for t in m.get("topics", [])} if m else {}
+    offs: list = []
     for name, t in planned.items():
         role = t.get("role")
         st = stats.get(name)
@@ -124,7 +125,8 @@ def inspect(args) -> int:
             lvl = "FAIL" if t.get("required") else "WARN"
             rep.add(lvl, f"data_{role}", f"{role} {name}: NO data in bag")
             continue
-        fnd = judge(st, t.get("reference_hz"), th)
+        fnd = judge(st, t.get("reference_hz"), th, clock_check=False)
+        offs.append(st.get("recv_minus_stamp_median_s"))
         hz = st.get("stamp_rate_hz") or st.get("recv_rate_hz")
         ref = t.get("reference_hz")
         summ = (f"{role} {name}: {st['count']} msgs, {hz} Hz"
@@ -144,6 +146,14 @@ def inspect(args) -> int:
             rep.add("PASS" if not fnd else "WARN", "data", f"{name}: {st['count']} msgs, "
                     f"{st.get('stamp_rate_hz') or st.get('recv_rate_hz')} Hz", "\n".join(x for _, x in fnd))
 
+    ov = [o for o in offs if o is not None]
+    if ov:
+        if all(abs(o) > th.get("max_clock_offset_s", 1.0) for o in ov):
+            rep.add("WARN", "clock_domain", f"Device header stamps are NOT host wall-clock (receive - stamp = {sum(ov)/len(ov):.3g} s on every stamped topic)",
+                    "Expected on Insight 9 (camera clock is boot-relative, camera time-sync not working). Use header stamps for continuity/sync; "
+                    "host<->camera alignment is not available. Reported once instead of per topic.")
+        else:
+            rep.add("PASS", "clock_domain", "Header stamps are within 1 s of host receive time")
     # cross-topic time alignment
     firsts = {n: s["recv_first_ns"] for n, s in stats.items() if s.get("recv_first_ns")}
     lasts = {n: s["recv_last_ns"] for n, s in stats.items() if s.get("recv_last_ns")}

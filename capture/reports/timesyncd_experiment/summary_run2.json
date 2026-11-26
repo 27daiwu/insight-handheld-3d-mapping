@@ -1,0 +1,32 @@
+{
+ "A_baseline_active": {
+  "n": 114,
+  "span_s": 90,
+  "mean_offset_ms": -73.6,
+  "slope_ppm": -54.2,
+  "resid_sd_ms": 7.1,
+  "min": -92.7,
+  "max": -36.6,
+  "mono_rate_vs_windows_ppm": -54.2
+ },
+ "B_timesyncd_stopped": {
+  "n": 380,
+  "span_s": 300,
+  "mean_offset_ms": -73.2,
+  "slope_ppm": 5.9,
+  "resid_sd_ms": 4.1,
+  "min": -110.6,
+  "max": -65.2,
+  "mono_rate_vs_windows_ppm": 5.8
+ },
+ "C_restored": {
+  "n": 102,
+  "span_s": 80,
+  "mean_offset_ms": -72.1,
+  "slope_ppm": -15.4,
+  "resid_sd_ms": 2.8,
+  "min": -87.8,
+  "max": -68.2,
+  "mono_rate_vs_windows_ppm": -15.4
+ }
+}

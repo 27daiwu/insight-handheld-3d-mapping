@@ -27,6 +27,7 @@ def cli(env, *a, timeout=180):
 def env(tmp_path_factory):
     e = dict(os.environ)
     e["ROS_DOMAIN_ID"] = str(random.randint(120, 200))
+    e["INSIGHT_CAMERA_API"] = "off"                       # never touch a real camera from the simulator tests
     e["INSIGHT_DATA_ROOT"] = str(tmp_path_factory.mktemp("sessions"))
     e["PYTHONPATH"] = str(CAP) + ":" + e.get("PYTHONPATH", "")
     return e

@@ -7,6 +7,11 @@ import struct
 NS = 1_000_000_000
 
 
+def has_header(msg_type: str) -> bool:
+    """False for types whose first field is not std_msgs/Header (std_msgs/*, tf2_msgs/TFMessage)."""
+    return not (msg_type.startswith("std_msgs/") or msg_type == "tf2_msgs/msg/TFMessage")
+
+
 def parse_header_stamp(buf: bytes) -> int | None:
     """Header stamp (ns) from the first 12 bytes of a CDR-serialized message
     whose first field is std_msgs/Header. Returns None if unparsable."""
@@ -80,8 +85,13 @@ def analyze(stamps_ns: list[int | None], recv_ns: list[int] | None = None,
     return out
 
 
-def judge(stat: dict, nominal_hz: float | None, th: dict) -> list[tuple[str, str]]:
-    """Turn stats into (level, message) findings. level in WARN/FAIL."""
+CLOCK_MSG = "camera/host clocks not aligned"
+
+
+def judge(stat: dict, nominal_hz: float | None, th: dict, clock_check: bool = True) -> list[tuple[str, str]]:
+    """Turn stats into (level, message) findings. level in WARN/FAIL.
+
+    clock_check=False omits the per-topic header-vs-receive clock-offset finding (callers report it once, aggregated)."""
     f: list[tuple[str, str]] = []
     if stat.get("count", 0) == 0:
         return [("FAIL", "no messages received")]
@@ -95,8 +105,8 @@ def judge(stat: dict, nominal_hz: float | None, th: dict) -> list[tuple[str, str
         f.append(("WARN", f"{stat['gap_events']} stamp gaps (~{stat['est_missing_msgs']} msgs missing, "
                           f"max gap {stat['max_gap_ms']} ms)"))
     off = stat.get("recv_minus_stamp_median_s")
-    if off is not None and abs(off) > th.get("max_clock_offset_s", 1.0):
-        f.append(("WARN", f"receive time - header stamp = {off:.2f}s (camera/host clocks not aligned)"))
+    if clock_check and off is not None and abs(off) > th.get("max_clock_offset_s", 1.0):
+        f.append(("WARN", f"receive time - header stamp = {off:.2f}s ({CLOCK_MSG})"))
     hz = stat.get("stamp_rate_hz") or stat.get("recv_rate_hz")
     if nominal_hz and hz and hz < nominal_hz * th.get("min_rate_ratio", 0.9):
         f.append(("WARN", f"rate {hz:.1f} Hz below reference {nominal_hz:.1f} Hz"))

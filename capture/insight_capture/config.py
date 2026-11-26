@@ -6,7 +6,7 @@ from pathlib import Path
 
 import yaml
 
-DEFAULT_PROFILE = Path(__file__).resolve().parent.parent / "config" / "topics_v2.1.4.yaml"
+DEFAULT_PROFILE = Path(__file__).resolve().parent.parent / "config" / "topics_v2.1.5.yaml"
 
 
 def load_profile(path: str | os.PathLike | None = None) -> dict:
