@@ -1,0 +1,104 @@
+# Topic profile for Insight 9 firmware/driver baseline v2.1.4.
+#
+# !!! verified: false !!!
+# The official v2.1.4 topic list was NOT available offline when this was written
+# (no camera attached, no vendor doc in the repo, web search unavailable).
+# The regexes below are a *prefix-agnostic* guess based on common ROS 2 camera
+# naming. They must be checked against a real `ros2 topic list -t` from the
+# device and corrected here (only this file needs editing).
+#
+# Matching: a role matches a topic when the topic name ENDS with `suffix`
+# (regex, fully anchored at the end) and the topic type is in `types`.
+# Everything before the match is the "camera prefix" (e.g. /insight9).
+# The prefix with the best coverage of core roles is chosen automatically;
+# override with `--prefix`.
+profile: insight9-v2.1.4
+verified: false
+firmware_baseline: "2.1.4"
+
+image_types: &image_types
+  - sensor_msgs/msg/Image
+  - sensor_msgs/msg/CompressedImage
+
+roles:
+  rgb:
+    kind: image
+    required: true
+    types: *image_types
+    suffix: '/(rgb|color)/image[^/]*(/compressed)?'
+  stereo_left:
+    kind: image
+    required: true
+    types: *image_types
+    suffix: '/(stereo/)?(left|stereo_left)(_camera)?/image[^/]*(/compressed)?'
+  stereo_right:
+    kind: image
+    required: true
+    types: *image_types
+    suffix: '/(stereo/)?(right|stereo_right)(_camera)?/image[^/]*(/compressed)?'
+  depth:
+    kind: image
+    required: false          # Depth is OFF by default on the camera
+    default_off: true
+    types: *image_types
+    suffix: '/depth/image[^/]*(/compressed|/compressedDepth)?'
+  imu:
+    kind: imu
+    required: true
+    types: [sensor_msgs/msg/Imu]
+    suffix: '/imu(/data)?(_raw)?'
+  vio:
+    kind: vio
+    required: true
+    types:
+      - nav_msgs/msg/Odometry
+      - geometry_msgs/msg/PoseStamped
+      - geometry_msgs/msg/PoseWithCovarianceStamped
+    suffix: '/(vio|odom|odometry|pose)(/[^/]+)?'
+  rgb_info:
+    kind: camera_info
+    required: true
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/(rgb|color)/camera_info'
+    for: rgb
+  stereo_left_info:
+    kind: camera_info
+    required: true
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/(stereo/)?(left|stereo_left)(_camera)?/camera_info'
+    for: stereo_left
+  stereo_right_info:
+    kind: camera_info
+    required: true
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/(stereo/)?(right|stereo_right)(_camera)?/camera_info'
+    for: stereo_right
+  depth_info:
+    kind: camera_info
+    required: false
+    types: [sensor_msgs/msg/CameraInfo]
+    suffix: '/depth/camera_info'
+    for: depth
+
+# Global (un-prefixed) topics.
+global_topics:
+  tf:        {name: /tf,        type: tf2_msgs/msg/TFMessage, required: true}
+  tf_static: {name: /tf_static, type: tf2_msgs/msg/TFMessage, required: false}
+
+# Optional topics under the camera prefix recorded with --include-extra.
+extra_types:
+  - sensor_msgs/msg/Image
+  - sensor_msgs/msg/CompressedImage
+  - sensor_msgs/msg/CameraInfo
+  - sensor_msgs/msg/Imu
+  - nav_msgs/msg/Odometry
+  - geometry_msgs/msg/PoseStamped
+  - diagnostic_msgs/msg/DiagnosticArray
+  - tf2_msgs/msg/TFMessage
+
+# Sanity limits used by preflight/inspect.
+thresholds:
+  gap_factor: 1.5          # stamp gap > factor * median period counts as a drop
+  min_rate_ratio: 0.9      # measured / nominal rate below this => WARN
+  max_clock_offset_s: 1.0  # |receive time - header stamp| above this => WARN
+  min_free_gb: 5.0         # refuse/stop recording below this free space
