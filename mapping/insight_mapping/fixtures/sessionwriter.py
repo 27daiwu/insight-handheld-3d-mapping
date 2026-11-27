@@ -71,6 +71,24 @@ class SessionBuilder:
         m.data = np.ascontiguousarray(arr).tobytes()
         self._write(topic, m, stamp_ns, bag_ns)
 
+    def add_compressed(self, topic, stamp_ns, data: bytes, fmt, frame_id, role="image", bag_ns=None):
+        CompressedImage = __import__("sensor_msgs.msg", fromlist=["CompressedImage"]).CompressedImage
+        self._topic(topic, "sensor_msgs/msg/CompressedImage", role, frame_id)
+        m = CompressedImage()
+        m.header.stamp = to_time(stamp_ns); m.header.frame_id = frame_id
+        m.format = fmt; m.data = list(data) if False else data
+        self._write(topic, m, stamp_ns, bag_ns)
+
+    def add_pose(self, topic, stamp_ns, T, frame_id, role="vio", bag_ns=None):
+        PoseStamped = __import__("geometry_msgs.msg", fromlist=["PoseStamped"]).PoseStamped
+        self._topic(topic, "geometry_msgs/msg/PoseStamped", role, frame_id)
+        m = PoseStamped()
+        m.header.stamp = to_time(stamp_ns); m.header.frame_id = frame_id
+        t, q = se3.T_to_tq(T)
+        m.pose.position.x, m.pose.position.y, m.pose.position.z = map(float, t)
+        m.pose.orientation.x, m.pose.orientation.y, m.pose.orientation.z, m.pose.orientation.w = map(float, q)
+        self._write(topic, m, stamp_ns, bag_ns)
+
     def add_camera_info(self, topic, stamp_ns, cam, bag_ns=None):
         CameraInfo = self.R["CameraInfo"]
         self._topic(topic, "sensor_msgs/msg/CameraInfo", "camera_info", cam.frame_id)
@@ -103,7 +121,7 @@ class SessionBuilder:
         m.orientation.w = 1.0
         self._write(topic, m, stamp_ns, bag_ns)
 
-    def add_tf(self, edges, stamp_ns, static=False):
+    def add_tf(self, edges, stamp_ns, static=False, bag_ns=None):
         """edges: list of (parent, child, T_parent_child)."""
         TFMessage, TS = self.R["TFMessage"], self.R["TransformStamped"]
         name = "/tf_static" if static else "/tf"
@@ -116,7 +134,7 @@ class SessionBuilder:
             ts.transform.translation.x, ts.transform.translation.y, ts.transform.translation.z = map(float, t)
             ts.transform.rotation.x, ts.transform.rotation.y, ts.transform.rotation.z, ts.transform.rotation.w = map(float, q)
             msg.transforms.append(ts)
-        self._write(name, msg, stamp_ns)
+        self._write(name, msg, stamp_ns, bag_ns)
 
     def finalize(self, label="", camera_config=None, extensions=None, integrity_status=None,
                  missing=(), warnings=(), nominal_rates=None):

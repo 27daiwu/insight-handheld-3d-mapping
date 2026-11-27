@@ -54,3 +54,7 @@ If alignment cannot be proven *and* there is no TF between the frames, the run r
 data-quality summary, output verification). GLB later. Intermediate: `extracted/`, `slam/`, `quality_report.json`.
 `mesh.ply/obj` carry per-vertex colours; `mesh_textured.obj` / `mesh.glb` use a view atlas (≤24 RGB views as atlas tiles; triangles seen by no view get a neutral tile).
 Proposed protocol additions for `main`: `docs/PROTOCOL_PROPOSAL.md`. Measured back-end comparison: `docs/COMPARISON.md`.
+
+## Insight 9 stereo-first phase 1 (`insight_mapping.i9`)
+Real-topic MCAP import, stereo/CameraInfo/calibration verification, stereo VO, dense map and quality report straight from a bag:
+`python -m insight_mapping.i9 {scan,check,run,scale-check}`. See `docs/I9_STEREO_PHASE1.md` (needs `pip install mcap mcap-ros2-support`).

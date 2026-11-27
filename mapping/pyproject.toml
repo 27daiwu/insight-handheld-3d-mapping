@@ -3,7 +3,7 @@ name = "insight-mapping"
 version = "0.1.0"
 description = "Offline 3D reconstruction from Insight 9 Sessions (VIO + RTAB-Map + Open3D)"
 requires-python = ">=3.10"
-dependencies = ["numpy<2", "scipy", "opencv-python-headless>=4.5", "open3d>=0.18", "pyyaml", "jsonschema"]
+dependencies = ["numpy<2", "scipy", "opencv-python-headless>=4.5", "open3d>=0.18", "pyyaml", "jsonschema", "mcap", "mcap-ros2-support"]
 
 [project.optional-dependencies]
 test = ["pytest"]
