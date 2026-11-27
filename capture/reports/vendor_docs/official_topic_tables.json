@@ -1,0 +1,182 @@
+{
+ "1.2.0": [
+  [
+   "Topic Name",
+   "Resolution",
+   "Rate",
+   "Encoding",
+   "Message Type",
+   "Description"
+  ],
+  [
+   "/insight/imu",
+   "--",
+   "400Hz",
+   "--",
+   "sensor_msgs/msg/Imu",
+   "High-frequency IMU data"
+  ],
+  [
+   "/insight/camera_left_rectified",
+   "640x544",
+   "30Hz",
+   "mono8",
+   "sensor_msgs/msg/Image",
+   "Left eye rectified image"
+  ],
+  [
+   "/insight/camera_right_rectified",
+   "640x544",
+   "30Hz",
+   "mono8",
+   "sensor_msgs/msg/Image",
+   "Right eye rectified image"
+  ],
+  [
+   "/insight/camera_rgb/compressed",
+   "1920x1088",
+   "30Hz",
+   "jpeg",
+   "sensor_msgs/msg/CompressedImage",
+   "RGB compressed image"
+  ],
+  [
+   "/insight/depth",
+   "640x544",
+   "15Hz",
+   "mono16",
+   "sensor_msgs/msg/Image",
+   "Depth map, the unit is milli-meter(mm)"
+  ],
+  [
+   "/insight/camera_left_info",
+   "--",
+   "30Hz",
+   "--",
+   "sensor_msgs/msg/CameraInfo",
+   "Left camera intrinsics"
+  ],
+  [
+   "/insight/camera_right_info",
+   "--",
+   "30Hz",
+   "--",
+   "sensor_msgs/msg/CameraInfo",
+   "Right camera intrinsics"
+  ],
+  [
+   "/insight/camera_rgb_info",
+   "--",
+   "30Hz",
+   "--",
+   "sensor_msgs/msg/CameraInfo",
+   "RGB camera intrinsics"
+  ],
+  [
+   "/insight/vio_pose",
+   "--",
+   "30Hz",
+   "--",
+   "geometry_msgs/msg/PoseStamped",
+   "VIO pose, aligned to Tworld_imu coordinate frame"
+  ],
+  [
+   "/static_tf",
+   "--",
+   "--",
+   "--",
+   "tf2_msgs/msg/TFMessage",
+   "IMU-Camera extrinsics"
+  ]
+ ],
+ "1.2.1": [
+  [
+   "Topic Name (RealSense Compatible)",
+   "Resolution",
+   "Rate",
+   "Encoding",
+   "Message Type",
+   "Description"
+  ],
+  [
+   "/camera/camera/imu",
+   "--",
+   "400Hz",
+   "--",
+   "sensor_msgs/msg/Imu",
+   "High-frequency IMU data"
+  ],
+  [
+   "/camera/camera/infra1/image_rect_raw",
+   "640x544",
+   "30Hz",
+   "mono8",
+   "sensor_msgs/msg/Image",
+   "Left eye rectified image"
+  ],
+  [
+   "/camera/camera/infra2/image_rect_raw",
+   "640x544",
+   "30Hz",
+   "mono8",
+   "sensor_msgs/msg/Image",
+   "Right eye rectified image"
+  ],
+  [
+   "/camera/camera/color/image_rect_raw/compressed",
+   "1920x1088",
+   "30Hz",
+   "jpeg",
+   "sensor_msgs/msg/CompressedImage",
+   "RGB compressed image"
+  ],
+  [
+   "/camera/depth/image_rect_raw",
+   "640x544",
+   "15Hz",
+   "mono16",
+   "sensor_msgs/msg/Image",
+   "Depth map (Unit: mm)"
+  ],
+  [
+   "/camera/infra1/camera_info",
+   "--",
+   "30Hz",
+   "--",
+   "sensor_msgs/msg/CameraInfo",
+   "Left camera intrinsics"
+  ],
+  [
+   "/camera/infra2/camera_info",
+   "--",
+   "30Hz",
+   "--",
+   "sensor_msgs/msg/CameraInfo",
+   "Right camera intrinsics"
+  ],
+  [
+   "/camera/color/camera_info",
+   "--",
+   "30Hz",
+   "--",
+   "sensor_msgs/msg/CameraInfo",
+   "RGB camera intrinsics"
+  ],
+  [
+   "/insight/vio_pose",
+   "--",
+   "15Hz",
+   "--",
+   "geometry_msgs/msg/PoseStamped",
+   "VIO pose, aligned to Tworld_imu coordinate frame"
+  ],
+  [
+   "/tf_static",
+   "--",
+   "--",
+   "--",
+   "tf2_msgs/msg/TFMessage",
+   "IMU-Camera extrinsics"
+  ]
+ ]
+}

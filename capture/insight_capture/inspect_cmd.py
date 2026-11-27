@@ -10,7 +10,7 @@ from .config import data_root, load_profile
 from .preflight import Report, _connected
 from .session import (BAG, LOG, MANIFEST, PLAN, STATE, bag_size, pid_alive, read_json, resolve_session,
                       utc_now, write_json)
-from .stats import judge
+from .stats import judge, rate_text
 
 NS = 1e9
 
@@ -19,7 +19,7 @@ def _summarize_topic(plan_t: dict, st: dict | None) -> dict:
     st = st or {}
     return {**plan_t, "count": st.get("count", 0), "recv_first_ns": st.get("recv_first_ns"),
             "recv_last_ns": st.get("recv_last_ns"), "stamp_first_ns": st.get("stamp_first_ns"),
-            "stamp_last_ns": st.get("stamp_last_ns"), "measured_stamp_rate_hz": st.get("stamp_rate_hz"),
+            "stamp_last_ns": st.get("stamp_last_ns"), "measured_stamp_rate_hz": st.get("stamp_rate_hz"), "measured_mean_rate_hz": st.get("stamp_mean_rate_hz"),
             "measured_recv_rate_hz": st.get("recv_rate_hz"), "est_missing_msgs": st.get("est_missing_msgs"),
             "bytes": st.get("bytes", 0)}
 
@@ -127,9 +127,8 @@ def inspect(args) -> int:
             continue
         fnd = judge(st, t.get("reference_hz"), th, clock_check=False)
         offs.append(st.get("recv_minus_stamp_median_s"))
-        hz = st.get("stamp_rate_hz") or st.get("recv_rate_hz")
         ref = t.get("reference_hz")
-        summ = (f"{role} {name}: {st['count']} msgs, {hz} Hz"
+        summ = (f"{role} {name}: {st['count']} msgs, {rate_text(st)}"
                 + (f" (ref {ref:.1f})" if ref else "")
                 + f", est. missing {st.get('est_missing_msgs', 0)}, {st['bytes'] / 1e6:.1f} MB")
         rep.add("PASS" if not fnd else "WARN", f"data_{role}", summ, "\n".join(x for _, x in fnd))
@@ -143,8 +142,8 @@ def inspect(args) -> int:
     if not m:   # no manifest: still report each topic
         for name, st in stats.items():
             fnd = judge(st, None, th)
-            rep.add("PASS" if not fnd else "WARN", "data", f"{name}: {st['count']} msgs, "
-                    f"{st.get('stamp_rate_hz') or st.get('recv_rate_hz')} Hz", "\n".join(x for _, x in fnd))
+            rep.add("PASS" if not fnd else "WARN", "data", f"{name}: {st['count']} msgs, " + rate_text(st),
+                    "\n".join(x for _, x in fnd))
 
     ov = [o for o in offs if o is not None]
     if ov:

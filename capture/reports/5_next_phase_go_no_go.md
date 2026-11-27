@@ -26,3 +26,7 @@
 1. Collect first real mapping-quality sessions on WSL2 with depth **off** if depth continuity is not needed (S1: all other streams had 0 gaps) — your call, it changes a camera setting.
 2. Send vendor the depth evidence (`reports/3_depth_loss_root_cause.md`) and time-sync question.
 3. Native-Ubuntu repeat when available.
+
+---
+## Addendum 2026-11-27 (DATA_CONTRACT.md v0.3)
+Verdict unchanged (GO for header-stamp-based collection on WSL2; NO-GO for "P1 passed"). Changes to the blocker list: **VIO loss is withdrawn as a blocker** (0.056 % / 0.100 % by count; it is stamp jitter) — its remaining blockers are semantics and the unconfirmed link to the guides' `/insight/vio_pose` (30 Hz in v1.2.0, 15 Hz in v1.2.1). New open item for the vendor: **the two guide versions disagree** (VIO rate, `/static_tf` vs `/tf_static`) and v1.2.0 names (`/insight/*`) were never observed on a device. Depth remains the main blocker (official 15 Hz mono16 mm vs 13.1 Hz delivered; unit unverified).

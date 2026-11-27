@@ -27,10 +27,12 @@ def cli(env, *a, timeout=180):
 def env(tmp_path_factory):
     e = dict(os.environ)
     e["ROS_DOMAIN_ID"] = str(random.randint(120, 200))
+    e["ROS_LOCALHOST_ONLY"] = "1"                        # never publish test data on the lab LAN; also faster discovery when no USB-NCM link exists
     e["INSIGHT_CAMERA_API"] = "off"                       # never touch a real camera from the simulator tests
     e["INSIGHT_DATA_ROOT"] = str(tmp_path_factory.mktemp("sessions"))
     e["PYTHONPATH"] = str(CAP) + ":" + e.get("PYTHONPATH", "")
-    return e
+    yield e
+    subprocess.run(["ros2", "daemon", "stop"], env=e, capture_output=True, timeout=30)    # do not leave per-domain daemons behind
 
 
 def start_sim(env, *extra):
@@ -92,7 +94,7 @@ def test_record_stop_inspect_replay_depth_off(env):
         # replay: count imu messages republished
         imu_n = roles["imu"]["count"]
         sys.path.insert(0, str(CAP))
-        os.environ.update(ROS_DOMAIN_ID=env["ROS_DOMAIN_ID"])
+        os.environ.update(ROS_DOMAIN_ID=env["ROS_DOMAIN_ID"], ROS_LOCALHOST_ONLY="1")
         from insight_capture.rosgraph import Graph
         kill(sim)                                    # make sure only replayed data is seen
         sim = None

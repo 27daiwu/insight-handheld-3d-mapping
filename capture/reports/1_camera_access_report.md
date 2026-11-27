@@ -58,3 +58,7 @@ usbipd not needed (CDC-NCM). Windows lists VID 3652 PID 0B5C, 2 UVC cams + HID +
 4. `image_raw` topics empty; confirm whether they publish only on subscription or are unused.
 5. Firmware 2.1.5 vs baseline 2.1.4 – decide baseline.
 6. Depth was found enabled although specified as default-off: recorded (publisher present), never toggled by tooling.
+
+---
+## Addendum 2026-11-27
+Table in §2 above lists "VIO 100 (doc: 15)": the doc says **30 Hz in guide v1.2.0 and 15 Hz in v1.2.1** (both archived in `vendor_docs/`), and "98 missing (0.29 %)" is the gap-based estimate (count loss vs 100 Hz: 0.056 %). The official-vs-measured comparison with per-field status is now maintained in `../DATA_CONTRACT.md` v0.3 §5.

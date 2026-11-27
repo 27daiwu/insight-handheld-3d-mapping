@@ -51,3 +51,8 @@ Camera writer QoS (Cyclone discovery, `camera_writer_qos.txt`): depth RELIABLE, 
 * The 12.65 % is a **device-output shortfall, not recorder loss**; the recorder faithfully stores what arrives. It stays an **open deviation** (not fixed) until the vendor confirms the intended rate/behaviour or a firmware/config remedy is found. Not counted as a clock artefact and not counted as a recorder bug.
 * Users of depth must handle irregular intervals (2–4 stereo frames) and ≈ 13.1 Hz.
 * Next discriminators (need approval/access): ask vendor; second unit; native Ubuntu (rules out WSL2 only for the host side, already refuted); camera-side logs; try `compatibility-mode`/other colour format (changes camera config).
+
+---
+## Addendum 2026-11-27 (DATA_CONTRACT.md v0.3)
+* The depth numbers above are **count loss** (`1 − n/expected` at 15 Hz): 12.654 % (run A) / 12.828 % (run B); delivered 13.100 / 13.077 Hz. The `inspect` gap-based estimate (8.96 % / 8.50 %) under-counts omitted frames on a coarse grid; the median-period rate (14.999 Hz) hides them. DATA_CONTRACT §5.1 fixes these definitions.
+* The "15 Hz" reference is the vendor guides' (v1.2.0 `/insight/depth`, v1.2.1 `/camera/depth/image_rect_raw`; both: mono16, 640x544 printed as height x width, unit mm). Only the 15 Hz *grid* (median interval 66.7 ms) is observed; the *unit* is documentation-only [?]. Conclusions of this report are unchanged.

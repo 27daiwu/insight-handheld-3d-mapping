@@ -51,3 +51,11 @@ Replay of both bags: exit 0, stamp rates reproduced (A: imu 400.0, stereo 30.0, 
 3. Camera time-sync mechanism (vendor) — then re-test with approval.
 4. WSL2 clock-step trigger unknown; native Ubuntu control.
 5. Formal DATA_CONTRACT approval; promote the draft to repo root.
+
+---
+## Addendum 2026-11-27 — specification alignment (DATA_CONTRACT.md v0.3); no verdict change
+* **P1-C is still not passed** (Depth shortfall unresolved, no native-Ubuntu run). Nothing in this addendum improves or worsens the verdict.
+* **Correction of the VIO number.** The "0.29 % / 0.38 %" (and "0.15–0.4 %" in other notes) are the *gap-based estimate*. By message **count** against 100 Hz, VIO lost **0.056 % (run A) / 0.100 % (run B)** (delivered 99.944 / 99.900 Hz); its stamps are jittery (intervals 2.5–27.5 ms) rather than missing. The "unexplained VIO loss" item therefore becomes "VIO stamp jitter + pose semantics pending". `vio` stays unverified because its nominal rate comes only from the topic name and the guides list a different topic/rate (30 Hz v1.2.0, 15 Hz v1.2.1).
+* **Depth** is unchanged by count: 12.654 % / 12.828 % short of 15 Hz (13.100 / 13.077 Hz delivered). The gap-based estimate (8.96 % / 8.50 %) under-counts it and must not be used.
+* **Definitions** (delivered Hz, count loss %) are now fixed in DATA_CONTRACT §5.1; the tool reports the delivered rate (previously `inspect` printed the median-period rate "14.999 Hz (ref 15.0)" for Depth and its low-rate check never fired — fixed, tested).
+* Official statements (both guide versions) vs measurements, including `/static_tf` vs `/tf_static`, are in DATA_CONTRACT §5.3–5.4. No vendor-document claim was promoted to [V]/[O].

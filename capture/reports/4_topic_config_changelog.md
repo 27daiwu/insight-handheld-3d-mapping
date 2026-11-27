@@ -51,3 +51,14 @@ Per-topic status (one decision each):
 Guard tests: `tests/test_profiles.py` (baseline 2.1.5, history kept, depth/vio/depth_info/tf_static must stay unverified until evidence changes).
 
 Discovery changes (unchanged from earlier today): `*rect*` before `*_raw`; sibling prefixes; `any_prefix` roles; `vio_100hz`/`vio_pose` suffixes.
+
+---
+# Addendum 2026-11-27 — `spec:` block, DATA_CONTRACT v0.3
+| change | detail |
+|---|---|
+| `topics_v2.1.5.yaml` gains top-level `spec:` | official v1.2.0 / v1.2.1 values next to measured values per role, per-field status (V/O/?/-) and source codes, 8 deviation records (DEV-*), run/source registry. Role matching, `verification` blocks and `verified: false` are **unchanged** |
+| `vio` verification evidence rewritten | old text said "pooled loss ~0.15 % … above 0.1 % limit" (gap-based). Now: count loss 0.056/0.100 %; still `verified: false` for different, stated reasons (nominal only from topic name; guides list 30/15 Hz for another topic; semantics pending) |
+| comment on `depth.required` | "Depth is OFF by default" replaced by the observed fact (ON on the tested unit) |
+| no verification flag changed | no role was promoted; document claims cannot promote (enforced by `contract.validate_spec`, tested) |
+| not done on purpose | no alias for the v1.2.0 `/insight/*` names (never observed on a device); no ROS topic or camera setting touched |
+Files: `config/topics_v2.1.5.yaml`, `DATA_CONTRACT.md` (v0.3), `insight_capture/contract.py`, `tools/render_contract_tables.py`, `tests/test_contract_consistency.py`, `reports/vendor_docs/*`, `reports/contract_evidence/jpeg_sof_check.json`.

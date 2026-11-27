@@ -185,7 +185,12 @@ def verdicts(rep: dict, th: dict) -> list[tuple[str, str]]:
         if lr is not None and lr > tol:
             out.append(("WARN", f"{n}: loss {lr * 100:.2f}% vs reference rate ({t['gap_events']} gaps)"))
         elif t.get("loss_vs_median", 0) > tol:
-            out.append(("WARN", f"{n}: loss {t['loss_vs_median'] * 100:.2f}% vs own median period"))
+            if lr is not None:       # count says (almost) nothing is missing, intervals say otherwise => irregular stamps
+                out.append(("WARN", f"{n}: irregular stamp intervals ({t['gap_events']} gaps, max {t['interval_ms']['max']} ms; "
+                                    f"gap-based estimate {t['loss_vs_median'] * 100:.2f}%) but message count is only "
+                                    f"{lr * 100:.3f}% below the reference rate - jitter, not (much) loss"))
+            else:
+                out.append(("WARN", f"{n}: loss {t['loss_vs_median'] * 100:.2f}% vs own median period"))
         if t.get("non_monotonic"):
             out.append(("WARN", f"{n}: {t['non_monotonic']} non-monotonic stamps"))
     s = rep["systemic"]

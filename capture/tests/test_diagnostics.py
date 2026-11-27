@@ -168,3 +168,17 @@ def test_unstamped_topic_does_not_block_recv_only_classification():
     rep = D.diagnose(series_)
     assert rep["systemic"]["data_loss_events"] == 0 and rep["systemic"]["recv_only_events"] >= 2
     assert not any("/tf" in m for _, m in D.verdicts(rep, TH))
+
+
+def test_jittery_stamps_with_correct_count_are_labelled_jitter_not_loss():
+    """VIO-like stream: 10 ms nominal, quantised stamps; every 20th pair of intervals is (17.5, 2.5) ms.
+    Count stays nominal, gap-based estimate sees one 'missing' message per pair."""
+    t, stamps = 1000 * NS, []
+    for k in range(1000):
+        for iv in ([17_500_000, 2_500_000] if k % 10 == 0 else [10_000_000, 10_000_000]):
+            stamps.append(t); t += iv
+    rep = D.diagnose({"/vio": {"stamps": stamps, "recv": stamps}}, {"/vio": 100.0})
+    t_ = rep["topics"]["/vio"]
+    assert t_["loss_vs_median"] > 0.01 and t_["loss_vs_reference"] < 0.001
+    v = [m for _, m in D.verdicts(rep, TH) if "/vio" in m]
+    assert v and "jitter, not (much) loss" in v[0]

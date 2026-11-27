@@ -62,3 +62,19 @@ def test_headerless_types_are_not_stamp_parsed():
     from insight_capture.stats import has_header
     assert not has_header("std_msgs/msg/String") and not has_header("tf2_msgs/msg/TFMessage")
     assert has_header("sensor_msgs/msg/Imu") and has_header("geometry_msgs/msg/PoseStamped")
+
+
+def test_delivered_rate_catches_omitted_frames_that_median_period_hides():
+    """Insight 9 depth: frames are omitted on a 66.7 ms grid, median period says 15 Hz but only ~13 Hz arrive."""
+    from insight_capture.stats import rate_text
+    P = NS // 15
+    t, stamps = 0, []
+    for i in range(1500):
+        stamps.append(1000 * NS + t)
+        t += P * (3 if i % 7 == 0 else 1)          # every 7th gap is 3 periods -> 2 frames omitted
+    st = analyze(stamps, stamps)
+    assert abs(st["stamp_rate_hz"] - 15.0) < 0.05 and st["stamp_mean_rate_hz"] < 13.5
+    assert any("below reference" in m for _, m in judge(st, 15.0, TH))
+    assert "delivered" in rate_text(st) and "median-period 15" in rate_text(st)
+    clean = analyze([x[1] for x in series(30, 300)], [x[0] for x in series(30, 300)])
+    assert "delivered" not in rate_text(clean)

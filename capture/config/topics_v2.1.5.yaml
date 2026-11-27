@@ -62,7 +62,7 @@ roles:
         - '12-13% shortfall is camera-side (reports/3_depth_loss_root_cause.md): vendor to confirm intended rate'
         - 'unit of mono16 values unconfirmed (mm assumed from vendor doc; median 542)'
         - 'value 65535 / 0 meaning (invalid) unconfirmed'
-    required: false          # Depth is OFF by default on the camera
+    required: false          # earlier belief: depth default OFF; on the tested unit it was ON (/api/deep-flow enabled=true)
     default_off: true
     types: *image_types
     suffix: '/depth/image[^/]*(/compressed|/compressedDepth)?'
@@ -82,11 +82,11 @@ roles:
     kind: vio
     verification:
       verified: false
-      evidence: "vio_100hz PoseStamped frame 'world', 100.0 Hz; pooled loss ~0.15% (0.29% in 340 s run) - above 0.1% policy limit"
+      evidence: "vio_100hz PoseStamped frame 'world', 100 Hz grid (median 10 ms); delivered 99.944 / 99.900 Hz in 2 runs = count loss 0.056 / 0.100 % vs 100 Hz; the gap-based estimate (0.29 / 0.38 %) over-counts because VIO stamps are jittery (2.5-27.5 ms). NOT verified: the nominal rate is known only from the topic name, the vendor guides list a different topic and rate (v1.2.0 30 Hz, v1.2.1 15 Hz), pose semantics pending"
       pending:
         - 'pose semantics (T_world_imu per vendor doc) unconfirmed'
         - "'world' frame has no TF link to the camera tree"
-        - 'vendor doc says 15 Hz /insight/vio_pose - does not exist on 2.1.5'
+        - 'vendor guides: /insight/vio_pose at 30 Hz (v1.2.0) or 15 Hz (v1.2.1) - no such topic on 2.1.5; vio_image (30 Hz PoseStamped) is a candidate equivalent, UNCONFIRMED'
         - 'vio_status stays TRACKING_STATIC when stationary; behaviour in motion untested'
     required: true
     types:
@@ -172,3 +172,201 @@ thresholds:
 # Extra topics observed on fw 2.1.5 (recorded with --include-extra; NOT verified roles):
 #   vio_image (PoseStamped 30 Hz, follows the image rate: 20 Hz when stereo=20 fps), vio_image_cov (PoseWithCovarianceStamped 30 Hz),
 #   vio_status (std_msgs/String 1 Hz, TRANSIENT_LOCAL, constant stamps), */image_raw and color/image_raw/compressed (publisher, 0 messages).
+
+# =====================================================================================================
+# spec: unified OFFICIAL-vs-MEASURED data description (added 2026-11-27, DATA_CONTRACT v0.3).
+# Single source of truth for the tables in DATA_CONTRACT.md (rendered by tools/render_contract_tables.py and
+# checked by tests/test_contract_consistency.py).
+#
+# Per-field status:  V = verified on fw 2.1.5 by measurement in >= 2 independent runs
+#                    O = observed once / one source / consistent but not cross-checked
+#                    ? = pending - includes EVERY claim that rests on vendor documentation only
+#                    - = not applicable
+# RULE: a vendor-document statement (sources D0/D1) can never by itself give V or O. A field is V/O only if
+#       its sources contain at least one measurement code (M*, TL, MF, JPEG, API, QOS).
+# "measured rate" = DELIVERED mean rate (n-1)/(last-first header stamp), NOT the median-period rate.
+# "loss" = count deficit vs the nominal rate = 1 - n/expected (header-stamp space). The gap-based estimate
+#         (est_missing_msgs) is a different, diagnostic number and over-counts jittery stamps (VIO).
+# =====================================================================================================
+spec:
+  schema: 1
+  document: DATA_CONTRACT.md v0.3
+  runs:
+    A: {id: 20261126_143635_real5min,      raw: reports/camera_data/real5min_inspect.json,      started: '2026-11-26 14:36', duration_s: 340.6, note: 'WSL2 wall clock was stepping at that time (receive-time artefact only; header-stamp numbers unaffected)'}
+    B: {id: 20261126_184839_real5min_v215, raw: reports/camera_data/real5min_v215_inspect.json, started: '2026-11-26 18:48', duration_s: 320.2, note: 'healthy WSL2 clock'}
+  sources:
+    D0:  {path: reports/vendor_docs/looper_insight9_quickstart_v1.2.0.html, kind: vendor_document, what: 'Looper Quick Start & Developer Guide v1.2.0 (topic namespace /insight/*)'}
+    D1:  {path: reports/vendor_docs/looper_insight9_quickstart_v1.2.1.html, kind: vendor_document, what: 'same guide v1.2.1 (RealSense-compatible names /camera/camera/*)'}
+    M1:  {path: reports/camera_data/real5min_inspect.json,       kind: measurement, what: 'run A inspect output (counts, stamp rates, diagnostics)'}
+    M2:  {path: reports/camera_data/real5min_v215_inspect.json,  kind: measurement, what: 'run B inspect output'}
+    TL:  {path: reports/camera_data/topics_domain9.txt,          kind: measurement, what: 'ros2 topic list -t on domain 9 (18 topics)'}
+    MF:  {path: reports/contract_evidence/real_fw215_message_facts.json, kind: measurement, what: 'decoded message fields from the recorded bag (CameraInfo, TF, Image encodings, depth values)'}
+    JPEG: {path: reports/contract_evidence/jpeg_sof_check.json,  kind: measurement, what: 'JPEG SOF0 decode of RGB frames'}
+    API: {path: reports/camera_data/stereo-format.json,          kind: measurement, what: 'camera web API GET (stereo-format, camera-format, deep-flow, ...) in reports/camera_data/*.json'}
+    QOS: {path: reports/depth_loss/camera_writer_qos.txt,        kind: measurement, what: 'camera DDS writer QoS via Cyclone discovery'}
+  roles:
+    rgb:
+      official_v1_2_0: {topic: /insight/camera_rgb/compressed, type: sensor_msgs/msg/CompressedImage, resolution: 1920x1088, encoding: jpeg, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /camera/camera/color/image_rect_raw/compressed, type: sensor_msgs/msg/CompressedImage, resolution: 1920x1088, encoding: jpeg, rate_hz: 30, unit: null}
+      measured: {topic: /camera/camera/color/image_rect_raw/compressed, type: sensor_msgs/msg/CompressedImage, resolution_wxh: 1088x1920, encoding: jpeg, nominal_hz: 30, unit: null, frame_id: camera_camera_rgb,
+                 mean_rate_hz: {A: 30.019, B: 30.019}, loss_pct: {A: 0.0, B: 0.0}}
+      status:  {topic: V, type: V, resolution: V, encoding: V, nominal: V, rate: V, unit: '-'}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [JPEG, MF, API], encoding: [JPEG, MF], nominal: [API, M1, M2, D0, D1], rate: [M1, M2], unit: []}
+      deviations: [DEV-NAMESPACE, DEV-RES-ORDER]
+    stereo_left:
+      official_v1_2_0: {topic: /insight/camera_left_rectified, type: sensor_msgs/msg/Image, resolution: 640x544, encoding: mono8, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /camera/camera/infra1/image_rect_raw, type: sensor_msgs/msg/Image, resolution: 640x544, encoding: mono8, rate_hz: 30, unit: null}
+      measured: {topic: /camera/camera/infra1/image_rect_raw, type: sensor_msgs/msg/Image, resolution_wxh: 544x640, encoding: mono8, nominal_hz: 30, unit: null, frame_id: camera_camera_left,
+                 mean_rate_hz: {A: 30.0, B: 30.0}, loss_pct: {A: 0.0, B: 0.0}}
+      status:  {topic: V, type: V, resolution: V, encoding: V, nominal: V, rate: V, unit: '-'}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [MF, API], encoding: [MF], nominal: [API, M1, M2, D0, D1], rate: [M1, M2], unit: []}
+      deviations: [DEV-NAMESPACE, DEV-RES-ORDER]
+    stereo_right:
+      official_v1_2_0: {topic: /insight/camera_right_rectified, type: sensor_msgs/msg/Image, resolution: 640x544, encoding: mono8, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /camera/camera/infra2/image_rect_raw, type: sensor_msgs/msg/Image, resolution: 640x544, encoding: mono8, rate_hz: 30, unit: null}
+      measured: {topic: /camera/camera/infra2/image_rect_raw, type: sensor_msgs/msg/Image, resolution_wxh: 544x640, encoding: mono8, nominal_hz: 30, unit: null, frame_id: camera_camera_right,
+                 mean_rate_hz: {A: 30.0, B: 30.0}, loss_pct: {A: 0.0, B: 0.0}}
+      status:  {topic: V, type: V, resolution: V, encoding: V, nominal: V, rate: V, unit: '-'}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [MF, API], encoding: [MF], nominal: [API, M1, M2, D0, D1], rate: [M1, M2], unit: []}
+      deviations: [DEV-NAMESPACE, DEV-RES-ORDER]
+    depth:
+      official_v1_2_0: {topic: /insight/depth, type: sensor_msgs/msg/Image, resolution: 640x544, encoding: mono16, rate_hz: 15, unit: mm}
+      official_v1_2_1: {topic: /camera/depth/image_rect_raw, type: sensor_msgs/msg/Image, resolution: 640x544, encoding: mono16, rate_hz: 15, unit: mm}
+      measured: {topic: /camera/camera/depth/image_rect_raw, type: sensor_msgs/msg/Image, resolution_wxh: 544x640, encoding: mono16, nominal_hz: 15, unit: mm, frame_id: camera_camera_depth,
+                 mean_rate_hz: {A: 13.1, B: 13.077}, loss_pct: {A: 12.654, B: 12.828}}
+      # nominal 15 Hz: only the vendor guides say so; the measured median frame interval (66.7 ms) is consistent with a 15 Hz grid (O). unit mm: vendor guides only (?)
+      status:  {topic: V, type: V, resolution: V, encoding: V, nominal: O, rate: V, unit: '?'}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [MF], encoding: [MF], nominal: [M1, M2, D0, D1], rate: [M1, M2], unit: [D0, D1]}
+      deviations: [DEV-NAMESPACE, DEV-RES-ORDER, DEV-DEPTH-RATE, DEV-DEPTH-UNIT]
+    imu:
+      official_v1_2_0: {topic: /insight/imu, type: sensor_msgs/msg/Imu, resolution: null, encoding: null, rate_hz: 400, unit: null}
+      official_v1_2_1: {topic: /camera/camera/imu, type: sensor_msgs/msg/Imu, resolution: null, encoding: null, rate_hz: 400, unit: null}
+      measured: {topic: /camera/camera/imu, type: sensor_msgs/msg/Imu, resolution_wxh: null, encoding: null, nominal_hz: 400, unit: 'accel m/s^2, gyro rad/s', frame_id: camera_camera_imu_optical,
+                 mean_rate_hz: {A: 399.511, B: 400.0}, loss_pct: {A: 0.122, B: 0.0}}
+      # accel m/s^2 is observed (|a| = 9.78 at rest) but the guides give no IMU unit and the gyro unit is unconfirmed => '?'
+      status:  {topic: V, type: V, resolution: '-', encoding: '-', nominal: V, rate: V, unit: '?'}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [], encoding: [], nominal: [M1, M2, D0, D1], rate: [M1, M2], unit: [MF]}
+      deviations: [DEV-NAMESPACE]
+    vio:
+      official_v1_2_0: {topic: /insight/vio_pose, type: geometry_msgs/msg/PoseStamped, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /insight/vio_pose, type: geometry_msgs/msg/PoseStamped, resolution: null, encoding: null, rate_hz: 15, unit: null}
+      measured: {topic: /camera/camera/vio_100hz, type: geometry_msgs/msg/PoseStamped, resolution_wxh: null, encoding: null, nominal_hz: 100, unit: 'position m, orientation quaternion', frame_id: world,
+                 mean_rate_hz: {A: 99.944, B: 99.9}, loss_pct: {A: 0.056, B: 0.1}}
+      # nominal 100 Hz is read from the topic name + 10 ms median interval only (O); metres/quaternion are REP-103 assumptions, scale never checked in motion (?)
+      status:  {topic: V, type: V, resolution: '-', encoding: '-', nominal: O, rate: V, unit: '?'}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [], encoding: [], nominal: [TL, M1, M2], rate: [M1, M2], unit: [D0, D1]}
+      deviations: [DEV-NAMESPACE, DEV-VIO-RATE, DEV-VIO-SEMANTICS]
+    rgb_info:
+      official_v1_2_0: {topic: /insight/camera_rgb_info, type: sensor_msgs/msg/CameraInfo, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /camera/color/camera_info, type: sensor_msgs/msg/CameraInfo, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      measured: {topic: /camera/camera/color/camera_info, type: sensor_msgs/msg/CameraInfo, resolution_wxh: 1088x1920, encoding: null, nominal_hz: 30, unit: 'pixels (K,P)', frame_id: camera_camera_rgb,
+                 mean_rate_hz: {A: 30.019, B: 30.019}, loss_pct: {A: 0.0, B: 0.0}}
+      status:  {topic: V, type: V, resolution: V, encoding: '-', nominal: V, rate: V, unit: O}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [MF], encoding: [], nominal: [M1, M2, D0, D1], rate: [M1, M2], unit: [MF]}
+      deviations: [DEV-NAMESPACE]
+    stereo_left_info:
+      official_v1_2_0: {topic: /insight/camera_left_info, type: sensor_msgs/msg/CameraInfo, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /camera/infra1/camera_info, type: sensor_msgs/msg/CameraInfo, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      measured: {topic: /camera/camera/infra1/camera_info, type: sensor_msgs/msg/CameraInfo, resolution_wxh: 544x640, encoding: null, nominal_hz: 30, unit: 'pixels (K,P)', frame_id: camera_camera_left,
+                 mean_rate_hz: {A: 30.0, B: 30.0}, loss_pct: {A: 0.0, B: 0.0}}
+      status:  {topic: V, type: V, resolution: V, encoding: '-', nominal: V, rate: V, unit: O}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [MF], encoding: [], nominal: [M1, M2, D0, D1], rate: [M1, M2], unit: [MF]}
+      deviations: [DEV-NAMESPACE]
+    stereo_right_info:
+      official_v1_2_0: {topic: /insight/camera_right_info, type: sensor_msgs/msg/CameraInfo, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      official_v1_2_1: {topic: /camera/infra2/camera_info, type: sensor_msgs/msg/CameraInfo, resolution: null, encoding: null, rate_hz: 30, unit: null}
+      measured: {topic: /camera/camera/infra2/camera_info, type: sensor_msgs/msg/CameraInfo, resolution_wxh: 544x640, encoding: null, nominal_hz: 30, unit: 'pixels (K,P); P[0,3] = -fx*baseline (px*m)', frame_id: camera_camera_right,
+                 mean_rate_hz: {A: 30.0, B: 30.0}, loss_pct: {A: 0.0, B: 0.0}}
+      status:  {topic: V, type: V, resolution: V, encoding: '-', nominal: V, rate: V, unit: O}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], resolution: [MF], encoding: [], nominal: [M1, M2, D0, D1], rate: [M1, M2], unit: [MF]}
+      deviations: [DEV-NAMESPACE]
+    depth_info:
+      official_v1_2_0: null          # not listed in v1.2.0
+      official_v1_2_1: null          # not listed in v1.2.1
+      measured: null                 # topic does not exist on fw 2.1.5
+      status:  {topic: O, type: '-', resolution: '-', encoding: '-', nominal: '-', rate: '-', unit: '-'}
+      sources: {topic: [TL], type: [], resolution: [], encoding: [], nominal: [], rate: [], unit: []}
+      deviations: [DEV-DEPTH-INFO]
+  global_topics:
+    tf_static:
+      official_v1_2_0: {topic: /static_tf, type: tf2_msgs/msg/TFMessage, rate_hz: null, description: 'IMU-Camera extrinsics'}
+      official_v1_2_1: {topic: /tf_static, type: tf2_msgs/msg/TFMessage, rate_hz: null, description: 'IMU-Camera extrinsics'}
+      measured: {topic: /tf_static, type: tf2_msgs/msg/TFMessage, nominal_hz: null, mean_rate_hz: null, qos: 'RELIABLE, TRANSIENT_LOCAL, keep 1', messages_per_run: 1, edges: 5}
+      status:  {topic: V, type: V, rate: '-', unit: O}
+      sources: {topic: [TL, M1, M2], type: [TL, M1, M2], rate: [], unit: [MF]}
+      deviations: [DEV-STATIC-TF-NAME]
+    static_tf:
+      official_v1_2_0: {topic: /static_tf, type: tf2_msgs/msg/TFMessage}
+      official_v1_2_1: null
+      measured: null                 # NOT published on fw 2.1.5
+      status:  {topic: O}
+      sources: {topic: [TL]}
+      deviations: [DEV-STATIC-TF-NAME]
+    tf:
+      official_v1_2_0: null
+      official_v1_2_1: null
+      measured: null                 # never published
+      status:  {topic: O}
+      sources: {topic: [TL, M1, M2]}
+      deviations: []
+  extras_measured_only:             # published by fw 2.1.5, absent from both guides
+    vio_image:      {topic: /camera/camera/vio_image,      type: geometry_msgs/msg/PoseStamped,              nominal_hz: 30, mean_rate_hz: {A: 30.0, B: 30.0}, status: {topic: V, type: V, rate: V}, sources: [TL, M1, M2], note: 'follows the image rate (20 Hz when stereo=20 fps); candidate equivalent of the guides'' /insight/vio_pose - UNCONFIRMED'}
+    vio_image_cov:  {topic: /camera/camera/vio_image_cov,  type: geometry_msgs/msg/PoseWithCovarianceStamped, nominal_hz: 30, mean_rate_hz: {A: 30.0, B: 30.0}, status: {topic: V, type: V, rate: V}, sources: [TL, M1, M2], note: 'diag covariance ~3e-6 (position)'}
+    vio_status:     {topic: /camera/camera/vio_status,     type: std_msgs/msg/String,                         nominal_hz: 1,  mean_rate_hz: null,               status: {topic: V, type: V, rate: O}, sources: [TL, M1, M2], note: 'TRANSIENT_LOCAL, constant stamps, ~1 Hz by count; only TRACKING_STATIC seen (stationary)'}
+  deviations:
+    DEV-DEPTH-RATE:
+      title: 'Depth rate: official 15 Hz, delivered ~13.1 Hz'
+      official: '15 Hz (v1.2.0 and v1.2.1)'
+      measured: 'delivered mean 13.100 Hz (run A) / 13.077 Hz (run B); count loss 12.654 % / 12.828 % vs 15 Hz; median frame interval 66.7 ms (a 15 Hz grid with frames omitted: intervals of 2,3,4 left-stereo frames)'
+      status: V
+      sources: [M1, M2]
+      note: 'located upstream of the host NIC, camera element undetermined: reports/3_depth_loss_root_cause.md. The gap-based estimate (8.5-9.0 %) UNDER-counts here; use the count-based number.'
+    DEV-VIO-RATE:
+      title: 'VIO: official /insight/vio_pose 30 Hz (v1.2.0) or 15 Hz (v1.2.1); measured vio_100hz 100 Hz and vio_image 30 Hz'
+      official: '/insight/vio_pose PoseStamped, 30 Hz (v1.2.0) / 15 Hz (v1.2.1) - the two guide versions disagree'
+      measured: '/camera/camera/vio_100hz 99.944/99.900 Hz; /camera/camera/vio_image 30.0 Hz; no /insight/* topic exists'
+      status: V                       # the measurement is V; which measured topic corresponds to the official one is '?'
+      sources: [TL, M1, M2]
+      note: 'equivalence of any measured topic with /insight/vio_pose is UNCONFIRMED (?)'
+    DEV-VIO-SEMANTICS:
+      title: 'VIO pose definition'
+      official: 'aligned to T_world_imu (both versions)'
+      measured: 'frame_id world; first pose near origin with a non-identity quaternion; world not linked in /tf_static'
+      status: '?'
+      sources: [D0, D1, MF]
+      note: 'whether the pose is T_world_imu, its scale and gravity alignment are unverified'
+    DEV-STATIC-TF-NAME:
+      title: 'Static TF topic name'
+      official: '/static_tf (v1.2.0) but /tf_static (v1.2.1) - the guide versions disagree'
+      measured: '/tf_static (RELIABLE, TRANSIENT_LOCAL, 1 message, 5 edges); /static_tf absent from the 18-topic list'
+      status: V
+      sources: [TL, M1, M2]
+      note: '/tf_static is also the standard ROS 2 name; the capture tool records /tf_static only'
+    DEV-NAMESPACE:
+      title: 'Topic names and namespace'
+      official: 'v1.2.0: everything under /insight/* (camera_left_rectified, camera_rgb/compressed, depth, ...); v1.2.1: RealSense-style /camera/camera/* (but depth and camera_info listed as /camera/depth.., /camera/infra1/camera_info, VIO still /insight/vio_pose)'
+      measured: 'fw 2.1.5 follows the v1.2.1 RealSense style with prefix /camera/camera for every device topic including depth and camera_info; no /insight/* topic'
+      status: V
+      sources: [TL, D0, D1]
+      note: 'the capture discovery matches the measured names (and infra/vio_pose aliases); it does NOT match the v1.2.0 names - see DATA_CONTRACT.md section 9'
+    DEV-RES-ORDER:
+      title: 'Resolution notation'
+      official: 'strings 640x544 (stereo, depth) and 1920x1088 (RGB)'
+      measured: 'ROS messages and the camera API: width x height = 544x640 and 1088x1920 (JPEG SOF decoded: 1088 wide, 1920 high); i.e. the guides print height x width'
+      status: V
+      sources: [MF, JPEG, API]
+      note: 'interpretation "guide prints H x W" is an inference from the match, not a vendor statement (?)'
+    DEV-DEPTH-UNIT:
+      title: 'Depth unit'
+      official: 'millimetre (both versions)'
+      measured: 'mono16 little-endian, median valid value 542, 0.4 % zeros, max 65535; never compared with a known distance'
+      status: '?'
+      sources: [D0, D1, MF]
+      note: 'the value range does not contradict mm; that is not verification'
+    DEV-DEPTH-INFO:
+      title: 'No depth CameraInfo'
+      official: 'no depth camera_info in either guide'
+      measured: 'no depth camera_info topic on fw 2.1.5 (depth frame is identity from camera_camera_left in /tf_static)'
+      status: O
+      sources: [TL]
+      note: 'depth intrinsics presumably = left stereo; unconfirmed'

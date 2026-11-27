@@ -9,7 +9,7 @@ from . import sysinfo
 from .config import load_profile
 from .discovery import discover, Discovery
 from .rosgraph import Graph
-from .stats import judge
+from .stats import judge, rate_text
 
 LEVELS = {"PASS": 0, "INFO": 0, "WARN": 1, "FAIL": 2}
 
@@ -259,7 +259,6 @@ def _judge_probe(rep, sel, probe, th, expect):
             st = probe.get(m.topic)
             if st is None:
                 continue
-            hz = st.get("stamp_rate_hz") or st.get("recv_rate_hz")
             if st["count"] == 0:
                 lvl = "WARN" if role in ("tf_static", "depth", "depth_info") else "FAIL"
                 rep.add(lvl, f"rate_{role}", f"{role}: no messages in probe window", m.topic)
@@ -267,7 +266,7 @@ def _judge_probe(rep, sel, probe, th, expect):
             findings = judge(st, expect.get(role), th, clock_check=False)
             if st.get("recv_minus_stamp_median_s") is not None:
                 offs.append(st["recv_minus_stamp_median_s"])
-            summ = (f"{role}: {st['count']} msgs, {hz if hz is not None else 'n/a'} Hz"
+            summ = (f"{role}: {st['count']} msgs, {rate_text(st)}"
                     f" (recv {st.get('recv_rate_hz')}), drops~{st.get('est_missing_msgs', 0)},"
                     f" {st['bytes_per_s'] / 1e6:.2f} MB/s")
             if not findings:

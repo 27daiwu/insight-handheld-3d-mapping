@@ -39,3 +39,15 @@ Test-hardening found while working: DDS discovery on a fresh domain lags on this
 | no unexplained data loss | **NO**: Depth 12.65 %, IMU 0.12 %, VIO 0.29 % unexplained |
 | native Ubuntu run | **NOT DONE** |
 Simulator results are not used in this matrix.
+
+---
+## Update 2026-11-27 (DATA_CONTRACT v0.3) — **84 passed, run twice (137 s / 138 s)**
+The original 26 tests are unchanged and pass; 58 added in total (51 at the previous update + 33 now).
+| new this round | tests | what it locks |
+|---|---|---|
+| `test_contract_consistency.py` | 31 | contract tables == YAML `spec:` (generated blocks up to date); promotion rule (document claims never V/O); official columns == archived guides v1.2.0/v1.2.1 byte-for-byte topic/type/res/enc/rate/unit and the guides' own disagreements; measured columns re-derived from the raw recordings A/B (rate within 0.0015 Hz, loss within 0.0015 %, frame_id, nominal); topic list (18 topics, no `/insight/*`, no `/static_tf`, no `/tf`); resolutions vs message facts, JPEG SOF decode and camera API (guides print H x W); Depth / VIO / static-TF differences present and not softened; verified roles need V topic/type/rate; discovery resolves every measured topic from the real topic list; v1.2.0 names are a *documented limitation*; README/YAML do not carry the old gap-based VIO number; raw evidence + SHA-256 of archived guides preserved |
+| `test_stats.py` +1 | | delivered rate catches omitted frames that the median-period rate hides (depth case); `rate_text` |
+| `test_diagnostics.py` +1 | | jittery stamps with correct count are labelled jitter, not loss |
+Tool fixes found while unifying definitions (all tested): `judge()` low-rate check now uses the delivered mean rate (previously Depth at 13.1 Hz printed "14.999 Hz (ref 15.0)" and never triggered it); `inspect`/`preflight` print the delivered rate; a stream whose count is nominal but whose gap estimate is not is reported as jitter.
+Test-environment fix: integration tests failed 2/2 full-suite runs once the camera's USB-NCM interface was gone (DDS discovery over the Wi-Fi mirror lagged). They now run with `ROS_LOCALHOST_ONLY=1`, which is also safer (no test traffic on the lab LAN), and stop their per-domain `ros2 daemon` at teardown (two stale daemons from earlier runs were found and stopped). Passing alone 3/3 beforehand showed this was an environment/ordering effect, not a code defect; I did not claim a root cause for the earlier discovery lag.
+No test talks to a camera (`INSIGHT_CAMERA_API=off`); no camera was connected during this task.

@@ -1,0 +1,8 @@
+{
+  "what": "JPEG SOF0 header decoded from the first 3 messages of /camera/camera/color/image_rect_raw/compressed",
+  "bag": "/home/hebe/insight_data/real/20261126_184839_real5min_v215/bag/bag_0.db3 (not in repo, 11 GB)",
+  "decoded_2026-11-27": {"marker": "SOF0 (baseline)", "precision_bits": 8, "width_px": 1088, "height_px": 1920, "components": 3,
+                         "CompressedImage.format": "jpeg", "frame_id": "camera_camera_rgb"},
+  "consistency": "equals CameraInfo width=1088 height=1920 and the camera API camera-format 'mjpg 1088x1920 30fps' (W x H)",
+  "vs_official": "vendor guides v1.2.0/v1.2.1 write '1920x1088' for RGB and '640x544' for stereo/depth: the opposite order (H x W) of the ROS messages and of the camera's own API"
+}

@@ -31,3 +31,9 @@ Exit codes (preflight/inspect): 0 ok, 1 warnings, 2 failures.
 * `preflight`/`record` read firmware, depth, stereo format and time-sync state from the camera web API with **GET only** (whitelist, never POST). Disable with `--camera-api off` or `INSIGHT_CAMERA_API=off` (the simulator tests do).
 * Camera settings experiments (POST) are NOT part of the tool; they live in `reports/camera_param_experiment/` and need explicit authorisation.
 * Contract draft: `DATA_CONTRACT.md` (v0.2). Reports: `reports/` (1 timesyncd, 2 camera params, 3 depth root cause, 4 topic changelog, 5 GO/NO-GO, P1_acceptance_report, 2_wsl2_packet_loss_rca, 1_camera_access_report, 3_capture_tool_test_report).
+
+## Data specification v0.3 (2026-11-27)
+* `DATA_CONTRACT.md` **v0.3 (draft)** puts the official vendor guides (v1.2.0 and v1.2.1, archived in `reports/vendor_docs/`), the fw 2.1.5 measurements, per-field verification status ([V]/[O]/[?]) and sources in one document. Manifest `schema_version` stays `0.2-draft`.
+* The tables in sections 5.2–5.6 are **generated** from `config/topics_v2.1.5.yaml` (`spec:`): edit the YAML, then `python3 tools/render_contract_tables.py` (`--check` fails if stale). `tests/test_contract_consistency.py` ties document, YAML, archived guides and the raw recordings together.
+* Rule: a vendor-document statement is never [V]/[O] by itself. Key differences recorded: **Depth** 15 Hz mono16 mm (official) vs ≈ 13.1 Hz delivered (12.65–12.83 % short, unit unverified); **VIO** 30 Hz (v1.2.0) / 15 Hz (v1.2.1) vs 100 Hz `vio_100hz` (+ 30 Hz `vio_image`); **static TF** `/static_tf` (v1.2.0) vs `/tf_static` (v1.2.1 and device).
+* Rate and loss definitions changed in the tool: `inspect`/`preflight` now report the **delivered** mean rate (`13.077 Hz delivered (median-period 14.999 Hz)`) and flag jittery-but-complete streams as jitter, not loss. Manifest topics gain `measured_mean_rate_hz`.

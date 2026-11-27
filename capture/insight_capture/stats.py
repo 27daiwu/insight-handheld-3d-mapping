@@ -85,6 +85,14 @@ def analyze(stamps_ns: list[int | None], recv_ns: list[int] | None = None,
     return out
 
 
+def rate_text(st: dict) -> str:
+    """'13.1 Hz' or '13.1 Hz delivered (median-period 15.0 Hz)' - never show only the optimistic median-period rate."""
+    mean, med = st.get("stamp_mean_rate_hz"), st.get("stamp_rate_hz")
+    if mean and med and abs(mean - med) / med > 0.01:
+        return f"{mean} Hz delivered (median-period {med} Hz)"
+    return f"{mean or med or st.get('recv_rate_hz')} Hz"
+
+
 CLOCK_MSG = "camera/host clocks not aligned"
 
 
@@ -107,7 +115,9 @@ def judge(stat: dict, nominal_hz: float | None, th: dict, clock_check: bool = Tr
     off = stat.get("recv_minus_stamp_median_s")
     if clock_check and off is not None and abs(off) > th.get("max_clock_offset_s", 1.0):
         f.append(("WARN", f"receive time - header stamp = {off:.2f}s ({CLOCK_MSG})"))
-    hz = stat.get("stamp_rate_hz") or stat.get("recv_rate_hz")
+    # Delivered (mean) rate = (n-1)/span. The median-period rate hides drops on streams whose frames are
+    # simply omitted (Insight 9 depth: median period 66.7 ms = 15.0 Hz while only 13.1 Hz are delivered).
+    hz = stat.get("stamp_mean_rate_hz") or stat.get("stamp_rate_hz") or stat.get("recv_rate_hz")
     if nominal_hz and hz and hz < nominal_hz * th.get("min_rate_ratio", 0.9):
         f.append(("WARN", f"rate {hz:.1f} Hz below reference {nominal_hz:.1f} Hz"))
     return f
